@@ -32,12 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Facebook">
-      <HintPath>..\01_FB01_BasicFacebookFeatures.V8.0.0.1\FBApi\Facebook.dll</HintPath>
-    </Reference>
-    <Reference Include="FbGraphApiWrapper">
-      <HintPath>..\01_FB01_BasicFacebookFeatures.V8.0.0.1\FBApi\FbGraphApiWrapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
