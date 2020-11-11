@@ -14,14 +14,10 @@ namespace FacebookApp
         [STAThread]
         static void Main()
         {
-            
+            FacebookService.s_UseForamttedToStrings = true;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            LoginResult result = FacebookWrapper.FacebookService.Login("892240561306584", "user_friends");
-            Form1 outForm = new Form1();
-            //outForm.lablresult.LoggedInUser.FirstName
-            //Application.Run(outForm);
-           
+            Application.Run(new FormMainFacebookApp());
         }
     }
 }
