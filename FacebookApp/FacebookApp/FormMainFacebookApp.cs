@@ -13,8 +13,8 @@ namespace FacebookApp
 {
     public partial class FormMainFacebookApp : Form
     {
-        User m_LoggedInUser;
-        LoginResult m_LoginResult;
+        private User m_LoggedInUser;
+        private LoginResult m_LoginResult;
 
         public FormMainFacebookApp()
         {
@@ -106,7 +106,5 @@ namespace FacebookApp
         {
             loginAndInit();
         }
-
-
     }
 }
