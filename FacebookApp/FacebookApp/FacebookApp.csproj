@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TabsManager.cs" />
     <Compile Include="FormMainFacebookApp.cs">
       <SubType>Form</SubType>
     </Compile>

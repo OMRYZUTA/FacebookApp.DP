@@ -409,23 +409,24 @@
             // 
             // coverPhoto
             // 
+            this.coverPhoto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.coverPhoto.Location = new System.Drawing.Point(131, 10);
             this.coverPhoto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.coverPhoto.Name = "coverPhoto";
             this.coverPhoto.Size = new System.Drawing.Size(659, 184);
+            this.coverPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.coverPhoto.TabIndex = 1;
             this.coverPhoto.TabStop = false;
             // 
             // profilePicture
             // 
-            this.profilePicture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.profilePicture.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.profilePicture.InitialImage = ((System.Drawing.Image)(resources.GetObject("profilePicture.InitialImage")));
             this.profilePicture.Location = new System.Drawing.Point(353, 74);
             this.profilePicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.profilePicture.Name = "profilePicture";
             this.profilePicture.Size = new System.Drawing.Size(178, 119);
-            this.profilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.profilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.profilePicture.TabIndex = 7;
             this.profilePicture.TabStop = false;
             // 
@@ -469,6 +470,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

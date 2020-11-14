@@ -63,8 +63,28 @@ namespace FacebookApp
         private void fetchUserBasicInfo()
         {
             fetchUserProfilePhoto();
+            fetchUserCoverPhoto();
             fetchUserName();
             fetchUserPosts();
+        }
+
+        // since Cover property is broken we are using PhotosTaggedIn
+        private void fetchUserCoverPhoto()
+        {
+            try
+            {
+                if (m_LoggedInUser.PhotosTaggedIn != null)
+                {
+                    if (m_LoggedInUser.PhotosTaggedIn[1] != null)
+                    {
+                        coverPhoto.LoadAsync(m_LoggedInUser.PhotosTaggedIn[1].PictureNormalURL);
+                    }
+                }
+            }
+            finally
+            {
+                // delete later 
+            }
         }
 
         private void fetchUserPosts()
