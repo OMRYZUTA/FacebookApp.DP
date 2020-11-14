@@ -15,6 +15,7 @@ namespace FacebookApp
     {
         private User m_LoggedInUser;
         private LoginResult m_LoginResult;
+        private TabsManager m_TabsManager;
 
         public FormMainFacebookApp()
         {
@@ -51,6 +52,7 @@ namespace FacebookApp
                 if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
                 {
                     m_LoggedInUser = m_LoginResult.LoggedInUser;
+                    m_TabsManager = new TabsManager(m_LoggedInUser);
                     fetchUserBasicInfo();
                 }
                 else
@@ -89,23 +91,7 @@ namespace FacebookApp
 
         private void fetchUserPosts()
         {
-
-            foreach (Post post in m_LoggedInUser.Posts)
-            {
-                if (post.Message != null)
-                {
-                    userPostsList.Items.Add(post.Message);
-                }
-                else if (post.Caption != null)
-                {
-                    userPostsList.Items.Add(post.Caption);
-                }
-            }
-
-            if (m_LoggedInUser.Posts.Count == 0)
-            {
-                MessageBox.Show("No Posts to retrieve :(");
-            }
+            m_TabsManager.LoadTab(userPostsList.Name, userPostsList);
         }
 
         private void fetchUserName()
