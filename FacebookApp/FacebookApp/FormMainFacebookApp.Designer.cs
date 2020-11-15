@@ -33,9 +33,9 @@
             this.buttonLogin = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabControlMain = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabUserPosts = new System.Windows.Forms.TabPage();
             this.userPostsList = new System.Windows.Forms.ListBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabAboutUser = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.livesInBox = new System.Windows.Forms.TextBox();
@@ -50,11 +50,11 @@
             this.workPlacesList = new System.Windows.Forms.ListBox();
             this.workPlaces = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.numberOfPhotosBox = new System.Windows.Forms.RichTextBox();
             this.numberOfPhotos = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.numberOfPostsBox = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.numberOfFriendsBox = new System.Windows.Forms.RichTextBox();
             this.numberOfFriends = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.friendsListBox = new System.Windows.Forms.ListBox();
@@ -65,8 +65,8 @@
             this.userNamePresentation = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.appIcon)).BeginInit();
             this.tabControlMain.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tabUserPosts.SuspendLayout();
+            this.tabAboutUser.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -111,8 +111,8 @@
             // tabControlMain
             // 
             this.tabControlMain.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tabControlMain.Controls.Add(this.tabPage2);
-            this.tabControlMain.Controls.Add(this.tabPage3);
+            this.tabControlMain.Controls.Add(this.tabUserPosts);
+            this.tabControlMain.Controls.Add(this.tabAboutUser);
             this.tabControlMain.Controls.Add(this.tabPage4);
             this.tabControlMain.Controls.Add(this.tabPage1);
             this.tabControlMain.Location = new System.Drawing.Point(131, 255);
@@ -122,17 +122,17 @@
             this.tabControlMain.Size = new System.Drawing.Size(650, 390);
             this.tabControlMain.TabIndex = 6;
             // 
-            // tabPage2
+            // tabUserPosts
             // 
-            this.tabPage2.Controls.Add(this.userPostsList);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(642, 361);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "userPosts";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabUserPosts.Controls.Add(this.userPostsList);
+            this.tabUserPosts.Location = new System.Drawing.Point(4, 25);
+            this.tabUserPosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabUserPosts.Name = "tabUserPosts";
+            this.tabUserPosts.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabUserPosts.Size = new System.Drawing.Size(642, 361);
+            this.tabUserPosts.TabIndex = 1;
+            this.tabUserPosts.Text = "userPosts";
+            this.tabUserPosts.UseVisualStyleBackColor = true;
             // 
             // userPostsList
             // 
@@ -145,17 +145,18 @@
             this.userPostsList.Size = new System.Drawing.Size(639, 356);
             this.userPostsList.TabIndex = 0;
             // 
-            // tabPage3
+            // tabAboutUser
             // 
-            this.tabPage3.Controls.Add(this.tabControl2);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage3.Size = new System.Drawing.Size(642, 361);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "aboutUser";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabAboutUser.Controls.Add(this.tabControl2);
+            this.tabAboutUser.Location = new System.Drawing.Point(4, 25);
+            this.tabAboutUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabAboutUser.Name = "tabAboutUser";
+            this.tabAboutUser.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabAboutUser.Size = new System.Drawing.Size(642, 361);
+            this.tabAboutUser.TabIndex = 2;
+            this.tabAboutUser.Text = "aboutUser";
+            this.tabAboutUser.UseVisualStyleBackColor = true;
+            this.tabAboutUser.Click += new System.EventHandler(this.tabAboutUser_Click);
             // 
             // tabControl2
             // 
@@ -292,11 +293,11 @@
             // 
             // tabPage7
             // 
-            this.tabPage7.Controls.Add(this.richTextBox3);
+            this.tabPage7.Controls.Add(this.numberOfPhotosBox);
             this.tabPage7.Controls.Add(this.numberOfPhotos);
-            this.tabPage7.Controls.Add(this.richTextBox2);
+            this.tabPage7.Controls.Add(this.numberOfPostsBox);
             this.tabPage7.Controls.Add(this.label1);
-            this.tabPage7.Controls.Add(this.richTextBox1);
+            this.tabPage7.Controls.Add(this.numberOfFriendsBox);
             this.tabPage7.Controls.Add(this.numberOfFriends);
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -307,14 +308,14 @@
             this.tabPage7.Text = "userStatistics";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // richTextBox3
+            // numberOfPhotosBox
             // 
-            this.richTextBox3.Location = new System.Drawing.Point(153, 102);
-            this.richTextBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(110, 27);
-            this.richTextBox3.TabIndex = 5;
-            this.richTextBox3.Text = "";
+            this.numberOfPhotosBox.Location = new System.Drawing.Point(153, 102);
+            this.numberOfPhotosBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.numberOfPhotosBox.Name = "numberOfPhotosBox";
+            this.numberOfPhotosBox.Size = new System.Drawing.Size(110, 27);
+            this.numberOfPhotosBox.TabIndex = 5;
+            this.numberOfPhotosBox.Text = "";
             // 
             // numberOfPhotos
             // 
@@ -326,14 +327,14 @@
             this.numberOfPhotos.Text = "numberOfPhotos";
             this.numberOfPhotos.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // richTextBox2
+            // numberOfPostsBox
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(153, 56);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(110, 27);
-            this.richTextBox2.TabIndex = 3;
-            this.richTextBox2.Text = "";
+            this.numberOfPostsBox.Location = new System.Drawing.Point(153, 56);
+            this.numberOfPostsBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.numberOfPostsBox.Name = "numberOfPostsBox";
+            this.numberOfPostsBox.Size = new System.Drawing.Size(110, 27);
+            this.numberOfPostsBox.TabIndex = 3;
+            this.numberOfPostsBox.Text = "";
             // 
             // label1
             // 
@@ -345,14 +346,14 @@
             this.label1.Text = "numberOfPosts";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // richTextBox1
+            // numberOfFriendsBox
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(152, 10);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(110, 27);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.numberOfFriendsBox.Location = new System.Drawing.Point(152, 10);
+            this.numberOfFriendsBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.numberOfFriendsBox.Name = "numberOfFriendsBox";
+            this.numberOfFriendsBox.Size = new System.Drawing.Size(110, 27);
+            this.numberOfFriendsBox.TabIndex = 1;
+            this.numberOfFriendsBox.Text = "";
             // 
             // numberOfFriends
             // 
@@ -456,8 +457,8 @@
             this.Text = "Facebook";
             ((System.ComponentModel.ISupportInitialize)(this.appIcon)).EndInit();
             this.tabControlMain.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
+            this.tabUserPosts.ResumeLayout(false);
+            this.tabAboutUser.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
@@ -479,8 +480,8 @@
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabControl tabControlMain;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabUserPosts;
+        private System.Windows.Forms.TabPage tabAboutUser;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ListBox userPostsList;
@@ -488,11 +489,11 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.RichTextBox numberOfPhotosBox;
         private System.Windows.Forms.Label numberOfPhotos;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox numberOfPostsBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox numberOfFriendsBox;
         private System.Windows.Forms.Label numberOfFriends;
         private System.Windows.Forms.PictureBox coverPhoto;
         private System.Windows.Forms.PictureBox profilePicture;

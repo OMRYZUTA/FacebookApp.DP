@@ -11,8 +11,8 @@ namespace FacebookApp.UnitTests
         public void LoadTab_InsertUnFamilierTab_LoadedTabsIsEmptyList()
         {
             //Arrange
-
-            var tabsManager = new TabsManager(new User());
+            
+            var tabsManager = new TabsManager();
             
             //Act
             tabsManager.LoadTab("jiraf","none");

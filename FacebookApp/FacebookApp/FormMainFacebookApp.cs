@@ -19,6 +19,7 @@ namespace FacebookApp
 
         public FormMainFacebookApp()
         {
+            m_TabsManager = new TabsManager();
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 200;
         }
@@ -52,7 +53,7 @@ namespace FacebookApp
                 if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
                 {
                     m_LoggedInUser = m_LoginResult.LoggedInUser;
-                    m_TabsManager = new TabsManager(m_LoggedInUser);
+                    m_TabsManager.LoggedInUser = m_LoggedInUser;
                     fetchUserBasicInfo();
                 }
                 else
@@ -101,6 +102,7 @@ namespace FacebookApp
             userName.Append(" ");
             userName.Append(m_LoggedInUser.LastName);
             userNamePresentation.Text = userName.ToString();
+            ListBox k;
         }
 
         private void fetchUserProfilePhoto()
@@ -111,6 +113,26 @@ namespace FacebookApp
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             loginAndInit();
+        }
+
+        private void tabAboutUser_Click(object sender, EventArgs e)
+        {
+            
+            Dictionary<string, object> objectsToInit = new Dictionary<string, object>();
+            loadObjectsToinit(objectsToInit);
+            m_TabsManager.LoadTab(tabAboutUser.Name, objectsToInit);
+        }
+
+        private void loadObjectsToinit(Dictionary<string, object> i_ObjectsToInit)
+        {
+            i_ObjectsToInit.Add(birthDayBox.Name, birthDayBox);
+            i_ObjectsToInit.Add(statusBox.Name, statusBox);
+            i_ObjectsToInit.Add(livesIn.Name, livesIn);
+            i_ObjectsToInit.Add(workPlacesList.Name, workPlacesList);
+            i_ObjectsToInit.Add(educationList.Name, educationList);
+            i_ObjectsToInit.Add(numberOfFriendsBox.Name, numberOfFriendsBox);
+            i_ObjectsToInit.Add(numberOfPostsBox.Name, numberOfPostsBox);
+            i_ObjectsToInit.Add(numberOfPhotosBox.Name, numberOfPhotosBox);
         }
     }
 }

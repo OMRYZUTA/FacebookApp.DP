@@ -9,13 +9,12 @@ namespace FacebookApp
 {
     public class TabsManager
     {
-        public List<eTab> LoadedTabs{get;set;}
+        public List<eTab> LoadedTabs { get; set; }
         private BreaksManager m_BreaksManager = null;
         private AlbumCreator albumCreator = null;
 
-
         const string k_Posts = "userPostsList";
-
+        const string k_AboutUser = "tabAboutUser";
         public User LoggedInUser { get; set; }
 
         public enum eTab
@@ -27,9 +26,8 @@ namespace FacebookApp
             None
         }
 
-        public TabsManager(User loggedInUser)
+        public TabsManager()
         {
-            LoggedInUser = loggedInUser;
             LoadedTabs = new List<eTab>();
         }
 
@@ -61,8 +59,18 @@ namespace FacebookApp
                     case k_Posts:
                         loadPostsTab(i_ObjectToInit);
                         break;
+                    case k_AboutUser:
+                        loadAboutUserTab(i_ObjectToInit);
+                        break;
                 }
             }
+        }
+
+        private void loadAboutUserTab(object i_ObjectsToInit)
+        {
+            Dictionary<string, object> objectsToInit =i_ObjectsToInit as Dictionary<string, object>;
+            (objectsToInit["birthDayBox"]as TextBox).Text = LoggedInUser.Birthday;
+           //( objectsToInit["statusBox"] as TextBox).Text = LoggedInUser.Statuses.;
         }
 
         private void loadPostsTab(object i_UserPostsList)
