@@ -102,7 +102,6 @@ namespace FacebookApp
             userName.Append(" ");
             userName.Append(m_LoggedInUser.LastName);
             userNamePresentation.Text = userName.ToString();
-            ListBox k;
         }
 
         private void fetchUserProfilePhoto()
@@ -115,24 +114,44 @@ namespace FacebookApp
             loginAndInit();
         }
 
-        private void tabAboutUser_Click(object sender, EventArgs e)
+        private Dictionary<string, object> loadObjectsToinit(string i_TabName)
         {
-            
-            Dictionary<string, object> objectsToInit = new Dictionary<string, object>();
-            loadObjectsToinit(objectsToInit);
-            m_TabsManager.LoadTab(tabAboutUser.Name, objectsToInit);
+            Tab tab = new Tab();
+            tab.ConvertStringToEnum(i_TabName);
+            Dictionary<string, object> objectsToInit= getObjectsByTab(tab);
+            return objectsToInit;
         }
 
-        private void loadObjectsToinit(Dictionary<string, object> i_ObjectsToInit)
+        private Dictionary<string, object> getObjectsByTab(Tab i_Tab)
         {
-            i_ObjectsToInit.Add(birthDayBox.Name, birthDayBox);
-            i_ObjectsToInit.Add(statusBox.Name, statusBox);
-            i_ObjectsToInit.Add(livesIn.Name, livesIn);
-            i_ObjectsToInit.Add(workPlacesList.Name, workPlacesList);
-            i_ObjectsToInit.Add(educationList.Name, educationList);
-            i_ObjectsToInit.Add(numberOfFriendsBox.Name, numberOfFriendsBox);
-            i_ObjectsToInit.Add(numberOfPostsBox.Name, numberOfPostsBox);
-            i_ObjectsToInit.Add(numberOfPhotosBox.Name, numberOfPhotosBox);
+            Dictionary<string, object> objectsToinit = new Dictionary<string, object>();
+            switch(i_Tab.TabType)
+            {
+                case Tab.eTab.AboutUser:
+                    objectsToinit = buildDictionaryForAboutTab();
+                    break;
+            }
+            return objectsToinit;
+        }
+
+        private Dictionary <string, object> buildDictionaryForAboutTab()
+        {
+            Dictionary<string, object> objectsToInit = new Dictionary<string, object>();
+            objectsToInit.Add(birthDayBox.Name, birthDayBox);
+            objectsToInit.Add(statusBox.Name, statusBox);
+            objectsToInit.Add(livesInBox.Name, livesInBox);
+            objectsToInit.Add(workPlacesList.Name, workPlacesList);
+            objectsToInit.Add(educationList.Name, educationList);
+            objectsToInit.Add(numberOfFriendsBox.Name, numberOfFriendsBox);
+            objectsToInit.Add(numberOfPostsBox.Name, numberOfPostsBox);
+            objectsToInit.Add(numberOfAlbumsBox.Name, numberOfAlbumsBox);
+            return objectsToInit;
+        }
+
+        private void tabControlMain_Selected(object sender, TabControlEventArgs e)
+        {
+            Dictionary<string, object> objectsToInit = loadObjectsToinit( e.TabPage.Name);
+            m_TabsManager.LoadTab(e.TabPage.Name, objectsToInit);
         }
     }
 }

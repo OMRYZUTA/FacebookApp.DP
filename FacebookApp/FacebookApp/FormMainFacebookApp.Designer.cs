@@ -50,8 +50,8 @@
             this.workPlacesList = new System.Windows.Forms.ListBox();
             this.workPlaces = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.numberOfPhotosBox = new System.Windows.Forms.RichTextBox();
-            this.numberOfPhotos = new System.Windows.Forms.Label();
+            this.numberOfAlbumsBox = new System.Windows.Forms.RichTextBox();
+            this.numberOfAlbums = new System.Windows.Forms.Label();
             this.numberOfPostsBox = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.numberOfFriendsBox = new System.Windows.Forms.RichTextBox();
@@ -121,6 +121,7 @@
             this.tabControlMain.SelectedIndex = 0;
             this.tabControlMain.Size = new System.Drawing.Size(650, 390);
             this.tabControlMain.TabIndex = 6;
+            this.tabControlMain.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControlMain_Selected);
             // 
             // tabUserPosts
             // 
@@ -156,7 +157,6 @@
             this.tabAboutUser.TabIndex = 2;
             this.tabAboutUser.Text = "aboutUser";
             this.tabAboutUser.UseVisualStyleBackColor = true;
-            this.tabAboutUser.Click += new System.EventHandler(this.tabAboutUser_Click);
             // 
             // tabControl2
             // 
@@ -293,8 +293,8 @@
             // 
             // tabPage7
             // 
-            this.tabPage7.Controls.Add(this.numberOfPhotosBox);
-            this.tabPage7.Controls.Add(this.numberOfPhotos);
+            this.tabPage7.Controls.Add(this.numberOfAlbumsBox);
+            this.tabPage7.Controls.Add(this.numberOfAlbums);
             this.tabPage7.Controls.Add(this.numberOfPostsBox);
             this.tabPage7.Controls.Add(this.label1);
             this.tabPage7.Controls.Add(this.numberOfFriendsBox);
@@ -308,24 +308,24 @@
             this.tabPage7.Text = "userStatistics";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // numberOfPhotosBox
+            // numberOfAlbumsBox
             // 
-            this.numberOfPhotosBox.Location = new System.Drawing.Point(153, 102);
-            this.numberOfPhotosBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.numberOfPhotosBox.Name = "numberOfPhotosBox";
-            this.numberOfPhotosBox.Size = new System.Drawing.Size(110, 27);
-            this.numberOfPhotosBox.TabIndex = 5;
-            this.numberOfPhotosBox.Text = "";
+            this.numberOfAlbumsBox.Location = new System.Drawing.Point(153, 102);
+            this.numberOfAlbumsBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.numberOfAlbumsBox.Name = "numberOfAlbumsBox";
+            this.numberOfAlbumsBox.Size = new System.Drawing.Size(110, 27);
+            this.numberOfAlbumsBox.TabIndex = 5;
+            this.numberOfAlbumsBox.Text = "";
             // 
-            // numberOfPhotos
+            // numberOfAlbums
             // 
-            this.numberOfPhotos.AutoSize = true;
-            this.numberOfPhotos.Location = new System.Drawing.Point(11, 102);
-            this.numberOfPhotos.Name = "numberOfPhotos";
-            this.numberOfPhotos.Size = new System.Drawing.Size(115, 17);
-            this.numberOfPhotos.TabIndex = 4;
-            this.numberOfPhotos.Text = "numberOfPhotos";
-            this.numberOfPhotos.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.numberOfAlbums.AutoSize = true;
+            this.numberOfAlbums.Location = new System.Drawing.Point(11, 102);
+            this.numberOfAlbums.Name = "numberOfAlbums";
+            this.numberOfAlbums.Size = new System.Drawing.Size(117, 17);
+            this.numberOfAlbums.TabIndex = 4;
+            this.numberOfAlbums.Text = "numberOfAlbums";
+            this.numberOfAlbums.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // numberOfPostsBox
             // 
@@ -489,8 +489,8 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.RichTextBox numberOfPhotosBox;
-        private System.Windows.Forms.Label numberOfPhotos;
+        private System.Windows.Forms.RichTextBox numberOfAlbumsBox;
+        private System.Windows.Forms.Label numberOfAlbums;
         private System.Windows.Forms.RichTextBox numberOfPostsBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox numberOfFriendsBox;

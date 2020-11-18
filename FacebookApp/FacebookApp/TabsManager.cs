@@ -9,73 +9,81 @@ namespace FacebookApp
 {
     public class TabsManager
     {
-        public List<eTab> LoadedTabs { get; set; }
-        private BreaksManager m_BreaksManager = null;
-        private AlbumCreator albumCreator = null;
+        public List<Tab.eTab> LoadedTabs { get; set; }
+        private BreaksManager m_BreaksManager;
+        private AlbumCreator albumCreator;
 
-        const string k_Posts = "userPostsList";
-        const string k_AboutUser = "tabAboutUser";
+
         public User LoggedInUser { get; set; }
 
-        public enum eTab
-        {
-            Posts = 0,
-            AboutUser,
-            FriendsList,
-            UserPhotos,
-            None
-        }
+
 
         public TabsManager()
         {
-            LoadedTabs = new List<eTab>();
+            LoadedTabs = new List<Tab.eTab>();
         }
 
-        private bool isTabLoaded(string i_Tab)
+        private bool isTabLoaded(Tab i_Tab)
         {
-            eTab tabName = decipherTabName(i_Tab);
-            bool result = LoadedTabs.Contains(tabName);
+            bool result = LoadedTabs.Contains(i_Tab.TabType);
             return result;
         }
 
-        private eTab decipherTabName(string i_Tab)
-        {
-            eTab tabName = eTab.None;
-            switch (i_Tab)
-            {
-                case k_Posts:
-                    tabName = eTab.Posts;
-                    break;
-            }
-            return tabName;
-        }
+
 
         public void LoadTab(string i_Tab, object i_ObjectToInit)
         {
-            if (!isTabLoaded(i_Tab))
+            if (LoggedInUser != null)
             {
-                switch (i_Tab)
+                Tab tab = new Tab();
+                tab.ConvertStringToEnum(i_Tab);
+                if (!isTabLoaded(tab))
                 {
-                    case k_Posts:
-                        loadPostsTab(i_ObjectToInit);
-                        break;
-                    case k_AboutUser:
-                        loadAboutUserTab(i_ObjectToInit);
-                        break;
+                    switch (tab.TabType)
+                    {
+                        case Tab.eTab.Posts:
+                            loadPostsTab(i_ObjectToInit);
+                            break;
+                        case Tab.eTab.AboutUser:
+                            loadAboutUserTab(i_ObjectToInit);
+                            break;
+                    }
                 }
             }
         }
-
         private void loadAboutUserTab(object i_ObjectsToInit)
         {
-            Dictionary<string, object> objectsToInit =i_ObjectsToInit as Dictionary<string, object>;
-            (objectsToInit["birthDayBox"]as TextBox).Text = LoggedInUser.Birthday;
-           //( objectsToInit["statusBox"] as TextBox).Text = LoggedInUser.Statuses.;
+            Dictionary<string, object> objectsToInit = i_ObjectsToInit as Dictionary<string, object>;
+            (objectsToInit["birthDayBox"] as TextBox).Text = LoggedInUser.Birthday;
+            (objectsToInit["statusBox"] as TextBox).Text = "Single"; //LoggedInUser.Statuses[0].ToString() isn't working so we replace it with our own status
+            (objectsToInit["livesInBox"] as TextBox).Text = LoggedInUser.Location.Name;
+            initWorkPlaces((objectsToInit["workPlacesList"]) as ListBox);
+            initEducationPlaces((objectsToInit["educationList"] as ListBox));
+            (objectsToInit["numberOfFriendsBox"] as RichTextBox).Text = LoggedInUser.Friends.Count.ToString();
+            (objectsToInit["numberOfPostsBox"] as RichTextBox).Text = LoggedInUser.Posts.Count.ToString();
+            (objectsToInit["numberOfAlbumsBox"] as RichTextBox).Text = LoggedInUser.Albums.Count.ToString();
+            LoadedTabs.Add(Tab.eTab.AboutUser);
+        }
+
+        private void initEducationPlaces(ListBox i_ListBox)
+        {
+            // since it doesn't work we implement it manually
+            i_ListBox.Items.Add("Gedera High School");
+            i_ListBox.Items.Add("MTA");
+        }
+
+        private void initWorkPlaces(ListBox i_ListBox)
+        {    // since it doesn't work we implement it manually
+            //foreach(WorkExperience workplace in LoggedInUser.WorkExperiences)
+            //{
+            //    i_ListBox.Items.Add(string.Format("{0} at {1} ",workplace.Position, workplace.Name));
+            //}
+            i_ListBox.Items.Add("Tech lead at Google");
+            i_ListBox.Items.Add("Tech lead at Facebook");
         }
 
         private void loadPostsTab(object i_UserPostsList)
         {
-            LoadedTabs.Add(eTab.Posts);
             ListBox userPostsList = i_UserPostsList as ListBox;
             foreach (Post post in LoggedInUser.Posts)
             {
@@ -92,6 +100,7 @@ namespace FacebookApp
             {
                 MessageBox.Show("No Posts to retrieve :(");
             }
+            LoadedTabs.Add(Tab.eTab.Posts);
         }
     }
 }
