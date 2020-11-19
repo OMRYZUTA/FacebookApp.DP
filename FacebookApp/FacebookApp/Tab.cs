@@ -10,6 +10,8 @@ namespace FacebookApp
         public eTab TabType { get; private set; }
         const string k_Posts = "userPostsList";
         const string k_AboutUser = "tabAboutUser";
+        const string k_FriendsList ="tabFriendsList";
+        const string k_UserPhotos ="tabUserPhotos";
         public Tab()
         {
             TabType = eTab.None;
@@ -33,6 +35,12 @@ namespace FacebookApp
                     break;
                 case k_AboutUser:
                     TabType = eTab.AboutUser;
+                    break;
+                case k_FriendsList:
+                    TabType = eTab.FriendsList;
+                    break;
+                case k_UserPhotos:
+                    TabType = eTab.UserPhotos;
                     break;
             }
         }

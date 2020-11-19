@@ -68,7 +68,7 @@ namespace FacebookApp
             fetchUserProfilePhoto();
             fetchUserCoverPhoto();
             fetchUserName();
-            fetchUserPosts();
+            requestTabManagerToLoadAboutUserTab();
         }
 
         // since Cover property is broken we are using PhotosTaggedIn
@@ -90,10 +90,7 @@ namespace FacebookApp
             }
         }
 
-        private void fetchUserPosts()
-        {
-            m_TabsManager.LoadTab(userPostsList.Name, userPostsList);
-        }
+   
 
         private void fetchUserName()
         {
@@ -114,27 +111,11 @@ namespace FacebookApp
             loginAndInit();
         }
 
-        private Dictionary<string, object> loadObjectsToinit(string i_TabName)
-        {
-            Tab tab = new Tab();
-            tab.ConvertStringToEnum(i_TabName);
-            Dictionary<string, object> objectsToInit= getObjectsByTab(tab);
-            return objectsToInit;
-        }
 
-        private Dictionary<string, object> getObjectsByTab(Tab i_Tab)
-        {
-            Dictionary<string, object> objectsToinit = new Dictionary<string, object>();
-            switch(i_Tab.TabType)
-            {
-                case Tab.eTab.AboutUser:
-                    objectsToinit = buildDictionaryForAboutTab();
-                    break;
-            }
-            return objectsToinit;
-        }
 
-        private Dictionary <string, object> buildDictionaryForAboutTab()
+   
+
+        private Dictionary<string, object> buildDictionaryForAboutTab()
         {
             Dictionary<string, object> objectsToInit = new Dictionary<string, object>();
             objectsToInit.Add(birthDayBox.Name, birthDayBox);
@@ -150,8 +131,58 @@ namespace FacebookApp
 
         private void tabControlMain_Selected(object sender, TabControlEventArgs e)
         {
-            Dictionary<string, object> objectsToInit = loadObjectsToinit( e.TabPage.Name);
-            m_TabsManager.LoadTab(e.TabPage.Name, objectsToInit);
+            if (m_LoggedInUser != null)
+            {
+                Tab tab = new Tab();
+                tab.ConvertStringToEnum(e.TabPage.Name);
+                if (!m_TabsManager.IsTabLoaded(tab))
+                {
+                    switch (tab.TabType)
+                    {
+                        case Tab.eTab.Posts:
+                            requestTabManagerToLoadAboutUserTab();
+                            break;
+                        case Tab.eTab.AboutUser:
+                            requestTabManagerToLoadPostsTab();
+                            break;
+                        case Tab.eTab.FriendsList:
+                            requestTabManagerToLoadFriendsListTab();
+                            break;
+                        case Tab.eTab.UserPhotos:
+                            requestTabManagerToLoadUserPhotosTab();
+                            break;
+                    }
+                }
+            }
+        }
+
+        private void requestTabManagerToLoadUserPhotosTab()
+        {
+            Tab tab = new Tab();
+            tab.ConvertStringToEnum(tabUserPhotos.Name);
+            m_TabsManager.LoadTab(tab, photosListBox);
+        }
+
+        private void requestTabManagerToLoadFriendsListTab()
+        {
+            Tab tab = new Tab();
+            tab.ConvertStringToEnum(tabFriendsList.Name);
+            m_TabsManager.LoadTab(tab,friendsListBox);
+        }
+
+        private void requestTabManagerToLoadPostsTab()
+        {
+            Tab tab = new Tab();
+            tab.ConvertStringToEnum(tabUserPosts.Name);
+            m_TabsManager.LoadTab(tab,userPostsList);
+        }
+
+        private void requestTabManagerToLoadAboutUserTab()
+        {
+            Tab tab = new Tab();
+            tab.ConvertStringToEnum(tabAboutUser.Name);
+            Dictionary<string, object> objectsToInit = buildDictionaryForAboutTab();
+            m_TabsManager.LoadTab(tab, objectsToInit);
         }
     }
 }

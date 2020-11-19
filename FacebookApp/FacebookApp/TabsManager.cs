@@ -23,7 +23,7 @@ namespace FacebookApp
             LoadedTabs = new List<Tab.eTab>();
         }
 
-        private bool isTabLoaded(Tab i_Tab)
+        public bool IsTabLoaded(Tab i_Tab)
         {
             bool result = LoadedTabs.Contains(i_Tab.TabType);
             return result;
@@ -31,26 +31,39 @@ namespace FacebookApp
 
 
 
-        public void LoadTab(string i_Tab, object i_ObjectToInit)
+        public void LoadTab(Tab i_Tab, object i_ObjectToInit)
         {
-            if (LoggedInUser != null)
+            switch (i_Tab.TabType)
             {
-                Tab tab = new Tab();
-                tab.ConvertStringToEnum(i_Tab);
-                if (!isTabLoaded(tab))
-                {
-                    switch (tab.TabType)
-                    {
-                        case Tab.eTab.Posts:
-                            loadPostsTab(i_ObjectToInit);
-                            break;
-                        case Tab.eTab.AboutUser:
-                            loadAboutUserTab(i_ObjectToInit);
-                            break;
-                    }
-                }
+                case Tab.eTab.Posts:
+                    loadPostsTab(i_ObjectToInit);
+                    break;
+                case Tab.eTab.AboutUser:
+                    loadAboutUserTab(i_ObjectToInit);
+                    break;
+                case Tab.eTab.FriendsList:
+                    loadFriendsListTab(i_ObjectToInit);
+                    break;
+                case Tab.eTab.UserPhotos:
+                    loadUserPhotosTab(i_ObjectToInit);
+                    break;
             }
         }
+
+        private void loadUserPhotosTab(object i_ObjectToInit)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void loadFriendsListTab(object i_ObjectToInit)
+        {
+            ListBox friendsBox = i_ObjectToInit as ListBox;
+            foreach(User friend in LoggedInUser.Friends)
+            {
+                friendsBox.Items.Add(friend.Name);
+            }
+        }
+
         private void loadAboutUserTab(object i_ObjectsToInit)
         {
             Dictionary<string, object> objectsToInit = i_ObjectsToInit as Dictionary<string, object>;
@@ -74,10 +87,10 @@ namespace FacebookApp
 
         private void initWorkPlaces(ListBox i_ListBox)
         {    // since it doesn't work we implement it manually
-            //foreach(WorkExperience workplace in LoggedInUser.WorkExperiences)
-            //{
-            //    i_ListBox.Items.Add(string.Format("{0} at {1} ",workplace.Position, workplace.Name));
-            //}
+             //foreach(WorkExperience workplace in LoggedInUser.WorkExperiences)
+             //{
+             //    i_ListBox.Items.Add(string.Format("{0} at {1} ",workplace.Position, workplace.Name));
+             //}
             i_ListBox.Items.Add("Tech lead at Google");
             i_ListBox.Items.Add("Tech lead at Facebook");
         }

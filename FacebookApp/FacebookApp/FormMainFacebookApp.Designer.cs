@@ -56,9 +56,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.numberOfFriendsBox = new System.Windows.Forms.RichTextBox();
             this.numberOfFriends = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabFriendsList = new System.Windows.Forms.TabPage();
             this.friendsListBox = new System.Windows.Forms.ListBox();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabUserPhotos = new System.Windows.Forms.TabPage();
             this.photosListBox = new System.Windows.Forms.ListBox();
             this.coverPhoto = new System.Windows.Forms.PictureBox();
             this.profilePicture = new System.Windows.Forms.PictureBox();
@@ -71,8 +71,8 @@
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabFriendsList.SuspendLayout();
+            this.tabUserPhotos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
             this.SuspendLayout();
@@ -113,8 +113,8 @@
             this.tabControlMain.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tabControlMain.Controls.Add(this.tabUserPosts);
             this.tabControlMain.Controls.Add(this.tabAboutUser);
-            this.tabControlMain.Controls.Add(this.tabPage4);
-            this.tabControlMain.Controls.Add(this.tabPage1);
+            this.tabControlMain.Controls.Add(this.tabFriendsList);
+            this.tabControlMain.Controls.Add(this.tabUserPhotos);
             this.tabControlMain.Location = new System.Drawing.Point(131, 255);
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControlMain.Name = "tabControlMain";
@@ -364,17 +364,17 @@
             this.numberOfFriends.TabIndex = 0;
             this.numberOfFriends.Text = "numberOfFriends";
             // 
-            // tabPage4
+            // tabFriendsList
             // 
-            this.tabPage4.Controls.Add(this.friendsListBox);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage4.Size = new System.Drawing.Size(642, 361);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "friendsList";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabFriendsList.Controls.Add(this.friendsListBox);
+            this.tabFriendsList.Location = new System.Drawing.Point(4, 25);
+            this.tabFriendsList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabFriendsList.Name = "tabFriendsList";
+            this.tabFriendsList.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabFriendsList.Size = new System.Drawing.Size(642, 361);
+            this.tabFriendsList.TabIndex = 3;
+            this.tabFriendsList.Text = "friendsList";
+            this.tabFriendsList.UseVisualStyleBackColor = true;
             // 
             // friendsListBox
             // 
@@ -386,17 +386,17 @@
             this.friendsListBox.Size = new System.Drawing.Size(647, 372);
             this.friendsListBox.TabIndex = 0;
             // 
-            // tabPage1
+            // tabUserPhotos
             // 
-            this.tabPage1.Controls.Add(this.photosListBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(642, 361);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "userPhotos";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabUserPhotos.Controls.Add(this.photosListBox);
+            this.tabUserPhotos.Location = new System.Drawing.Point(4, 25);
+            this.tabUserPhotos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabUserPhotos.Name = "tabUserPhotos";
+            this.tabUserPhotos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabUserPhotos.Size = new System.Drawing.Size(642, 361);
+            this.tabUserPhotos.TabIndex = 0;
+            this.tabUserPhotos.Text = "userPhotos";
+            this.tabUserPhotos.UseVisualStyleBackColor = true;
             // 
             // photosListBox
             // 
@@ -466,8 +466,8 @@
             this.tabPage6.PerformLayout();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tabFriendsList.ResumeLayout(false);
+            this.tabUserPhotos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
             this.ResumeLayout(false);
@@ -482,8 +482,8 @@
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage tabUserPosts;
         private System.Windows.Forms.TabPage tabAboutUser;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabFriendsList;
+        private System.Windows.Forms.TabPage tabUserPhotos;
         private System.Windows.Forms.ListBox userPostsList;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage5;
