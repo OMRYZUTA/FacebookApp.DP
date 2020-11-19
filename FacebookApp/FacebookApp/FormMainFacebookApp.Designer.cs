@@ -132,7 +132,7 @@
             this.tabUserPosts.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabUserPosts.Size = new System.Drawing.Size(642, 361);
             this.tabUserPosts.TabIndex = 1;
-            this.tabUserPosts.Text = "userPosts";
+            this.tabUserPosts.Text = "UserPosts";
             this.tabUserPosts.UseVisualStyleBackColor = true;
             // 
             // userPostsList
@@ -155,7 +155,7 @@
             this.tabAboutUser.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabAboutUser.Size = new System.Drawing.Size(642, 361);
             this.tabAboutUser.TabIndex = 2;
-            this.tabAboutUser.Text = "aboutUser";
+            this.tabAboutUser.Text = "AboutUser";
             this.tabAboutUser.UseVisualStyleBackColor = true;
             // 
             // tabControl2
@@ -373,7 +373,7 @@
             this.tabFriendsList.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabFriendsList.Size = new System.Drawing.Size(642, 361);
             this.tabFriendsList.TabIndex = 3;
-            this.tabFriendsList.Text = "friendsList";
+            this.tabFriendsList.Text = "FriendsList";
             this.tabFriendsList.UseVisualStyleBackColor = true;
             // 
             // friendsListBox
@@ -395,7 +395,7 @@
             this.tabUserPhotos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabUserPhotos.Size = new System.Drawing.Size(642, 361);
             this.tabUserPhotos.TabIndex = 0;
-            this.tabUserPhotos.Text = "userPhotos";
+            this.tabUserPhotos.Text = "UserPhotos";
             this.tabUserPhotos.UseVisualStyleBackColor = true;
             // 
             // photosListBox

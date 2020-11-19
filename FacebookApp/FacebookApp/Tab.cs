@@ -8,7 +8,7 @@ namespace FacebookApp
     public class Tab
     {
         public eTab TabType { get; private set; }
-        const string k_Posts = "userPostsList";
+        const string k_Posts = "tabUserPosts";
         const string k_AboutUser = "tabAboutUser";
         const string k_FriendsList ="tabFriendsList";
         const string k_UserPhotos ="tabUserPhotos";

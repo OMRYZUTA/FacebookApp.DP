@@ -68,29 +68,23 @@ namespace FacebookApp
             fetchUserProfilePhoto();
             fetchUserCoverPhoto();
             fetchUserName();
-            requestTabManagerToLoadAboutUserTab();
+            requestTabManagerToLoadPostsTab();
         }
 
         // since Cover property is broken we are using PhotosTaggedIn
         private void fetchUserCoverPhoto()
         {
-            try
+            if (m_LoggedInUser.PhotosTaggedIn != null)
             {
-                if (m_LoggedInUser.PhotosTaggedIn != null)
+                if (m_LoggedInUser.PhotosTaggedIn[1] != null)
                 {
-                    if (m_LoggedInUser.PhotosTaggedIn[1] != null)
-                    {
-                        coverPhoto.LoadAsync(m_LoggedInUser.PhotosTaggedIn[1].PictureNormalURL);
-                    }
+                    coverPhoto.LoadAsync(m_LoggedInUser.PhotosTaggedIn[1].PictureNormalURL);
                 }
-            }
-            finally
-            {
-                // delete later 
             }
         }
 
-   
+
+
 
         private void fetchUserName()
         {
@@ -113,7 +107,7 @@ namespace FacebookApp
 
 
 
-   
+
 
         private Dictionary<string, object> buildDictionaryForAboutTab()
         {
@@ -143,7 +137,7 @@ namespace FacebookApp
                             requestTabManagerToLoadAboutUserTab();
                             break;
                         case Tab.eTab.AboutUser:
-                            requestTabManagerToLoadPostsTab();
+                            requestTabManagerToLoadAboutUserTab();
                             break;
                         case Tab.eTab.FriendsList:
                             requestTabManagerToLoadFriendsListTab();
@@ -167,14 +161,14 @@ namespace FacebookApp
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabFriendsList.Name);
-            m_TabsManager.LoadTab(tab,friendsListBox);
+            m_TabsManager.LoadTab(tab, friendsListBox);
         }
 
         private void requestTabManagerToLoadPostsTab()
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabUserPosts.Name);
-            m_TabsManager.LoadTab(tab,userPostsList);
+            m_TabsManager.LoadTab(tab, userPostsList);
         }
 
         private void requestTabManagerToLoadAboutUserTab()
