@@ -178,5 +178,22 @@ namespace FacebookApp
             Dictionary<string, object> objectsToInit = buildDictionaryForAboutTab();
             m_TabsManager.LoadTab(tab, objectsToInit);
         }
+
+        private void photosListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            displaySelectedPicture();
+        }
+
+        private void displaySelectedPicture()
+        {
+            if (photosListBox.SelectedItems.Count == 1)
+            {
+                Photo selectedPhoto = photosListBox.SelectedItem as Photo;
+                if (selectedPhoto.PictureAlbumURL != null)
+                {
+                    pictureBoxSelected.LoadAsync(selectedPhoto.PictureNormalURL);
+                }
+            }
+        }
     }
 }

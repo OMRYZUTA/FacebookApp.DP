@@ -52,7 +52,11 @@ namespace FacebookApp
 
         private void loadUserPhotosTab(object i_ObjectToInit)
         {
-            throw new NotImplementedException();
+            ListBox PhotosBox = i_ObjectToInit as ListBox;
+            foreach(Photo photo in LoggedInUser.PhotosTaggedIn)
+            {
+                PhotosBox.Items.Add(photo);
+            }
         }
 
         private void loadFriendsListTab(object i_ObjectToInit)
