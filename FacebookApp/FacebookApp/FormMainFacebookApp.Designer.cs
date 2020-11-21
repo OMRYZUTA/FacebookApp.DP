@@ -59,11 +59,13 @@
             this.tabFriendsList = new System.Windows.Forms.TabPage();
             this.friendsListBox = new System.Windows.Forms.ListBox();
             this.tabUserPhotos = new System.Windows.Forms.TabPage();
+            this.pictureBoxSelected = new System.Windows.Forms.PictureBox();
             this.photosListBox = new System.Windows.Forms.ListBox();
             this.coverPhoto = new System.Windows.Forms.PictureBox();
             this.profilePicture = new System.Windows.Forms.PictureBox();
             this.userNamePresentation = new System.Windows.Forms.RichTextBox();
-            this.pictureBoxSelected = new System.Windows.Forms.PictureBox();
+            this.createAlbumFeature = new System.Windows.Forms.TabPage();
+            this.breakManagerFeature = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.appIcon)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.tabUserPosts.SuspendLayout();
@@ -74,9 +76,9 @@
             this.tabPage7.SuspendLayout();
             this.tabFriendsList.SuspendLayout();
             this.tabUserPhotos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).BeginInit();
             this.SuspendLayout();
             // 
             // appIcon
@@ -120,6 +122,8 @@
             this.tabControlMain.Controls.Add(this.tabAboutUser);
             this.tabControlMain.Controls.Add(this.tabFriendsList);
             this.tabControlMain.Controls.Add(this.tabUserPhotos);
+            this.tabControlMain.Controls.Add(this.createAlbumFeature);
+            this.tabControlMain.Controls.Add(this.breakManagerFeature);
             this.tabControlMain.Location = new System.Drawing.Point(147, 319);
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControlMain.Name = "tabControlMain";
@@ -405,6 +409,15 @@
             this.tabUserPhotos.Text = "User Photos";
             this.tabUserPhotos.UseVisualStyleBackColor = true;
             // 
+            // pictureBoxSelected
+            // 
+            this.pictureBoxSelected.Location = new System.Drawing.Point(518, 274);
+            this.pictureBoxSelected.Name = "pictureBoxSelected";
+            this.pictureBoxSelected.Size = new System.Drawing.Size(124, 82);
+            this.pictureBoxSelected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxSelected.TabIndex = 1;
+            this.pictureBoxSelected.TabStop = false;
+            // 
             // photosListBox
             // 
             this.photosListBox.FormattingEnabled = true;
@@ -449,14 +462,25 @@
             this.userNamePresentation.TabIndex = 8;
             this.userNamePresentation.Text = "";
             // 
-            // pictureBoxSelected
+            // createAlbumFeature
             // 
-            this.pictureBoxSelected.Location = new System.Drawing.Point(518, 274);
-            this.pictureBoxSelected.Name = "pictureBoxSelected";
-            this.pictureBoxSelected.Size = new System.Drawing.Size(124, 82);
-            this.pictureBoxSelected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxSelected.TabIndex = 1;
-            this.pictureBoxSelected.TabStop = false;
+            this.createAlbumFeature.Location = new System.Drawing.Point(4, 29);
+            this.createAlbumFeature.Name = "createAlbumFeature";
+            this.createAlbumFeature.Padding = new System.Windows.Forms.Padding(3);
+            this.createAlbumFeature.Size = new System.Drawing.Size(723, 455);
+            this.createAlbumFeature.TabIndex = 4;
+            this.createAlbumFeature.Text = "Create Album";
+            this.createAlbumFeature.UseVisualStyleBackColor = true;
+            // 
+            // breakManagerFeature
+            // 
+            this.breakManagerFeature.Location = new System.Drawing.Point(4, 29);
+            this.breakManagerFeature.Name = "breakManagerFeature";
+            this.breakManagerFeature.Padding = new System.Windows.Forms.Padding(3);
+            this.breakManagerFeature.Size = new System.Drawing.Size(723, 455);
+            this.breakManagerFeature.TabIndex = 5;
+            this.breakManagerFeature.Text = "Break Manager";
+            this.breakManagerFeature.UseVisualStyleBackColor = true;
             // 
             // FormMainFacebookApp
             // 
@@ -486,9 +510,9 @@
             this.tabPage7.PerformLayout();
             this.tabFriendsList.ResumeLayout(false);
             this.tabUserPhotos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -530,6 +554,8 @@
         private System.Windows.Forms.ListBox friendsListBox;
         private System.Windows.Forms.ListBox photosListBox;
         private System.Windows.Forms.PictureBox pictureBoxSelected;
+        private System.Windows.Forms.TabPage createAlbumFeature;
+        private System.Windows.Forms.TabPage breakManagerFeature;
     }
 }
 
