@@ -63,6 +63,7 @@
             this.coverPhoto = new System.Windows.Forms.PictureBox();
             this.profilePicture = new System.Windows.Forms.PictureBox();
             this.userNamePresentation = new System.Windows.Forms.RichTextBox();
+            this.pictureBoxSelected = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.appIcon)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.tabUserPosts.SuspendLayout();
@@ -75,6 +76,7 @@
             this.tabUserPhotos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).BeginInit();
             this.SuspendLayout();
             // 
             // appIcon
@@ -393,6 +395,7 @@
             // 
             // tabUserPhotos
             // 
+            this.tabUserPhotos.Controls.Add(this.pictureBoxSelected);
             this.tabUserPhotos.Controls.Add(this.photosListBox);
             this.tabUserPhotos.Location = new System.Drawing.Point(4, 29);
             this.tabUserPhotos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -412,6 +415,7 @@
             this.photosListBox.Name = "photosListBox";
             this.photosListBox.Size = new System.Drawing.Size(717, 444);
             this.photosListBox.TabIndex = 0;
+            this.photosListBox.SelectedIndexChanged += new System.EventHandler(this.photosListBox_SelectedIndexChanged);
             // 
             // coverPhoto
             // 
@@ -446,6 +450,15 @@
             this.userNamePresentation.TabIndex = 8;
             this.userNamePresentation.Text = "";
             // 
+            // pictureBoxSelected
+            // 
+            this.pictureBoxSelected.Location = new System.Drawing.Point(518, 274);
+            this.pictureBoxSelected.Name = "pictureBoxSelected";
+            this.pictureBoxSelected.Size = new System.Drawing.Size(124, 82);
+            this.pictureBoxSelected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxSelected.TabIndex = 1;
+            this.pictureBoxSelected.TabStop = false;
+            // 
             // FormMainFacebookApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -476,6 +489,7 @@
             this.tabUserPhotos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -516,6 +530,7 @@
         private System.Windows.Forms.Label workPlaces;
         private System.Windows.Forms.ListBox friendsListBox;
         private System.Windows.Forms.ListBox photosListBox;
+        private System.Windows.Forms.PictureBox pictureBoxSelected;
     }
 }
 
