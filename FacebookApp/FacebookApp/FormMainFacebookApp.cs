@@ -178,5 +178,10 @@ namespace FacebookApp
             Dictionary<string, object> objectsToInit = buildDictionaryForAboutTab();
             m_TabsManager.LoadTab(tab, objectsToInit);
         }
+
+        private void userPostsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

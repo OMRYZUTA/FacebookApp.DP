@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\FacebookApp",
-    "\\FacebookApp\\Properties"
+    "\\FacebookApp\\01_FB01_BasicFacebookFeatures.V8.0.0.1",
+    "\\FacebookApp\\FacebookApp"
   ],
-  "SelectedNode": "\\FacebookApp\\Form1.Designer.cs",
+  "SelectedNode": "\\FacebookApp\\FacebookApp\\FormMainFacebookApp.cs",
   "PreviewInSolutionExplorer": false
 }
