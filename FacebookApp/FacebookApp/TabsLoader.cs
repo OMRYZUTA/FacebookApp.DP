@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace FacebookApp
 {
-    public class TabsManager
+    public class TabsLoader
     {
         public List<Tab.eTab> LoadedTabs { get; set; }
         private BreaksManager m_BreaksManager;
@@ -18,7 +18,7 @@ namespace FacebookApp
 
 
 
-        public TabsManager()
+        public TabsLoader()
         {
             LoadedTabs = new List<Tab.eTab>();
         }
@@ -66,6 +66,7 @@ namespace FacebookApp
             {
                 friendsBox.Items.Add(friend.Name);
             }
+            LoadedTabs.Add(Tab.eTab.FriendsList);
         }
 
         private void loadAboutUserTab(object i_ObjectsToInit)

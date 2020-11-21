@@ -19,7 +19,7 @@ namespace FacebookApp
 
         public enum eTab
         {
-            Posts = 0,
+            Posts,
             AboutUser,
             FriendsList,
             UserPhotos,

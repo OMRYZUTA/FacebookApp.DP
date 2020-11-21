@@ -15,11 +15,11 @@ namespace FacebookApp
     {
         private User m_LoggedInUser;
         private LoginResult m_LoginResult;
-        private TabsManager m_TabsManager;
+        private TabsLoader m_TabsManager;
 
         public FormMainFacebookApp()
         {
-            m_TabsManager = new TabsManager();
+            m_TabsManager = new TabsLoader();
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 200;
         }
@@ -68,7 +68,7 @@ namespace FacebookApp
             fetchUserProfilePhoto();
             fetchUserCoverPhoto();
             fetchUserName();
-            requestTabManagerToLoadPostsTab();
+            LoadPostsTab();
         }
 
         // since Cover property is broken we are using PhotosTaggedIn
@@ -105,10 +105,6 @@ namespace FacebookApp
             loginAndInit();
         }
 
-
-
-
-
         private Dictionary<string, object> buildDictionaryForAboutTab()
         {
             Dictionary<string, object> objectsToInit = new Dictionary<string, object>();
@@ -134,44 +130,44 @@ namespace FacebookApp
                     switch (tab.TabType)
                     {
                         case Tab.eTab.Posts:
-                            requestTabManagerToLoadAboutUserTab();
+                            LoadPostsTab();
                             break;
                         case Tab.eTab.AboutUser:
-                            requestTabManagerToLoadAboutUserTab();
+                            LoadAboutUserTab();
                             break;
                         case Tab.eTab.FriendsList:
-                            requestTabManagerToLoadFriendsListTab();
+                            LoadFriendsListTab();
                             break;
                         case Tab.eTab.UserPhotos:
-                            requestTabManagerToLoadUserPhotosTab();
+                            LoadUserPhotosTab();
                             break;
                     }
                 }
             }
         }
 
-        private void requestTabManagerToLoadUserPhotosTab()
+        private void LoadUserPhotosTab()
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabUserPhotos.Name);
             m_TabsManager.LoadTab(tab, photosListBox);
         }
 
-        private void requestTabManagerToLoadFriendsListTab()
+        private void LoadFriendsListTab()
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabFriendsList.Name);
             m_TabsManager.LoadTab(tab, friendsListBox);
         }
 
-        private void requestTabManagerToLoadPostsTab()
+        private void LoadPostsTab()
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabUserPosts.Name);
             m_TabsManager.LoadTab(tab, userPostsList);
         }
 
-        private void requestTabManagerToLoadAboutUserTab()
+        private void LoadAboutUserTab()
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabAboutUser.Name);

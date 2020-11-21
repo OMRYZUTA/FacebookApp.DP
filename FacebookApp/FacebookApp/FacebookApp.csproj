@@ -53,7 +53,7 @@
     <Compile Include="AlbumCreator.cs" />
     <Compile Include="BreaksManager.cs" />
     <Compile Include="Tab.cs" />
-    <Compile Include="TabsManager.cs" />
+    <Compile Include="TabsLoader.cs" />
     <Compile Include="FormMainFacebookApp.cs">
       <SubType>Form</SubType>
     </Compile>
