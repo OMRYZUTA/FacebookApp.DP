@@ -151,7 +151,6 @@
             this.userPostsList.Name = "userPostsList";
             this.userPostsList.Size = new System.Drawing.Size(718, 424);
             this.userPostsList.TabIndex = 0;
-            this.userPostsList.SelectedIndexChanged += new System.EventHandler(this.userPostsList_SelectedIndexChanged);
             // 
             // tabAboutUser
             // 
