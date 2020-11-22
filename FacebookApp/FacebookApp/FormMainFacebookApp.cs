@@ -15,11 +15,13 @@ namespace FacebookApp
     {
         private User m_LoggedInUser;
         private LoginResult m_LoginResult;
-        private TabsLoader m_TabsManager;
+        private TabsLoader m_TabsLoader;
+        private AlbumCreator m_AlbumCreator;
 
         public FormMainFacebookApp()
         {
-            m_TabsManager = new TabsLoader();
+            m_TabsLoader = new TabsLoader();
+            m_AlbumCreator = new AlbumCreator();
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 200;
         }
@@ -53,7 +55,7 @@ namespace FacebookApp
                 if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
                 {
                     m_LoggedInUser = m_LoginResult.LoggedInUser;
-                    m_TabsManager.LoggedInUser = m_LoggedInUser;
+                    m_TabsLoader.LoggedInUser = m_LoggedInUser;
                     fetchUserBasicInfo();
                 }
                 else
@@ -125,7 +127,7 @@ namespace FacebookApp
             {
                 Tab tab = new Tab();
                 tab.ConvertStringToEnum(e.TabPage.Name);
-                if (!m_TabsManager.IsTabLoaded(tab))
+                if (!m_TabsLoader.IsTabLoaded(tab))
                 {
                     switch (tab.TabType)
                     {
@@ -141,30 +143,40 @@ namespace FacebookApp
                         case Tab.eTab.UserPhotos:
                             LoadUserPhotosTab();
                             break;
+                        case Tab.eTab.CreateAlbum:
+                            LoadCreateAlbumTab();
+                            break;
                     }
                 }
             }
+        }
+
+        private void LoadCreateAlbumTab()
+        {
+            Tab tab = new Tab();
+            tab.ConvertStringToEnum(createAlbumFeature.Name);
+            m_TabsLoader.LoadTab(tab, m_AlbumCreator);
         }
 
         private void LoadUserPhotosTab()
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabUserPhotos.Name);
-            m_TabsManager.LoadTab(tab, photosListBox);
+            m_TabsLoader.LoadTab(tab, photosListBox);
         }
 
         private void LoadFriendsListTab()
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabFriendsList.Name);
-            m_TabsManager.LoadTab(tab, friendsListBox);
+            m_TabsLoader.LoadTab(tab, friendsListBox);
         }
 
         private void LoadPostsTab()
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabUserPosts.Name);
-            m_TabsManager.LoadTab(tab, userPostsList);
+            m_TabsLoader.LoadTab(tab, userPostsList);
         }
 
         private void LoadAboutUserTab()
@@ -172,24 +184,34 @@ namespace FacebookApp
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabAboutUser.Name);
             Dictionary<string, object> objectsToInit = buildDictionaryForAboutTab();
-            m_TabsManager.LoadTab(tab, objectsToInit);
+            m_TabsLoader.LoadTab(tab, objectsToInit);
         }
 
         private void photosListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            displaySelectedPicture();
+            displaySelectedPicture(photosListBox);
         }
 
-        private void displaySelectedPicture()
+        private void displaySelectedPicture(ListBox i_PhotosList)
         {
-            if (photosListBox.SelectedItems.Count == 1)
+            if (i_PhotosList.SelectedItems.Count == 1)
             {
-                Photo selectedPhoto = photosListBox.SelectedItem as Photo;
+                Photo selectedPhoto = i_PhotosList.SelectedItem as Photo;
                 if (selectedPhoto.PictureAlbumURL != null)
                 {
                     pictureBoxSelected.LoadAsync(selectedPhoto.PictureNormalURL);
                 }
             }
+        }
+
+        private void buttonSelectedFriend_Click(object sender, EventArgs e)
+        {
+            m_AlbumCreator.CreateAlbumWith(textBoxSelectedFriend.Text, listBoxAlbumWithFriend);
+        }
+
+        private void listBoxAlbumWithFriend_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            displaySelectedPicture(listBoxAlbumWithFriend);
         }
     }
 }

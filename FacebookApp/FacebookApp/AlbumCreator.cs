@@ -1,56 +1,64 @@
 ﻿using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace FacebookApp
 {
     public class AlbumCreator
     {
-        List<Album> createdAlbums;
-        User m_LoggedInUser;
+
+        public User LoggedInUser { get; set; }
         public AlbumCreator()
         {
 
         }
 
-        public void CreateAlbumWith(string i_FriendName)
+        public void CreateAlbumWith(string i_FriendName, object i_ObjectToInit)
         {
             bool isFriendInList = isFriendInLoggedInUserList(i_FriendName);
             if (isFriendInList)
             {
-                bool isAlbumExist = isAlbumCreated(i_FriendName);
-                if (!isAlbumExist)
-                {
-                    generateNewAlbum(i_FriendName);
-                }
+                generateNewAlbum(i_FriendName, i_ObjectToInit);
             }
-        }
-
-        private bool isAlbumCreated(string i_FriendName)
-        {
-            bool result = false;
-            foreach (Album album in createdAlbums)
+            else
             {
-                if (album.Name == i_FriendName)
-                {
-                    result = true;
-                    break;
-                }
+                MessageBox.Show("Friend doesn't exist please type correctly the friend name");
             }
-            return result;
         }
 
-        private void generateNewAlbum(string i_FriendName)
+        private void generateNewAlbum(string i_FriendName, object i_ObjectToInit)
         {
-            throw new NotImplementedException();
+            ListBox PhotosBox = i_ObjectToInit as ListBox;
+            //foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
+            //{
+                
+                //if (photo.Tags != null)
+                //{
+                //    foreach (PhotoTag tag in photo.Tags)
+                //    {
+                //        MessageBox.Show(tag.User.Name);
+                //        if (tag.User.Name == i_FriendName)
+                //        {
+                //            PhotosBox.Items.Add(photo);
+                //        }
+                //    }
+                //} 
+                // since photo.tags doesn't work, we implemented the following:
+                //}
+                for(int i = 0;i<10;i++)
+                {
+                    PhotosBox.Items.Add(LoggedInUser.PhotosTaggedIn[i]);
+                }
+            
         }
 
         private bool isFriendInLoggedInUserList(string i_FriendName)
         {
-           bool result = false;
-            foreach(User friend in m_LoggedInUser.Friends)
+            bool result = false;
+            foreach (User friend in LoggedInUser.Friends)
             {
-                if(friend.Name == i_FriendName)
+                if (friend.Name == i_FriendName)
                 {
                     result = true;
                     break;

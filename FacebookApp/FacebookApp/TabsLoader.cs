@@ -11,12 +11,8 @@ namespace FacebookApp
     {
         public List<Tab.eTab> LoadedTabs { get; set; }
         private BreaksManager m_BreaksManager;
-        private AlbumCreator albumCreator;
-
 
         public User LoggedInUser { get; set; }
-
-
 
         public TabsLoader()
         {
@@ -28,8 +24,6 @@ namespace FacebookApp
             bool result = LoadedTabs.Contains(i_Tab.TabType);
             return result;
         }
-
-
 
         public void LoadTab(Tab i_Tab, object i_ObjectToInit)
         {
@@ -47,7 +41,17 @@ namespace FacebookApp
                 case Tab.eTab.UserPhotos:
                     loadUserPhotosTab(i_ObjectToInit);
                     break;
+                case Tab.eTab.CreateAlbum:
+                    loadAlbumCreator(i_ObjectToInit);
+                    break;
+
             }
+        }
+
+        private void loadAlbumCreator(object i_ObjectToInit)
+        {
+            AlbumCreator albumCreator = i_ObjectToInit as AlbumCreator;
+            albumCreator.LoggedInUser = LoggedInUser;
         }
 
         private void loadUserPhotosTab(object i_ObjectToInit)
