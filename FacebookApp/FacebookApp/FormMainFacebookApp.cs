@@ -189,17 +189,17 @@ namespace FacebookApp
 
         private void photosListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            displaySelectedPicture(photosListBox);
+            displaySelectedPicture(photosListBox, pictureBoxSelected);
         }
 
-        private void displaySelectedPicture(ListBox i_PhotosList)
+        private void displaySelectedPicture(ListBox i_PhotosList , PictureBox i_PictureBoxSelected)
         {
             if (i_PhotosList.SelectedItems.Count == 1)
             {
                 Photo selectedPhoto = i_PhotosList.SelectedItem as Photo;
                 if (selectedPhoto.PictureAlbumURL != null)
                 {
-                    pictureBoxSelected.LoadAsync(selectedPhoto.PictureNormalURL);
+                    i_PictureBoxSelected.LoadAsync(selectedPhoto.PictureNormalURL);
                 }
             }
         }
@@ -211,7 +211,7 @@ namespace FacebookApp
 
         private void listBoxAlbumWithFriend_SelectedIndexChanged(object sender, EventArgs e)
         {
-            displaySelectedPicture(listBoxAlbumWithFriend);
+            displaySelectedPicture(listBoxAlbumWithFriend, pictureBoxFriend);
         }
     }
 }

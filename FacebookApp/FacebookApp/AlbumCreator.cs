@@ -7,11 +7,9 @@ namespace FacebookApp
 {
     public class AlbumCreator
     {
-
         public User LoggedInUser { get; set; }
         public AlbumCreator()
         {
-
         }
 
         public void CreateAlbumWith(string i_FriendName, object i_ObjectToInit)
@@ -50,7 +48,6 @@ namespace FacebookApp
                 {
                     PhotosBox.Items.Add(LoggedInUser.PhotosTaggedIn[i]);
                 }
-            
         }
 
         private bool isFriendInLoggedInUserList(string i_FriendName)

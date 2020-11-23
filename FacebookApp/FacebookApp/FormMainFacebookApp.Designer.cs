@@ -63,7 +63,7 @@
             this.pictureBoxSelected = new System.Windows.Forms.PictureBox();
             this.photosListBox = new System.Windows.Forms.ListBox();
             this.createAlbumFeature = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxFriend = new System.Windows.Forms.PictureBox();
             this.labelCreateAlbumHeader = new System.Windows.Forms.Label();
             this.buttonSelectedFriend = new System.Windows.Forms.Button();
             this.textBoxSelectedFriend = new System.Windows.Forms.TextBox();
@@ -85,7 +85,7 @@
             this.tabUserPhotos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).BeginInit();
             this.createAlbumFeature.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriend)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
             this.SuspendLayout();
@@ -438,7 +438,7 @@
             // 
             // createAlbumFeature
             // 
-            this.createAlbumFeature.Controls.Add(this.pictureBox1);
+            this.createAlbumFeature.Controls.Add(this.pictureBoxFriend);
             this.createAlbumFeature.Controls.Add(this.labelCreateAlbumHeader);
             this.createAlbumFeature.Controls.Add(this.buttonSelectedFriend);
             this.createAlbumFeature.Controls.Add(this.textBoxSelectedFriend);
@@ -453,14 +453,14 @@
             this.createAlbumFeature.Text = "Create Album";
             this.createAlbumFeature.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // pictureBoxFriend
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(480, 218);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(156, 138);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxFriend.Location = new System.Drawing.Point(480, 218);
+            this.pictureBoxFriend.Name = "pictureBoxFriend";
+            this.pictureBoxFriend.Size = new System.Drawing.Size(156, 138);
+            this.pictureBoxFriend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxFriend.TabIndex = 5;
+            this.pictureBoxFriend.TabStop = false;
             // 
             // labelCreateAlbumHeader
             // 
@@ -581,7 +581,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).EndInit();
             this.createAlbumFeature.ResumeLayout(false);
             this.createAlbumFeature.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriend)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
             this.ResumeLayout(false);
@@ -627,7 +627,7 @@
         private System.Windows.Forms.PictureBox pictureBoxSelected;
         private System.Windows.Forms.TabPage createAlbumFeature;
         private System.Windows.Forms.TabPage breakManagerFeature;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxFriend;
         private System.Windows.Forms.Label labelCreateAlbumHeader;
         private System.Windows.Forms.Button buttonSelectedFriend;
         private System.Windows.Forms.TextBox textBoxSelectedFriend;
