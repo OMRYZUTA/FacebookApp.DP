@@ -175,6 +175,13 @@ namespace FacebookApp
             m_TabsManager.LoadTab(tab, objectsToInit);
         }
 
+        private void LoadBreakManagerTab()
+        {
+            Tab tab = new Tab();
+            tab.ConvertStringToEnum(breakManagerTab.Name);
+            //Do I need LoadTab method use?
+        }
+
         private void photosListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             displaySelectedPicture();
@@ -190,6 +197,22 @@ namespace FacebookApp
                     pictureBoxSelected.LoadAsync(selectedPhoto.PictureNormalURL);
                 }
             }
+        }
+
+        private void saveBreakManagerSettingsButton_Click(object sender, EventArgs e)
+        {
+            BreaksManager i_BreakManager = new BreaksManager();
+            Timer newTimer = new Timer();
+            //newTimer.Interval = i_BreakManager.CalculateInterval()); how to find which of the checkboxes is checked?
+            newTimer.Start();
+            
+        }
+
+        private void noBreaksCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            //Do I do it for each checkbox?
+            //Mark true on the checkbox
+            //Bold the text
         }
     }
 }
