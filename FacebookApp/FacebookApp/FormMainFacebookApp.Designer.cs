@@ -29,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainFacebookApp));
             this.appIcon = new System.Windows.Forms.PictureBox();
             this.buttonLogin = new System.Windows.Forms.Button();
@@ -62,11 +63,19 @@
             this.tabUserPhotos = new System.Windows.Forms.TabPage();
             this.pictureBoxSelected = new System.Windows.Forms.PictureBox();
             this.photosListBox = new System.Windows.Forms.ListBox();
+            this.createAlbumFeature = new System.Windows.Forms.TabPage();
+            this.breakManagerFeature = new System.Windows.Forms.TabPage();
+            this.breakManagerTopic = new System.Windows.Forms.Label();
+            this.saveBreakManagerSettingsButton = new System.Windows.Forms.Button();
+            this.oneHourCheckBox = new System.Windows.Forms.CheckBox();
+            this.fifteenMinutesCheckBox = new System.Windows.Forms.CheckBox();
+            this.tenMinutesCheckBox = new System.Windows.Forms.CheckBox();
+            this.fiveMinutesCheckBox = new System.Windows.Forms.CheckBox();
+            this.noBreaksCheckBox = new System.Windows.Forms.CheckBox();
             this.coverPhoto = new System.Windows.Forms.PictureBox();
             this.profilePicture = new System.Windows.Forms.PictureBox();
             this.userNamePresentation = new System.Windows.Forms.RichTextBox();
-            this.createAlbumFeature = new System.Windows.Forms.TabPage();
-            this.breakManagerFeature = new System.Windows.Forms.TabPage();
+            this.breakTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.appIcon)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.tabUserPosts.SuspendLayout();
@@ -78,6 +87,7 @@
             this.tabFriendsList.SuspendLayout();
             this.tabUserPhotos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).BeginInit();
+            this.breakManagerFeature.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
             this.SuspendLayout();
@@ -430,6 +440,105 @@
             this.photosListBox.TabIndex = 0;
             this.photosListBox.SelectedIndexChanged += new System.EventHandler(this.photosListBox_SelectedIndexChanged);
             // 
+            // createAlbumFeature
+            // 
+            this.createAlbumFeature.Location = new System.Drawing.Point(4, 29);
+            this.createAlbumFeature.Name = "createAlbumFeature";
+            this.createAlbumFeature.Padding = new System.Windows.Forms.Padding(3);
+            this.createAlbumFeature.Size = new System.Drawing.Size(723, 455);
+            this.createAlbumFeature.TabIndex = 4;
+            this.createAlbumFeature.Text = "Create Album";
+            this.createAlbumFeature.UseVisualStyleBackColor = true;
+            // 
+            // breakManagerFeature
+            // 
+            this.breakManagerFeature.Controls.Add(this.breakManagerTopic);
+            this.breakManagerFeature.Controls.Add(this.saveBreakManagerSettingsButton);
+            this.breakManagerFeature.Controls.Add(this.oneHourCheckBox);
+            this.breakManagerFeature.Controls.Add(this.fifteenMinutesCheckBox);
+            this.breakManagerFeature.Controls.Add(this.tenMinutesCheckBox);
+            this.breakManagerFeature.Controls.Add(this.fiveMinutesCheckBox);
+            this.breakManagerFeature.Controls.Add(this.noBreaksCheckBox);
+            this.breakManagerFeature.Location = new System.Drawing.Point(4, 29);
+            this.breakManagerFeature.Name = "breakManagerFeature";
+            this.breakManagerFeature.Padding = new System.Windows.Forms.Padding(3);
+            this.breakManagerFeature.Size = new System.Drawing.Size(723, 455);
+            this.breakManagerFeature.TabIndex = 5;
+            this.breakManagerFeature.Text = "Break Manager";
+            this.breakManagerFeature.UseVisualStyleBackColor = true;
+            // 
+            // breakManagerTopic
+            // 
+            this.breakManagerTopic.AutoSize = true;
+            this.breakManagerTopic.Font = new System.Drawing.Font("MingLiU-ExtB", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.breakManagerTopic.Location = new System.Drawing.Point(27, 21);
+            this.breakManagerTopic.Name = "breakManagerTopic";
+            this.breakManagerTopic.Size = new System.Drawing.Size(642, 28);
+            this.breakManagerTopic.TabIndex = 6;
+            this.breakManagerTopic.Text = "How often whould you like to have a break?";
+            // 
+            // saveBreakManagerSettingsButton
+            // 
+            this.saveBreakManagerSettingsButton.Location = new System.Drawing.Point(618, 408);
+            this.saveBreakManagerSettingsButton.Name = "saveBreakManagerSettingsButton";
+            this.saveBreakManagerSettingsButton.Size = new System.Drawing.Size(92, 37);
+            this.saveBreakManagerSettingsButton.TabIndex = 5;
+            this.saveBreakManagerSettingsButton.Text = "Save";
+            this.saveBreakManagerSettingsButton.UseVisualStyleBackColor = true;
+            // 
+            // oneHourCheckBox
+            // 
+            this.oneHourCheckBox.AutoSize = true;
+            this.oneHourCheckBox.Location = new System.Drawing.Point(27, 260);
+            this.oneHourCheckBox.Name = "oneHourCheckBox";
+            this.oneHourCheckBox.Size = new System.Drawing.Size(110, 24);
+            this.oneHourCheckBox.TabIndex = 4;
+            this.oneHourCheckBox.Text = "Every hour";
+            this.oneHourCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // fifteenMinutesCheckBox
+            // 
+            this.fifteenMinutesCheckBox.AutoSize = true;
+            this.fifteenMinutesCheckBox.Checked = true;
+            this.fifteenMinutesCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.fifteenMinutesCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fifteenMinutesCheckBox.Location = new System.Drawing.Point(27, 220);
+            this.fifteenMinutesCheckBox.Name = "fifteenMinutesCheckBox";
+            this.fifteenMinutesCheckBox.Size = new System.Drawing.Size(309, 24);
+            this.fifteenMinutesCheckBox.TabIndex = 3;
+            this.fifteenMinutesCheckBox.Text = "Every 15 minutes (Recommended)";
+            this.fifteenMinutesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // tenMinutesCheckBox
+            // 
+            this.tenMinutesCheckBox.AutoSize = true;
+            this.tenMinutesCheckBox.Location = new System.Drawing.Point(27, 180);
+            this.tenMinutesCheckBox.Name = "tenMinutesCheckBox";
+            this.tenMinutesCheckBox.Size = new System.Drawing.Size(156, 24);
+            this.tenMinutesCheckBox.TabIndex = 2;
+            this.tenMinutesCheckBox.Text = "Every 10 minutes";
+            this.tenMinutesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // fiveMinutesCheckBox
+            // 
+            this.fiveMinutesCheckBox.AutoSize = true;
+            this.fiveMinutesCheckBox.Location = new System.Drawing.Point(27, 140);
+            this.fiveMinutesCheckBox.Name = "fiveMinutesCheckBox";
+            this.fiveMinutesCheckBox.Size = new System.Drawing.Size(147, 24);
+            this.fiveMinutesCheckBox.TabIndex = 1;
+            this.fiveMinutesCheckBox.Text = "Every 5 minutes";
+            this.fiveMinutesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // noBreaksCheckBox
+            // 
+            this.noBreaksCheckBox.AutoSize = true;
+            this.noBreaksCheckBox.Location = new System.Drawing.Point(27, 100);
+            this.noBreaksCheckBox.Name = "noBreaksCheckBox";
+            this.noBreaksCheckBox.Size = new System.Drawing.Size(118, 24);
+            this.noBreaksCheckBox.TabIndex = 0;
+            this.noBreaksCheckBox.Text = "No Breakes";
+            this.noBreaksCheckBox.UseVisualStyleBackColor = true;
+            // 
             // coverPhoto
             // 
             this.coverPhoto.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -463,25 +572,9 @@
             this.userNamePresentation.TabIndex = 8;
             this.userNamePresentation.Text = "";
             // 
-            // createAlbumFeature
+            // breakTimer
             // 
-            this.createAlbumFeature.Location = new System.Drawing.Point(4, 29);
-            this.createAlbumFeature.Name = "createAlbumFeature";
-            this.createAlbumFeature.Padding = new System.Windows.Forms.Padding(3);
-            this.createAlbumFeature.Size = new System.Drawing.Size(723, 455);
-            this.createAlbumFeature.TabIndex = 4;
-            this.createAlbumFeature.Text = "Create Album";
-            this.createAlbumFeature.UseVisualStyleBackColor = true;
-            // 
-            // breakManagerFeature
-            // 
-            this.breakManagerFeature.Location = new System.Drawing.Point(4, 29);
-            this.breakManagerFeature.Name = "breakManagerFeature";
-            this.breakManagerFeature.Padding = new System.Windows.Forms.Padding(3);
-            this.breakManagerFeature.Size = new System.Drawing.Size(723, 455);
-            this.breakManagerFeature.TabIndex = 5;
-            this.breakManagerFeature.Text = "Break Manager";
-            this.breakManagerFeature.UseVisualStyleBackColor = true;
+            this.breakTimer.Interval = 900000;
             // 
             // FormMainFacebookApp
             // 
@@ -512,6 +605,8 @@
             this.tabFriendsList.ResumeLayout(false);
             this.tabUserPhotos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).EndInit();
+            this.breakManagerFeature.ResumeLayout(false);
+            this.breakManagerFeature.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
             this.ResumeLayout(false);
@@ -557,6 +652,14 @@
         private System.Windows.Forms.PictureBox pictureBoxSelected;
         private System.Windows.Forms.TabPage createAlbumFeature;
         private System.Windows.Forms.TabPage breakManagerFeature;
+        private System.Windows.Forms.Label breakManagerTopic;
+        private System.Windows.Forms.Button saveBreakManagerSettingsButton;
+        private System.Windows.Forms.CheckBox oneHourCheckBox;
+        private System.Windows.Forms.CheckBox fifteenMinutesCheckBox;
+        private System.Windows.Forms.CheckBox tenMinutesCheckBox;
+        private System.Windows.Forms.CheckBox fiveMinutesCheckBox;
+        private System.Windows.Forms.CheckBox noBreaksCheckBox;
+        private System.Windows.Forms.Timer breakTimer;
     }
 }
 
