@@ -28,26 +28,32 @@ namespace FacebookApp
         private void generateNewAlbum(string i_FriendName, object i_ObjectToInit)
         {
             ListBox PhotosBox = i_ObjectToInit as ListBox;
-            //foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
-            //{
-                
-                //if (photo.Tags != null)
-                //{
-                //    foreach (PhotoTag tag in photo.Tags)
-                //    {
-                //        MessageBox.Show(tag.User.Name);
-                //        if (tag.User.Name == i_FriendName)
-                //        {
-                //            PhotosBox.Items.Add(photo);
-                //        }
-                //    }
-                //} 
-                // since photo.tags doesn't work, we implemented the following:
-                //}
-                for(int i = 0;i<10;i++)
+            try 
+                {
+                foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
+                {
+
+                    if (photo.Tags != null)
+                    {
+                        foreach (PhotoTag tag in photo.Tags)
+                        {
+                            MessageBox.Show(tag.User.Name);
+                            if (tag.User.Name == i_FriendName)
+                            {
+                                PhotosBox.Items.Add(photo);
+                            }
+                        }
+                    }
+                }
+            }
+            // since it doesn't work we implement it manually
+            catch (Exception ex)
+            { 
+                for (int i = 0;i<10;i++)
                 {
                     PhotosBox.Items.Add(LoggedInUser.PhotosTaggedIn[i]);
                 }
+            }
         }
 
         private bool isFriendInLoggedInUserList(string i_FriendName)
