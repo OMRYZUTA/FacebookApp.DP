@@ -1,8 +1,6 @@
 ﻿using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FacebookApp
@@ -56,10 +54,10 @@ namespace FacebookApp
 
         private void loadUserPhotosTab(object i_ObjectToInit)
         {
-            ListBox PhotosBox = i_ObjectToInit as ListBox;
+            ListBox photosBox = i_ObjectToInit as ListBox;
             foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
             {
-                PhotosBox.Items.Add(photo);
+                photosBox.Items.Add(photo);
             }
         }
 

@@ -1,6 +1,5 @@
 ﻿using FacebookWrapper.ObjectModel;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace FacebookApp
@@ -8,9 +7,6 @@ namespace FacebookApp
     public class AlbumCreator
     {
         public User LoggedInUser { get; set; }
-        public AlbumCreator()
-        {
-        }
 
         public void CreateAlbumWith(string i_FriendName, object i_ObjectToInit)
         {
@@ -27,9 +23,9 @@ namespace FacebookApp
 
         private void generateNewAlbum(string i_FriendName, object i_ObjectToInit)
         {
-            ListBox PhotosBox = i_ObjectToInit as ListBox;
-            try 
-                {
+            ListBox photosBox = i_ObjectToInit as ListBox;
+            try
+            {
                 foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
                 {
 
@@ -39,22 +35,25 @@ namespace FacebookApp
                         {
                             if (tag.User.Name == i_FriendName)
                             {
-                                PhotosBox.Items.Add(photo);
+                                photosBox.Items.Add(photo);
                             }
                         }
                     }
                     else
                     {
-                        throw new Exception ("Tags property returned null");
+                        throw new Exception("Tags property returned null");
                     }
                 }
             }
             // since it doesn't work we implement it manually
             catch (Exception ex)
-            { 
-                for (int i = 0;i<10;i++)
+            {
+                for (int i = 0; i < 10; i++)
                 {
-                    PhotosBox.Items.Add(LoggedInUser.PhotosTaggedIn[i]);
+                    if(photosBox != null)
+                    {
+                        photosBox.Items.Add(LoggedInUser.PhotosTaggedIn[i]);
+                    }
                 }
             }
         }
