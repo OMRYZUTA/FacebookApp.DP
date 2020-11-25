@@ -81,7 +81,6 @@ namespace FacebookApp
             }
             catch(Exception ex)
             { 
-            
             }
 
             (objectsToInit["livesInBox"] as TextBox).Text = LoggedInUser.Location.Name;
