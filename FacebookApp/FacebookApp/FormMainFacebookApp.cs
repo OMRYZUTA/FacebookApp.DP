@@ -222,12 +222,22 @@ namespace FacebookApp
                         BreaksManager i_breakManager = new BreaksManager();
                         i_breakManager.m_Stopper = i_breakManager.CalculateTime((listObject as RadioButton).Name);
                         m_BreakManager = i_breakManager;
-                        breakManagerTimer.Start();
                     }
                 }
             }
-            breakManagerTimer.Start();
 
+            if(noBreaksButton.Checked == true)
+            {
+                breakManagerTimer.Stop();
+                m_BreakManager.InitMinutes();
+                m_BreakManager.InitSeconds();
+                showTimer();
+            }
+            else
+            {
+                m_BreakManager.InitMinutes();
+                breakManagerTimer.Start();
+            }
         }
 
         private void noBreaksButton_Click(object sender, EventArgs e)
@@ -348,13 +358,45 @@ namespace FacebookApp
         private void breakManagerTimer_Tick(object sender, EventArgs e)
         {
             m_BreakManager.m_Seconds += 1;
-            if(m_BreakManager.m_Seconds == m_BreakManager.m_Stopper)
+            if(m_BreakManager.m_Seconds % 60 == 0)
             {
-                MessageBox.Show("Take a break!");
+                m_BreakManager.m_Seconds = 0;
+                m_BreakManager.m_Minutes += 1;
+            }
+            showTimer();
+            if (m_BreakManager.m_Minutes == m_BreakManager.m_Stopper)
+            {
                 breakManagerTimer.Stop();
-                m_BreakManager.InitSeconds();
+                m_BreakManager.InitMinutes();
+                MessageBox.Show("Take a break!");
                 breakManagerTimer.Start();
             }
+        }
+
+        private void showTimer()
+        {
+            string i_Minutes;
+            string i_Seconds;
+            
+            if(m_BreakManager.m_Minutes < 10)
+            {
+                i_Minutes = 0 + m_BreakManager.m_Minutes.ToString();
+            }
+            else
+            {
+                i_Minutes = m_BreakManager.m_Minutes.ToString();
+            }
+
+            if (m_BreakManager.m_Seconds < 10)
+            {
+                i_Seconds = 0 + m_BreakManager.m_Seconds.ToString();
+            }
+            else
+            {
+                i_Seconds = m_BreakManager.m_Seconds.ToString();
+            }
+
+            timerPresentation.Text = i_Minutes + ":" + i_Seconds;
         }
     }
 }

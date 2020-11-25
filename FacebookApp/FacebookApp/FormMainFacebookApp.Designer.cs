@@ -70,6 +70,7 @@
             this.listBoxAlbumWithFriend = new System.Windows.Forms.ListBox();
             this.labelSelectedFriend = new System.Windows.Forms.Label();
             this.breakManagerFeature = new System.Windows.Forms.TabPage();
+            this.timerPresentation = new System.Windows.Forms.Label();
             this.saveBreakManagerSettingsButton = new System.Windows.Forms.Button();
             this.tenMinutesButton = new System.Windows.Forms.RadioButton();
             this.fifteenMinutesButton = new System.Windows.Forms.RadioButton();
@@ -79,8 +80,8 @@
             this.breakManagerLable = new System.Windows.Forms.Label();
             this.coverPhoto = new System.Windows.Forms.PictureBox();
             this.profilePicture = new System.Windows.Forms.PictureBox();
-            this.userNamePresentation = new System.Windows.Forms.RichTextBox();
             this.breakManagerTimer = new System.Windows.Forms.Timer(this.components);
+            this.userNamePresentation = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.appIcon)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.tabUserPosts.SuspendLayout();
@@ -105,7 +106,7 @@
             this.appIcon.Location = new System.Drawing.Point(12, 12);
             this.appIcon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.appIcon.Name = "appIcon";
-            this.appIcon.Size = new System.Drawing.Size(122, 74);
+            this.appIcon.Size = new System.Drawing.Size(122, 54);
             this.appIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.appIcon.TabIndex = 2;
             this.appIcon.TabStop = false;
@@ -514,6 +515,7 @@
             // 
             // breakManagerFeature
             // 
+            this.breakManagerFeature.Controls.Add(this.timerPresentation);
             this.breakManagerFeature.Controls.Add(this.saveBreakManagerSettingsButton);
             this.breakManagerFeature.Controls.Add(this.tenMinutesButton);
             this.breakManagerFeature.Controls.Add(this.fifteenMinutesButton);
@@ -529,6 +531,16 @@
             this.breakManagerFeature.TabIndex = 5;
             this.breakManagerFeature.Text = "Break Manager";
             this.breakManagerFeature.UseVisualStyleBackColor = true;
+            // 
+            // timerPresentation
+            // 
+            this.timerPresentation.AutoSize = true;
+            this.timerPresentation.Font = new System.Drawing.Font("Gisha", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timerPresentation.Location = new System.Drawing.Point(447, 98);
+            this.timerPresentation.Name = "timerPresentation";
+            this.timerPresentation.Size = new System.Drawing.Size(98, 38);
+            this.timerPresentation.TabIndex = 7;
+            this.timerPresentation.Text = "00:00";
             // 
             // saveBreakManagerSettingsButton
             // 
@@ -623,7 +635,7 @@
             // 
             this.profilePicture.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.profilePicture.InitialImage = ((System.Drawing.Image)(resources.GetObject("profilePicture.InitialImage")));
-            this.profilePicture.Location = new System.Drawing.Point(397, 92);
+            this.profilePicture.Location = new System.Drawing.Point(424, 91);
             this.profilePicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.profilePicture.Name = "profilePicture";
             this.profilePicture.Size = new System.Drawing.Size(178, 119);
@@ -631,21 +643,20 @@
             this.profilePicture.TabIndex = 7;
             this.profilePicture.TabStop = false;
             // 
-            // userNamePresentation
-            // 
-            this.userNamePresentation.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.userNamePresentation.Location = new System.Drawing.Point(382, 248);
-            this.userNamePresentation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.userNamePresentation.Name = "userNamePresentation";
-            this.userNamePresentation.Size = new System.Drawing.Size(232, 65);
-            this.userNamePresentation.TabIndex = 8;
-            this.userNamePresentation.Text = "";
-            // 
             // breakManagerTimer
             // 
             this.breakManagerTimer.Enabled = true;
             this.breakManagerTimer.Interval = 1000;
             this.breakManagerTimer.Tick += new System.EventHandler(this.breakManagerTimer_Tick);
+            // 
+            // userNamePresentation
+            // 
+            this.userNamePresentation.AutoSize = true;
+            this.userNamePresentation.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNamePresentation.Location = new System.Drawing.Point(401, 264);
+            this.userNamePresentation.Name = "userNamePresentation";
+            this.userNamePresentation.Size = new System.Drawing.Size(0, 37);
+            this.userNamePresentation.TabIndex = 8;
             // 
             // FormMainFacebookApp
             // 
@@ -710,7 +721,6 @@
         private System.Windows.Forms.Label numberOfFriends;
         private System.Windows.Forms.PictureBox coverPhoto;
         private System.Windows.Forms.PictureBox profilePicture;
-        private System.Windows.Forms.RichTextBox userNamePresentation;
         private System.Windows.Forms.TextBox livesInBox;
         private System.Windows.Forms.TextBox genderBox;
         private System.Windows.Forms.TextBox birthDayBox;
@@ -740,6 +750,8 @@
         private System.Windows.Forms.RadioButton noBreaksButton;
         private System.Windows.Forms.Label breakManagerLable;
         private System.Windows.Forms.Timer breakManagerTimer;
+        private System.Windows.Forms.Label timerPresentation;
+        private System.Windows.Forms.Label userNamePresentation;
     }
 }
 
