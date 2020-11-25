@@ -37,12 +37,15 @@ namespace FacebookApp
                     {
                         foreach (PhotoTag tag in photo.Tags)
                         {
-                            MessageBox.Show(tag.User.Name);
                             if (tag.User.Name == i_FriendName)
                             {
                                 PhotosBox.Items.Add(photo);
                             }
                         }
+                    }
+                    else
+                    {
+                        throw new Exception ("Tags property returned null");
                     }
                 }
             }
