@@ -41,7 +41,6 @@ namespace FacebookApp
                 case Tab.eTab.CreateAlbum:
                     loadAlbumCreator(i_ObjectToInit);
                     break;
-
             }
         }
 
@@ -79,8 +78,8 @@ namespace FacebookApp
             {
                 (objectsToInit["genderBox"] as TextBox).Text = LoggedInUser.Gender.ToString();
             }
-            catch(Exception ex)
-            { 
+            catch (Exception ex)
+            {
             }
 
             (objectsToInit["livesInBox"] as TextBox).Text = LoggedInUser.Location.Name;
