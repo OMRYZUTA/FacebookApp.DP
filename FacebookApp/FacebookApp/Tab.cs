@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace FacebookApp
+﻿namespace FacebookApp
 {
     public class Tab
     {
         public eTab TabType { get; private set; }
         const string k_Posts = "tabUserPosts";
         const string k_AboutUser = "tabAboutUser";
-        const string k_FriendsList ="tabFriendsList";
-        const string k_UserPhotos ="tabUserPhotos";
+        const string k_FriendsList = "tabFriendsList";
+        const string k_UserPhotos = "tabUserPhotos";
+        const string k_CreateAlbum = "createAlbumFeature";
         public Tab()
         {
             TabType = eTab.None;
@@ -23,6 +19,7 @@ namespace FacebookApp
             AboutUser,
             FriendsList,
             UserPhotos,
+            CreateAlbum,
             None
         }
 
@@ -41,6 +38,9 @@ namespace FacebookApp
                     break;
                 case k_UserPhotos:
                     TabType = eTab.UserPhotos;
+                    break;
+                case k_CreateAlbum:
+                    TabType = eTab.CreateAlbum;
                     break;
             }
         }

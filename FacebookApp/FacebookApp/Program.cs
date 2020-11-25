@@ -1,7 +1,5 @@
 ﻿using FacebookWrapper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace FacebookApp
@@ -12,7 +10,7 @@ namespace FacebookApp
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static public void Main()
         {
             FacebookService.s_UseForamttedToStrings = true;
             Application.EnableVisualStyles();

@@ -2,10 +2,6 @@
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -15,13 +11,15 @@ namespace FacebookApp
     {
         private User m_LoggedInUser;
         private LoginResult m_LoginResult;
-        private TabsLoader m_TabsManager;
+        private readonly TabsLoader r_TabsLoader;
+        private readonly AlbumCreator r_AlbumCreator;
 
         public FormMainFacebookApp()
         {
-            m_TabsManager = new TabsLoader();
+            r_TabsLoader = new TabsLoader();
+            r_AlbumCreator = new AlbumCreator();
             InitializeComponent();
-            FacebookWrapper.FacebookService.s_CollectionLimit = 200;
+            FacebookService.s_CollectionLimit = 200;
         }
 
         private void loginAndInit()
@@ -53,7 +51,7 @@ namespace FacebookApp
                 if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
                 {
                     m_LoggedInUser = m_LoginResult.LoggedInUser;
-                    m_TabsManager.LoggedInUser = m_LoggedInUser;
+                    r_TabsLoader.LoggedInUser = m_LoggedInUser;
                     fetchUserBasicInfo();
                 }
                 else
@@ -68,18 +66,15 @@ namespace FacebookApp
             fetchUserProfilePhoto();
             fetchUserCoverPhoto();
             fetchUserName();
-            LoadPostsTab();
+            loadPostsTab();
         }
 
         // since Cover property is broken we are using PhotosTaggedIn
         private void fetchUserCoverPhoto()
         {
-            if (m_LoggedInUser.PhotosTaggedIn != null)
+            if (m_LoggedInUser.PhotosTaggedIn?[1] != null)
             {
-                if (m_LoggedInUser.PhotosTaggedIn[1] != null)
-                {
-                    coverPhoto.LoadAsync(m_LoggedInUser.PhotosTaggedIn[1].PictureNormalURL);
-                }
+                coverPhoto.LoadAsync(m_LoggedInUser.PhotosTaggedIn[1].PictureNormalURL);
             }
         }
 
@@ -100,7 +95,7 @@ namespace FacebookApp
             profilePicture.LoadAsync(m_LoggedInUser.PictureNormalURL);
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object i_Sender, EventArgs i_EventArgs)
         {
             loginAndInit();
         }
@@ -109,7 +104,7 @@ namespace FacebookApp
         {
             Dictionary<string, object> objectsToInit = new Dictionary<string, object>();
             objectsToInit.Add(birthDayBox.Name, birthDayBox);
-            objectsToInit.Add(statusBox.Name, statusBox);
+            objectsToInit.Add(genderBox.Name, genderBox);
             objectsToInit.Add(livesInBox.Name, livesInBox);
             objectsToInit.Add(workPlacesList.Name, workPlacesList);
             objectsToInit.Add(educationList.Name, educationList);
@@ -119,94 +114,97 @@ namespace FacebookApp
             return objectsToInit;
         }
 
-        private void tabControlMain_Selected(object sender, TabControlEventArgs e)
+        private void tabControlMain_Selected(object i_Sender, TabControlEventArgs i_EventArgs)
         {
             if (m_LoggedInUser != null)
             {
                 Tab tab = new Tab();
-                tab.ConvertStringToEnum(e.TabPage.Name);
-                if (!m_TabsManager.IsTabLoaded(tab))
+                tab.ConvertStringToEnum(i_EventArgs.TabPage.Name);
+                if (!r_TabsLoader.IsTabLoaded(tab))
                 {
                     switch (tab.TabType)
                     {
                         case Tab.eTab.Posts:
-                            LoadPostsTab();
+                            loadPostsTab();
                             break;
                         case Tab.eTab.AboutUser:
-                            LoadAboutUserTab();
+                            loadAboutUserTab();
                             break;
                         case Tab.eTab.FriendsList:
-                            LoadFriendsListTab();
+                            loadFriendsListTab();
                             break;
                         case Tab.eTab.UserPhotos:
-                            LoadUserPhotosTab();
+                            loadUserPhotosTab();
+                            break;
+                        case Tab.eTab.CreateAlbum:
+                            loadCreateAlbumTab();
                             break;
                     }
                 }
             }
         }
 
-        private void LoadUserPhotosTab()
+        private void loadCreateAlbumTab()
+        {
+            Tab tab = new Tab();
+            tab.ConvertStringToEnum(createAlbumFeature.Name);
+            r_TabsLoader.LoadTab(tab, r_AlbumCreator);
+        }
+
+        private void loadUserPhotosTab()
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabUserPhotos.Name);
-            m_TabsManager.LoadTab(tab, photosListBox);
+            r_TabsLoader.LoadTab(tab, photosListBox);
         }
 
-        private void LoadFriendsListTab()
+        private void loadFriendsListTab()
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabFriendsList.Name);
-            m_TabsManager.LoadTab(tab, friendsListBox);
+            r_TabsLoader.LoadTab(tab, friendsListBox);
         }
 
-        private void LoadPostsTab()
+        private void loadPostsTab()
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabUserPosts.Name);
-            m_TabsManager.LoadTab(tab, userPostsList);
+            r_TabsLoader.LoadTab(tab, userPostsList);
         }
 
-        private void LoadAboutUserTab()
+        private void loadAboutUserTab()
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabAboutUser.Name);
             Dictionary<string, object> objectsToInit = buildDictionaryForAboutTab();
-            m_TabsManager.LoadTab(tab, objectsToInit);
+            r_TabsLoader.LoadTab(tab, objectsToInit);
         }
 
-        private void LoadBreakManagerTab()
+        private void photosListBox_SelectedIndexChanged(object i_Sender, EventArgs i_EventArgs)
         {
-            Tab tab = new Tab();
-            tab.ConvertStringToEnum(breakManagerTab.Name);
-            //Do I need LoadTab method use?
+            displaySelectedPicture(photosListBox, pictureBoxSelected);
         }
 
-        private void photosListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void displaySelectedPicture(ListBox i_PhotosList , PictureBox i_PictureBoxSelected)
         {
-            displaySelectedPicture();
-        }
-
-        private void displaySelectedPicture()
-        {
-            if (photosListBox.SelectedItems.Count == 1)
+            if (i_PhotosList.SelectedItems.Count == 1)
             {
-                Photo selectedPhoto = photosListBox.SelectedItem as Photo;
-                if (selectedPhoto.PictureAlbumURL != null)
+                Photo selectedPhoto = i_PhotosList.SelectedItem as Photo;
+                if (selectedPhoto != null && selectedPhoto.PictureAlbumURL != null)
                 {
-                    pictureBoxSelected.LoadAsync(selectedPhoto.PictureNormalURL);
+                    i_PictureBoxSelected.LoadAsync(selectedPhoto.PictureNormalURL);
                 }
             }
         }
 
-        private void saveBreakManagerSettingsButton_Click(object sender, EventArgs e)
+        private void buttonSelectedFriend_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            BreaksManager i_BreakManager = new BreaksManager();
-            Timer newTimer = new Timer();
-            //newTimer.Interval = i_BreakManager.CalculateInterval()); how to find which of the checkboxes is checked?
-            newTimer.Start();
-            
+            r_AlbumCreator.CreateAlbumWith(textBoxSelectedFriend.Text, listBoxAlbumWithFriend);
         }
 
-       
+        private void listBoxAlbumWithFriend_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            displaySelectedPicture(listBoxAlbumWithFriend, pictureBoxFriend);
+        }
+    }
 }

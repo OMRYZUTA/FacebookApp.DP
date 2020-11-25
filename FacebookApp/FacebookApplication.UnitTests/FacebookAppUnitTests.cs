@@ -1,8 +1,6 @@
-﻿using System;
-using FacebookWrapper.ObjectModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace FacebookApp.UnitTests
+namespace FacebookApplication.UnitTests
 {
     [TestClass]
     public class FacebookAppUnitTests

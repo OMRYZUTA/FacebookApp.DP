@@ -1,8 +1,6 @@
 ﻿using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FacebookApp
@@ -10,13 +8,8 @@ namespace FacebookApp
     public class TabsLoader
     {
         public List<Tab.eTab> LoadedTabs { get; set; }
-        private BreaksManager m_BreaksManager;
-        private AlbumCreator albumCreator;
-
 
         public User LoggedInUser { get; set; }
-
-
 
         public TabsLoader()
         {
@@ -28,8 +21,6 @@ namespace FacebookApp
             bool result = LoadedTabs.Contains(i_Tab.TabType);
             return result;
         }
-
-
 
         public void LoadTab(Tab i_Tab, object i_ObjectToInit)
         {
@@ -47,22 +38,33 @@ namespace FacebookApp
                 case Tab.eTab.UserPhotos:
                     loadUserPhotosTab(i_ObjectToInit);
                     break;
+                case Tab.eTab.CreateAlbum:
+                    loadAlbumCreator(i_ObjectToInit);
+                    break;
+
             }
+        }
+
+        private void loadAlbumCreator(object i_ObjectToInit)
+        {
+            AlbumCreator albumCreator = i_ObjectToInit as AlbumCreator;
+            albumCreator.LoggedInUser = LoggedInUser;
+            LoadedTabs.Add(Tab.eTab.CreateAlbum);
         }
 
         private void loadUserPhotosTab(object i_ObjectToInit)
         {
-            ListBox PhotosBox = i_ObjectToInit as ListBox;
-            foreach(Photo photo in LoggedInUser.PhotosTaggedIn)
+            ListBox photosBox = i_ObjectToInit as ListBox;
+            foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
             {
-                PhotosBox.Items.Add(photo);
+                photosBox.Items.Add(photo);
             }
         }
 
         private void loadFriendsListTab(object i_ObjectToInit)
         {
             ListBox friendsBox = i_ObjectToInit as ListBox;
-            foreach(User friend in LoggedInUser.Friends)
+            foreach (User friend in LoggedInUser.Friends)
             {
                 friendsBox.Items.Add(friend.Name);
             }
@@ -73,7 +75,14 @@ namespace FacebookApp
         {
             Dictionary<string, object> objectsToInit = i_ObjectsToInit as Dictionary<string, object>;
             (objectsToInit["birthDayBox"] as TextBox).Text = LoggedInUser.Birthday;
-            (objectsToInit["statusBox"] as TextBox).Text = "Single"; //LoggedInUser.Statuses[0].ToString() isn't working so we replace it with our own status
+            try
+            {
+                (objectsToInit["genderBox"] as TextBox).Text = LoggedInUser.Gender.ToString();
+            }
+            catch(Exception ex)
+            { 
+            }
+
             (objectsToInit["livesInBox"] as TextBox).Text = LoggedInUser.Location.Name;
             initWorkPlaces((objectsToInit["workPlacesList"]) as ListBox);
             initEducationPlaces((objectsToInit["educationList"] as ListBox));
@@ -85,19 +94,36 @@ namespace FacebookApp
 
         private void initEducationPlaces(ListBox i_ListBox)
         {
+            try
+            {
+                foreach (WorkExperience workPlace in LoggedInUser.WorkExperiences)
+                {
+                    i_ListBox.Items.Add(workPlace.Description);
+                }
+            }
             // since it doesn't work we implement it manually
-            i_ListBox.Items.Add("Gedera High School");
-            i_ListBox.Items.Add("MTA");
+            catch (Exception ex)
+            {
+                i_ListBox.Items.Add("Gedera High School");
+                i_ListBox.Items.Add("MTA");
+            }
         }
 
         private void initWorkPlaces(ListBox i_ListBox)
-        {    // since it doesn't work we implement it manually
-             //foreach(WorkExperience workplace in LoggedInUser.WorkExperiences)
-             //{
-             //    i_ListBox.Items.Add(string.Format("{0} at {1} ",workplace.Position, workplace.Name));
-             //}
-            i_ListBox.Items.Add("Tech lead at Google");
-            i_ListBox.Items.Add("Tech lead at Facebook");
+        {
+            try
+            {
+                foreach (WorkExperience workplace in LoggedInUser.WorkExperiences)
+                {
+                    i_ListBox.Items.Add(string.Format("{0} at {1} ", workplace.Position, workplace.Name));
+                }
+            }
+            catch (Exception ex)
+            {
+                // since it doesn't work we implement it manually
+                i_ListBox.Items.Add("Tech lead at Google");
+                i_ListBox.Items.Add("Tech lead at Facebook");
+            }
         }
 
         private void loadPostsTab(object i_UserPostsList)
