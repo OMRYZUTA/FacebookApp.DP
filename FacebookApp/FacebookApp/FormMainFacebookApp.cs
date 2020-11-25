@@ -111,7 +111,7 @@ namespace FacebookApp
         {
             Dictionary<string, object> objectsToInit = new Dictionary<string, object>();
             objectsToInit.Add(birthDayBox.Name, birthDayBox);
-            objectsToInit.Add(statusBox.Name, statusBox);
+            objectsToInit.Add(genderBox.Name, genderBox);
             objectsToInit.Add(livesInBox.Name, livesInBox);
             objectsToInit.Add(workPlacesList.Name, workPlacesList);
             objectsToInit.Add(educationList.Name, educationList);

@@ -79,12 +79,11 @@ namespace FacebookApp
             (objectsToInit["birthDayBox"] as TextBox).Text = LoggedInUser.Birthday;
             try
             {
-                objectsToInit["statusBox"]= LoggedInUser.RelationshipStatus.ToString();
+                (objectsToInit["genderBox"] as TextBox).Text = LoggedInUser.Gender.ToString();
             }
-
             catch(Exception ex)
             { 
-            (objectsToInit["statusBox"] as TextBox).Text = "Single"; //LoggedInUser.Statuses[0].ToString() isn't working so we replace it with our own status
+            
             }
 
             (objectsToInit["livesInBox"] as TextBox).Text = LoggedInUser.Location.Name;

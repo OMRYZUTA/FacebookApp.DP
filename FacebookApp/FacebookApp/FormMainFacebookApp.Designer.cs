@@ -39,7 +39,7 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.livesInBox = new System.Windows.Forms.TextBox();
-            this.statusBox = new System.Windows.Forms.TextBox();
+            this.genderBox = new System.Windows.Forms.TextBox();
             this.birthDayBox = new System.Windows.Forms.TextBox();
             this.livesIn = new System.Windows.Forms.Label();
             this.gender = new System.Windows.Forms.Label();
@@ -178,7 +178,7 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.livesInBox);
-            this.tabPage5.Controls.Add(this.statusBox);
+            this.tabPage5.Controls.Add(this.genderBox);
             this.tabPage5.Controls.Add(this.birthDayBox);
             this.tabPage5.Controls.Add(this.livesIn);
             this.tabPage5.Controls.Add(this.gender);
@@ -200,13 +200,13 @@
             this.livesInBox.Size = new System.Drawing.Size(112, 22);
             this.livesInBox.TabIndex = 5;
             // 
-            // statusBox
+            // genderBox
             // 
-            this.statusBox.Location = new System.Drawing.Point(125, 58);
-            this.statusBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.statusBox.Name = "statusBox";
-            this.statusBox.Size = new System.Drawing.Size(112, 22);
-            this.statusBox.TabIndex = 4;
+            this.genderBox.Location = new System.Drawing.Point(125, 58);
+            this.genderBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.genderBox.Name = "genderBox";
+            this.genderBox.Size = new System.Drawing.Size(112, 22);
+            this.genderBox.TabIndex = 4;
             // 
             // birthDayBox
             // 
@@ -409,7 +409,7 @@
             this.pictureBoxSelected.Location = new System.Drawing.Point(460, 219);
             this.pictureBoxSelected.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxSelected.Name = "pictureBoxSelected";
-            this.pictureBoxSelected.Size = new System.Drawing.Size(110, 66);
+            this.pictureBoxSelected.Size = new System.Drawing.Size(176, 142);
             this.pictureBoxSelected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxSelected.TabIndex = 1;
             this.pictureBoxSelected.TabStop = false;
@@ -602,7 +602,7 @@
         private System.Windows.Forms.PictureBox profilePicture;
         private System.Windows.Forms.RichTextBox userNamePresentation;
         private System.Windows.Forms.TextBox livesInBox;
-        private System.Windows.Forms.TextBox statusBox;
+        private System.Windows.Forms.TextBox genderBox;
         private System.Windows.Forms.TextBox birthDayBox;
         private System.Windows.Forms.Label livesIn;
         private System.Windows.Forms.Label gender;
