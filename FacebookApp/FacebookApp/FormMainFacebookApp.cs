@@ -208,11 +208,5 @@ namespace FacebookApp
             
         }
 
-        private void noBreaksCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            //Do I do it for each checkbox?
-            //Mark true on the checkbox
-            //Bold the text
-        }
-    }
+       
 }

@@ -1,4 +1,5 @@
-﻿namespace FacebookApp
+﻿
+namespace FacebookApp
 {
     public class BreaksManager
     {
@@ -82,6 +83,7 @@
             fifteenMinutes,
             oneHour
         }
+
 
     }
 }

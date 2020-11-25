@@ -76,6 +76,7 @@
             this.profilePicture = new System.Windows.Forms.PictureBox();
             this.userNamePresentation = new System.Windows.Forms.RichTextBox();
             this.breakTimer = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.appIcon)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.tabUserPosts.SuspendLayout();
@@ -496,6 +497,7 @@
             this.oneHourCheckBox.TabIndex = 4;
             this.oneHourCheckBox.Text = "Every hour";
             this.oneHourCheckBox.UseVisualStyleBackColor = true;
+            this.oneHourCheckBox.CheckedChanged += new System.EventHandler(this.oneHourCheckBox_CheckedChanged);
             // 
             // fifteenMinutesCheckBox
             // 
@@ -509,6 +511,7 @@
             this.fifteenMinutesCheckBox.TabIndex = 3;
             this.fifteenMinutesCheckBox.Text = "Every 15 minutes (Recommended)";
             this.fifteenMinutesCheckBox.UseVisualStyleBackColor = true;
+            this.fifteenMinutesCheckBox.CheckedChanged += new System.EventHandler(this.fifteenMinutesCheckBox_CheckedChanged);
             // 
             // tenMinutesCheckBox
             // 
@@ -519,6 +522,7 @@
             this.tenMinutesCheckBox.TabIndex = 2;
             this.tenMinutesCheckBox.Text = "Every 10 minutes";
             this.tenMinutesCheckBox.UseVisualStyleBackColor = true;
+            this.tenMinutesCheckBox.CheckedChanged += new System.EventHandler(this.tenMinutesCheckBox_CheckedChanged);
             // 
             // fiveMinutesCheckBox
             // 
@@ -529,6 +533,7 @@
             this.fiveMinutesCheckBox.TabIndex = 1;
             this.fiveMinutesCheckBox.Text = "Every 5 minutes";
             this.fiveMinutesCheckBox.UseVisualStyleBackColor = true;
+            this.fiveMinutesCheckBox.CheckedChanged += new System.EventHandler(this.fiveMinutesCheckBox_CheckedChanged);
             // 
             // noBreaksCheckBox
             // 
@@ -662,6 +667,7 @@
         private System.Windows.Forms.CheckBox fiveMinutesCheckBox;
         private System.Windows.Forms.CheckBox noBreaksCheckBox;
         private System.Windows.Forms.Timer breakTimer;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
