@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainFacebookApp));
             this.appIcon = new System.Windows.Forms.PictureBox();
             this.buttonLogin = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabUserPosts = new System.Windows.Forms.TabPage();
             this.userPostsList = new System.Windows.Forms.ListBox();
@@ -110,16 +109,6 @@
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(715, 651);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Logout";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // tabControlMain
             // 
@@ -559,10 +548,11 @@
             this.Controls.Add(this.userNamePresentation);
             this.Controls.Add(this.profilePicture);
             this.Controls.Add(this.tabControlMain);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.appIcon);
             this.Controls.Add(this.coverPhoto);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormMainFacebookApp";
             this.Text = "Facebook";
             ((System.ComponentModel.ISupportInitialize)(this.appIcon)).EndInit();
@@ -592,7 +582,6 @@
         #endregion
         private System.Windows.Forms.PictureBox appIcon;
         private System.Windows.Forms.Button buttonLogin;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage tabUserPosts;
         private System.Windows.Forms.TabPage tabAboutUser;
