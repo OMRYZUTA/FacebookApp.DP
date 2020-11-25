@@ -641,6 +641,12 @@
             this.userNamePresentation.TabIndex = 8;
             this.userNamePresentation.Text = "";
             // 
+            // breakManagerTimer
+            // 
+            this.breakManagerTimer.Enabled = true;
+            this.breakManagerTimer.Interval = 1000;
+            this.breakManagerTimer.Tick += new System.EventHandler(this.breakManagerTimer_Tick);
+            // 
             // FormMainFacebookApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);

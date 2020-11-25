@@ -14,6 +14,7 @@ namespace FacebookApp
         private LoginResult m_LoginResult;
         private readonly TabsLoader r_TabsLoader;
         private readonly AlbumCreator r_AlbumCreator;
+        private BreaksManager m_BreakManager;
 
         public FormMainFacebookApp()
         {
@@ -21,6 +22,7 @@ namespace FacebookApp
             r_AlbumCreator = new AlbumCreator();
             InitializeComponent();
             FacebookService.s_CollectionLimit = 200;
+            m_BreakManager = new BreaksManager();
         }
 
         private void loginAndInit()
@@ -54,6 +56,7 @@ namespace FacebookApp
                     m_LoggedInUser = m_LoginResult.LoggedInUser;
                     r_TabsLoader.LoggedInUser = m_LoggedInUser;
                     fetchUserBasicInfo();
+                    breakManagerTimer.Start();
                 }
                 else
                 {
@@ -210,6 +213,20 @@ namespace FacebookApp
 
         private void saveBreakManagerSettingsButton_Click(object sender, EventArgs e)
         {
+            foreach (object listObject in breakManagerFeature.Controls)
+            {
+                if (listObject is RadioButton)
+                {
+                    if ((listObject as RadioButton).Checked == true)
+                    {
+                        BreaksManager i_breakManager = new BreaksManager();
+                        i_breakManager.m_Stopper = i_breakManager.CalculateTime((listObject as RadioButton).Name);
+                        m_BreakManager = i_breakManager;
+                        breakManagerTimer.Start();
+                    }
+                }
+            }
+            breakManagerTimer.Start();
 
         }
 
@@ -325,6 +342,18 @@ namespace FacebookApp
             {
                 Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
                 oneHourButton.Font = newBoldFont;
+            }
+        }
+
+        private void breakManagerTimer_Tick(object sender, EventArgs e)
+        {
+            m_BreakManager.m_Seconds += 1;
+            if(m_BreakManager.m_Seconds == m_BreakManager.m_Stopper)
+            {
+                MessageBox.Show("Take a break!");
+                breakManagerTimer.Stop();
+                m_BreakManager.InitSeconds();
+                breakManagerTimer.Start();
             }
         }
     }
