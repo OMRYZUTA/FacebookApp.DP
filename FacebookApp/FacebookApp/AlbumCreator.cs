@@ -28,7 +28,6 @@ namespace FacebookApp
             {
                 foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
                 {
-
                     if (photo.Tags != null)
                     {
                         foreach (PhotoTag tag in photo.Tags)
@@ -50,7 +49,7 @@ namespace FacebookApp
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    if(photosBox != null)
+                    if (photosBox != null)
                     {
                         photosBox.Items.Add(LoggedInUser.PhotosTaggedIn[i]);
                     }
