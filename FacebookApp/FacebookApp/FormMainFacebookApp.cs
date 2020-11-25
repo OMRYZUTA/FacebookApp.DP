@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace FacebookApp
 {
@@ -205,6 +206,126 @@ namespace FacebookApp
         private void listBoxAlbumWithFriend_SelectedIndexChanged(object sender, EventArgs e)
         {
             displaySelectedPicture(listBoxAlbumWithFriend, pictureBoxFriend);
+        }
+
+        private void saveBreakManagerSettingsButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void noBreaksButton_Click(object sender, EventArgs e)
+        {
+            foreach (object listObject in breakManagerFeature.Controls)
+            {
+                if (listObject is RadioButton)
+                {
+                    if ((listObject as RadioButton).Font.Bold == true)
+                    {
+                        if (listObject != noBreaksButton)
+                        {
+                            (listObject as RadioButton).Font =
+                                new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Regular);
+                        }
+                    }
+                }
+            }
+            if (noBreaksButton.Checked == true)
+            {
+                Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
+                noBreaksButton.Font = newBoldFont;
+            }
+        }
+
+        private void fiveMinutesButton_Click(object sender, EventArgs e)
+        {
+            foreach (object listObject in breakManagerFeature.Controls)
+            {
+                if (listObject is RadioButton)
+                {
+                    if ((listObject as RadioButton).Font.Bold == true)
+                    {
+                        if (listObject != fiveMinutesButton)
+                        {
+                            (listObject as RadioButton).Font =
+                                new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Regular);
+                        }
+                    }
+                }
+            }
+            if (fiveMinutesButton.Checked == true)
+            {
+                Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
+                fiveMinutesButton.Font = newBoldFont;
+            }
+        }
+
+        private void tenMinutesButton_Click(object sender, EventArgs e)
+        {
+            foreach (object listObject in breakManagerFeature.Controls)
+            {
+                if (listObject is RadioButton)
+                {
+                    if ((listObject as RadioButton).Font.Bold == true)
+                    {
+                        if (listObject != tenMinutesButton)
+                        {
+                            (listObject as RadioButton).Font =
+                                new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Regular);
+                        }
+                    }
+                }
+            }
+            if (tenMinutesButton.Checked == true)
+            {
+                Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
+                tenMinutesButton.Font = newBoldFont;
+            }
+        }
+
+        private void fifteenMinutesButton_Click(object sender, EventArgs e)
+        {
+            foreach (object listObject in breakManagerFeature.Controls)
+            {
+                if (listObject is RadioButton)
+                {
+                    if ((listObject as RadioButton).Font.Bold == true)
+                    {
+                        if (listObject != fifteenMinutesButton)
+                        {
+                            (listObject as RadioButton).Font =
+                                new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Regular);
+                        }
+                    }
+                }
+            }
+            if (fifteenMinutesButton.Checked == true)
+            {
+                Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
+                fifteenMinutesButton.Font = newBoldFont;
+            }
+        }
+
+        private void oneHourButton_Click(object sender, EventArgs e)
+        {
+            foreach (object listObject in breakManagerFeature.Controls)
+            {
+                if (listObject is RadioButton)
+                {
+                    if ((listObject as RadioButton).Font.Bold == true)
+                    {
+                        if (listObject != oneHourButton)
+                        {
+                            (listObject as RadioButton).Font =
+                                new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Regular);
+                        }
+                    }
+                }
+            }
+            if (oneHourButton.Checked == true)
+            {
+                Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
+                oneHourButton.Font = newBoldFont;
+            }
         }
     }
 }
