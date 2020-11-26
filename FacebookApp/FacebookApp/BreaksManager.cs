@@ -45,11 +45,9 @@ namespace FacebookApp
 
         public int CalculateTime(string i_ChosenButtonName)
         {
-
             ConvertStringToETime(i_ChosenButtonName);
             int chosenInterval;
             chosenInterval = ConvertETimeToInt(m_breakTime);
-
             return chosenInterval;
         }
 

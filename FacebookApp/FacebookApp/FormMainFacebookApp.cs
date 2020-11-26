@@ -49,8 +49,7 @@ namespace FacebookApp
                     "user_location",
                     "user_photos",
                     "user_posts",
-                    "user_hometown"
-                    );
+                    "user_hometown");
                 if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
                 {
                     m_LoggedInUser = m_LoginResult.LoggedInUser;
@@ -62,7 +61,6 @@ namespace FacebookApp
                 {
                     MessageBox.Show(m_LoginResult.ErrorMessage);
                 }
-
             }
         }
         private void fetchUserBasicInfo()
@@ -189,7 +187,7 @@ namespace FacebookApp
             displaySelectedPicture(photosListBox, pictureBoxSelected);
         }
 
-        private void displaySelectedPicture(ListBox i_PhotosList , PictureBox i_PictureBoxSelected)
+        private void displaySelectedPicture(ListBox i_PhotosList, PictureBox i_PictureBoxSelected)
         {
             if (i_PhotosList.SelectedItems.Count == 1)
             {
@@ -219,25 +217,40 @@ namespace FacebookApp
                 {
                     if ((listObject as RadioButton).Checked == true)
                     {
-                        BreaksManager i_breakManager = new BreaksManager();
-                        i_breakManager.m_Stopper = i_breakManager.CalculateTime((listObject as RadioButton).Name);
-                        m_BreakManager = i_breakManager;
+                        setNewBreaksManager(listObject);
                     }
                 }
             }
 
             if(noBreaksButton.Checked == true)
             {
-                breakManagerTimer.Stop();
-                m_BreakManager.InitMinutes();
-                m_BreakManager.InitSeconds();
-                showTimer();
+                disableBreaksPrompts();
             }
             else
             {
-                m_BreakManager.InitMinutes();
-                breakManagerTimer.Start();
+                startNewBreakCount();
             }
+        }
+
+        private void startNewBreakCount()
+        {
+            this.m_BreakManager.InitMinutes();
+            this.breakManagerTimer.Start();
+        }
+
+        private void disableBreaksPrompts()
+        {
+            this.breakManagerTimer.Stop();
+            this.m_BreakManager.InitMinutes();
+            this.m_BreakManager.InitSeconds();
+            this.showTimer();
+        }
+
+        private void setNewBreaksManager(object listObject)
+        {
+            BreaksManager i_breakManager = new BreaksManager();
+            i_breakManager.m_Stopper = i_breakManager.CalculateTime((listObject as RadioButton).Name);
+            this.m_BreakManager = i_breakManager;
         }
 
         private void noBreaksButton_Click(object sender, EventArgs e)
@@ -246,7 +259,7 @@ namespace FacebookApp
             {
                 if (listObject is RadioButton)
                 {
-                    if ((listObject as RadioButton).Font.Bold == true)
+                    if ((listObject as RadioButton).Font.Bold)
                     {
                         if (listObject != noBreaksButton)
                         {
@@ -256,7 +269,8 @@ namespace FacebookApp
                     }
                 }
             }
-            if (noBreaksButton.Checked == true)
+
+            if (noBreaksButton.Checked)
             {
                 Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
                 noBreaksButton.Font = newBoldFont;
@@ -279,7 +293,8 @@ namespace FacebookApp
                     }
                 }
             }
-            if (fiveMinutesButton.Checked == true)
+
+            if (fiveMinutesButton.Checked)
             {
                 Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
                 fiveMinutesButton.Font = newBoldFont;
@@ -302,6 +317,7 @@ namespace FacebookApp
                     }
                 }
             }
+
             if (tenMinutesButton.Checked == true)
             {
                 Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
@@ -358,27 +374,37 @@ namespace FacebookApp
         private void breakManagerTimer_Tick(object sender, EventArgs e)
         {
             m_BreakManager.m_Seconds += 1;
-            if(m_BreakManager.m_Seconds % 60 == 0)
+            if (m_BreakManager.m_Seconds % 60 == 0)
             {
-                m_BreakManager.m_Seconds = 0;
-                m_BreakManager.m_Minutes += 1;
+                addMinuteToTimer();
             }
             showTimer();
             if (m_BreakManager.m_Minutes == m_BreakManager.m_Stopper)
             {
-                breakManagerTimer.Stop();
-                m_BreakManager.InitMinutes();
-                MessageBox.Show("Take a break!");
-                breakManagerTimer.Start();
+                popUpTakeAbreakMessage();
             }
+        }
+
+        private void popUpTakeAbreakMessage()
+        {
+            this.breakManagerTimer.Stop();
+            this.m_BreakManager.InitMinutes();
+            MessageBox.Show("Take a break!");
+            this.breakManagerTimer.Start();
+        }
+
+        private void addMinuteToTimer()
+        {
+            this.m_BreakManager.m_Seconds = 0;
+            this.m_BreakManager.m_Minutes += 1;
         }
 
         private void showTimer()
         {
             string minutes;
             string seconds;
-            
-            if(m_BreakManager.m_Minutes < 10)
+
+            if (m_BreakManager.m_Minutes < 10)
             {
                 minutes = 0 + m_BreakManager.m_Minutes.ToString();
             }

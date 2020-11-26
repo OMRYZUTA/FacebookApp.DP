@@ -53,10 +53,16 @@ namespace FacebookApp
         private void loadUserPhotosTab(object i_ObjectToInit)
         {
             ListBox photosBox = i_ObjectToInit as ListBox;
-
-            foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
+            try
             {
-                photosBox.Items.Add(photo);
+                foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
+                {
+                    photosBox.Items.Add(photo);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong, please contact support");
             }
         }
 
@@ -64,11 +70,17 @@ namespace FacebookApp
         {
             ListBox friendsBox = i_ObjectToInit as ListBox;
 
-            foreach (User friend in LoggedInUser.Friends)
+            try
             {
-                friendsBox.Items.Add(friend.Name);
+                foreach (User friend in LoggedInUser.Friends)
+                {
+                    friendsBox.Items.Add(friend.Name);
+                }
             }
-
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong, please contact support");
+            }
             LoadedTabs.Add(Tab.eTab.FriendsList);
         }
 
@@ -76,21 +88,24 @@ namespace FacebookApp
         {
             Dictionary<string, object> objectsToInit = i_ObjectsToInit as Dictionary<string, object>;
 
-            (objectsToInit["birthDayBox"] as TextBox).Text = LoggedInUser.Birthday;
+            
             try
             {
+                (objectsToInit["birthDayBox"] as TextBox).Text = LoggedInUser.Birthday;
                 (objectsToInit["genderBox"] as TextBox).Text = LoggedInUser.Gender.ToString();
+                (objectsToInit["livesInBox"] as TextBox).Text = LoggedInUser.Location.Name;
+                initWorkPlaces((objectsToInit["workPlacesList"]) as ListBox);
+                initEducationPlaces((objectsToInit["educationList"] as ListBox));
+                (objectsToInit["numberOfFriendsBox"] as RichTextBox).Text = LoggedInUser.Friends.Count.ToString();
+                (objectsToInit["numberOfPostsBox"] as RichTextBox).Text = LoggedInUser.Posts.Count.ToString();
+                (objectsToInit["numberOfAlbumsBox"] as RichTextBox).Text = LoggedInUser.Albums.Count.ToString();
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Something went wrong, please contact support");
             }
 
-            (objectsToInit["livesInBox"] as TextBox).Text = LoggedInUser.Location.Name;
-            initWorkPlaces((objectsToInit["workPlacesList"]) as ListBox);
-            initEducationPlaces((objectsToInit["educationList"] as ListBox));
-            (objectsToInit["numberOfFriendsBox"] as RichTextBox).Text = LoggedInUser.Friends.Count.ToString();
-            (objectsToInit["numberOfPostsBox"] as RichTextBox).Text = LoggedInUser.Posts.Count.ToString();
-            (objectsToInit["numberOfAlbumsBox"] as RichTextBox).Text = LoggedInUser.Albums.Count.ToString();
+            
             LoadedTabs.Add(Tab.eTab.AboutUser);
         }
 
@@ -131,17 +146,23 @@ namespace FacebookApp
         private void loadPostsTab(object i_UserPostsList)
         {
             ListBox userPostsList = i_UserPostsList as ListBox;
-
-            foreach (Post post in LoggedInUser.Posts)
+            try
             {
-                if (post.Message != null)
+                foreach (Post post in LoggedInUser.Posts)
                 {
-                    userPostsList.Items.Add(post.Message);
+                    if (post.Message != null)
+                    {
+                        userPostsList.Items.Add(post.Message);
+                    }
+                    else if (post.Caption != null)
+                    {
+                        userPostsList.Items.Add(post.Caption);
+                    }
                 }
-                else if (post.Caption != null)
-                {
-                    userPostsList.Items.Add(post.Caption);
-                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong, please contact support");
             }
 
             if (LoggedInUser.Posts.Count == 0)

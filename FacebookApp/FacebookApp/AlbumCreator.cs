@@ -18,7 +18,7 @@ namespace FacebookApp
             }
             else
             {
-                MessageBox.Show("Friend doesn't exist please type correctly the friend name");
+                MessageBox.Show("Friend doesn't exist. please type correctly the friend name");
             }
         }
 
