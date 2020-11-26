@@ -8,6 +8,7 @@
         const string k_FriendsList = "tabFriendsList";
         const string k_UserPhotos = "tabUserPhotos";
         const string k_CreateAlbum = "createAlbumFeature";
+
         public Tab()
         {
             TabType = eTab.None;

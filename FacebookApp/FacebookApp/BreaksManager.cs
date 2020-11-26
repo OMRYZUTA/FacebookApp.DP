@@ -12,6 +12,7 @@ namespace FacebookApp
         const string k_TenMinutes = "tenMinutesButton";
         const string k_FifteenMinutes = "fifteenMinutesButton";
         const string k_OneHour = "oneHourButton";
+
         public BreaksManager()
         {
             m_breakTime = eTime.fifteenMinutes;
@@ -47,7 +48,6 @@ namespace FacebookApp
 
             ConvertStringToETime(i_ChosenButtonName);
             int chosenInterval;
-
             chosenInterval = ConvertETimeToInt(m_breakTime);
 
             return chosenInterval;
@@ -55,28 +55,28 @@ namespace FacebookApp
 
         private int ConvertETimeToInt(eTime i_TimeToConvert)
         {
-            int i_Minutes = 15; //Chosen Default
+            int minutes = 15; //Chosen Default
 
             switch (i_TimeToConvert)
             {
                 case eTime.noBreakes:
-                    i_Minutes = 0;
+                    minutes = 0;
                     break;
                 case eTime.fifteenMinutes:
-                    i_Minutes = 15;
+                    minutes = 15;
                     break;
                 case eTime.fiveMinutes:
-                    i_Minutes = 5;
+                    minutes = 5;
                     break;
                 case eTime.oneHour:
-                    i_Minutes = 60;
+                    minutes = 60;
                     break;
                 case eTime.tenMinutes:
-                    i_Minutes = 10;
+                    minutes = 10;
                     break;
             }
 
-            return i_Minutes;
+            return minutes;
         }
 
 
@@ -93,6 +93,7 @@ namespace FacebookApp
         {
             m_Minutes = 0;
         }
+
         public void InitSeconds()
         {
             m_Seconds = 0;

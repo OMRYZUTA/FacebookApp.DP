@@ -11,6 +11,7 @@ namespace FacebookApp
         public void CreateAlbumWith(string i_FriendName, object i_ObjectToInit)
         {
             bool isFriendInList = isFriendInLoggedInUserList(i_FriendName);
+
             if (isFriendInList)
             {
                 generateNewAlbum(i_FriendName, i_ObjectToInit);
@@ -24,6 +25,7 @@ namespace FacebookApp
         private void generateNewAlbum(string i_FriendName, object i_ObjectToInit)
         {
             ListBox photosBox = i_ObjectToInit as ListBox;
+
             try
             {
                 foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
@@ -60,6 +62,7 @@ namespace FacebookApp
         private bool isFriendInLoggedInUserList(string i_FriendName)
         {
             bool result = false;
+
             foreach (User friend in LoggedInUser.Friends)
             {
                 if (friend.Name == i_FriendName)
@@ -68,6 +71,7 @@ namespace FacebookApp
                     break;
                 }
             }
+
             return result;
         }
     }

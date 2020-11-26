@@ -375,28 +375,28 @@ namespace FacebookApp
 
         private void showTimer()
         {
-            string i_Minutes;
-            string i_Seconds;
+            string minutes;
+            string seconds;
             
             if(m_BreakManager.m_Minutes < 10)
             {
-                i_Minutes = 0 + m_BreakManager.m_Minutes.ToString();
+                minutes = 0 + m_BreakManager.m_Minutes.ToString();
             }
             else
             {
-                i_Minutes = m_BreakManager.m_Minutes.ToString();
+                minutes = m_BreakManager.m_Minutes.ToString();
             }
 
             if (m_BreakManager.m_Seconds < 10)
             {
-                i_Seconds = 0 + m_BreakManager.m_Seconds.ToString();
+                seconds = 0 + m_BreakManager.m_Seconds.ToString();
             }
             else
             {
-                i_Seconds = m_BreakManager.m_Seconds.ToString();
+                seconds = m_BreakManager.m_Seconds.ToString();
             }
 
-            timerPresentation.Text = i_Minutes + ":" + i_Seconds;
+            timerPresentation.Text = minutes + ":" + seconds;
         }
     }
 }

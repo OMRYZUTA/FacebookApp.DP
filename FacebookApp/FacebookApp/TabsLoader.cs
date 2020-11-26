@@ -8,7 +8,6 @@ namespace FacebookApp
     public class TabsLoader
     {
         public List<Tab.eTab> LoadedTabs { get; set; }
-
         public User LoggedInUser { get; set; }
 
         public TabsLoader()
@@ -54,6 +53,7 @@ namespace FacebookApp
         private void loadUserPhotosTab(object i_ObjectToInit)
         {
             ListBox photosBox = i_ObjectToInit as ListBox;
+
             foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
             {
                 photosBox.Items.Add(photo);
@@ -63,16 +63,19 @@ namespace FacebookApp
         private void loadFriendsListTab(object i_ObjectToInit)
         {
             ListBox friendsBox = i_ObjectToInit as ListBox;
+
             foreach (User friend in LoggedInUser.Friends)
             {
                 friendsBox.Items.Add(friend.Name);
             }
+
             LoadedTabs.Add(Tab.eTab.FriendsList);
         }
 
         private void loadAboutUserTab(object i_ObjectsToInit)
         {
             Dictionary<string, object> objectsToInit = i_ObjectsToInit as Dictionary<string, object>;
+
             (objectsToInit["birthDayBox"] as TextBox).Text = LoggedInUser.Birthday;
             try
             {
@@ -128,6 +131,7 @@ namespace FacebookApp
         private void loadPostsTab(object i_UserPostsList)
         {
             ListBox userPostsList = i_UserPostsList as ListBox;
+
             foreach (Post post in LoggedInUser.Posts)
             {
                 if (post.Message != null)
@@ -139,10 +143,12 @@ namespace FacebookApp
                     userPostsList.Items.Add(post.Caption);
                 }
             }
+
             if (LoggedInUser.Posts.Count == 0)
             {
                 MessageBox.Show("No Posts to retrieve :(");
             }
+
             LoadedTabs.Add(Tab.eTab.Posts);
         }
     }
