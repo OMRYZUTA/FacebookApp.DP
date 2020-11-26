@@ -3,7 +3,7 @@ namespace FacebookApp
 {
     public class BreaksManager
     {
-        public eTime m_breakTime { get; private set; }
+        public TimeEnum.eTime m_breakTime { get; private set; }
         public int m_Stopper { get; set; }
         public int m_Seconds { get; set; }
         public int m_Minutes { get; set; }
@@ -15,7 +15,7 @@ namespace FacebookApp
 
         public BreaksManager()
         {
-            m_breakTime = eTime.fifteenMinutes;
+            m_breakTime = TimeEnum.eTime.fifteenMinutes;
             m_Stopper = CalculateTime("fifteenMinutesButton");
             m_Seconds = 0;
             m_Minutes = 0;
@@ -26,19 +26,19 @@ namespace FacebookApp
             switch(i_BreakTime)
             {
                 case k_NoBreaks:
-                    m_breakTime = eTime.noBreakes;
+                    m_breakTime = TimeEnum.eTime.noBreakes;
                     break;
                 case k_FifteenMinutes:
-                    m_breakTime = eTime.fifteenMinutes;
+                    m_breakTime = TimeEnum.eTime.fifteenMinutes;
                     break;
                 case k_FiveMinutes:
-                    m_breakTime = eTime.fiveMinutes;
+                    m_breakTime = TimeEnum.eTime.fiveMinutes;
                     break;
                 case k_OneHour:
-                    m_breakTime = eTime.oneHour;
+                    m_breakTime = TimeEnum.eTime.oneHour;
                     break;
                 case k_TenMinutes:
-                    m_breakTime = eTime.tenMinutes;
+                    m_breakTime = TimeEnum.eTime.tenMinutes;
                     break;
             }
         }
@@ -53,25 +53,25 @@ namespace FacebookApp
             return chosenInterval;
         }
 
-        private int ConvertETimeToInt(eTime i_TimeToConvert)
+        private int ConvertETimeToInt(TimeEnum.eTime i_TimeToConvert)
         {
             int minutes = 15; //Chosen Default
 
             switch (i_TimeToConvert)
             {
-                case eTime.noBreakes:
+                case TimeEnum.eTime.noBreakes:
                     minutes = 0;
                     break;
-                case eTime.fifteenMinutes:
+                case TimeEnum.eTime.fifteenMinutes:
                     minutes = 15;
                     break;
-                case eTime.fiveMinutes:
+                case TimeEnum.eTime.fiveMinutes:
                     minutes = 5;
                     break;
-                case eTime.oneHour:
+                case TimeEnum.eTime.oneHour:
                     minutes = 60;
                     break;
-                case eTime.tenMinutes:
+                case TimeEnum.eTime.tenMinutes:
                     minutes = 10;
                     break;
             }
@@ -80,14 +80,6 @@ namespace FacebookApp
         }
 
 
-        public enum eTime
-        {
-            noBreakes,
-            fiveMinutes,
-            tenMinutes,
-            fifteenMinutes,
-            oneHour
-        }
 
         public void InitMinutes()
         {
