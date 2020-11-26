@@ -7,12 +7,12 @@ namespace FacebookApp
 {
     public class TabsLoader
     {
-        public List<Tab.eTab> LoadedTabs { get; set; }
+        public List<TabsEnum.eTab> LoadedTabs { get; set; }
         public User LoggedInUser { get; set; }
 
         public TabsLoader()
         {
-            LoadedTabs = new List<Tab.eTab>();
+            LoadedTabs = new List<TabsEnum.eTab>();
         }
 
         public bool IsTabLoaded(Tab i_Tab)
@@ -25,19 +25,19 @@ namespace FacebookApp
         {
             switch (i_Tab.TabType)
             {
-                case Tab.eTab.Posts:
+                case TabsEnum.eTab.Posts:
                     loadPostsTab(i_ObjectToInit);
                     break;
-                case Tab.eTab.AboutUser:
+                case TabsEnum.eTab.AboutUser:
                     loadAboutUserTab(i_ObjectToInit);
                     break;
-                case Tab.eTab.FriendsList:
+                case TabsEnum.eTab.FriendsList:
                     loadFriendsListTab(i_ObjectToInit);
                     break;
-                case Tab.eTab.UserPhotos:
+                case TabsEnum.eTab.UserPhotos:
                     loadUserPhotosTab(i_ObjectToInit);
                     break;
-                case Tab.eTab.CreateAlbum:
+                case TabsEnum.eTab.CreateAlbum:
                     loadAlbumCreator(i_ObjectToInit);
                     break;
             }
@@ -47,22 +47,16 @@ namespace FacebookApp
         {
             AlbumCreator albumCreator = i_ObjectToInit as AlbumCreator;
             albumCreator.LoggedInUser = LoggedInUser;
-            LoadedTabs.Add(Tab.eTab.CreateAlbum);
+            LoadedTabs.Add(TabsEnum.eTab.CreateAlbum);
         }
 
         private void loadUserPhotosTab(object i_ObjectToInit)
         {
             ListBox photosBox = i_ObjectToInit as ListBox;
-            try
+
+            foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
             {
-                foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
-                {
-                    photosBox.Items.Add(photo);
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Something went wrong, please contact support");
+                photosBox.Items.Add(photo);
             }
         }
 
@@ -70,43 +64,34 @@ namespace FacebookApp
         {
             ListBox friendsBox = i_ObjectToInit as ListBox;
 
-            try
+            foreach (User friend in LoggedInUser.Friends)
             {
-                foreach (User friend in LoggedInUser.Friends)
-                {
-                    friendsBox.Items.Add(friend.Name);
-                }
+                friendsBox.Items.Add(friend.Name);
             }
-            catch (Exception e)
-            {
-                MessageBox.Show("Something went wrong, please contact support");
-            }
-            LoadedTabs.Add(Tab.eTab.FriendsList);
+
+            LoadedTabs.Add(TabsEnum.eTab.FriendsList);
         }
 
         private void loadAboutUserTab(object i_ObjectsToInit)
         {
             Dictionary<string, object> objectsToInit = i_ObjectsToInit as Dictionary<string, object>;
 
-            
+            (objectsToInit["birthDayBox"] as TextBox).Text = LoggedInUser.Birthday;
             try
             {
-                (objectsToInit["birthDayBox"] as TextBox).Text = LoggedInUser.Birthday;
                 (objectsToInit["genderBox"] as TextBox).Text = LoggedInUser.Gender.ToString();
-                (objectsToInit["livesInBox"] as TextBox).Text = LoggedInUser.Location.Name;
-                initWorkPlaces((objectsToInit["workPlacesList"]) as ListBox);
-                initEducationPlaces((objectsToInit["educationList"] as ListBox));
-                (objectsToInit["numberOfFriendsBox"] as RichTextBox).Text = LoggedInUser.Friends.Count.ToString();
-                (objectsToInit["numberOfPostsBox"] as RichTextBox).Text = LoggedInUser.Posts.Count.ToString();
-                (objectsToInit["numberOfAlbumsBox"] as RichTextBox).Text = LoggedInUser.Albums.Count.ToString();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Something went wrong, please contact support");
             }
 
-            
-            LoadedTabs.Add(Tab.eTab.AboutUser);
+            (objectsToInit["livesInBox"] as TextBox).Text = LoggedInUser.Location.Name;
+            initWorkPlaces((objectsToInit["workPlacesList"]) as ListBox);
+            initEducationPlaces((objectsToInit["educationList"] as ListBox));
+            (objectsToInit["numberOfFriendsBox"] as RichTextBox).Text = LoggedInUser.Friends.Count.ToString();
+            (objectsToInit["numberOfPostsBox"] as RichTextBox).Text = LoggedInUser.Posts.Count.ToString();
+            (objectsToInit["numberOfAlbumsBox"] as RichTextBox).Text = LoggedInUser.Albums.Count.ToString();
+            LoadedTabs.Add(TabsEnum.eTab.AboutUser);
         }
 
         private void initEducationPlaces(ListBox i_ListBox)
@@ -146,23 +131,17 @@ namespace FacebookApp
         private void loadPostsTab(object i_UserPostsList)
         {
             ListBox userPostsList = i_UserPostsList as ListBox;
-            try
+
+            foreach (Post post in LoggedInUser.Posts)
             {
-                foreach (Post post in LoggedInUser.Posts)
+                if (post.Message != null)
                 {
-                    if (post.Message != null)
-                    {
-                        userPostsList.Items.Add(post.Message);
-                    }
-                    else if (post.Caption != null)
-                    {
-                        userPostsList.Items.Add(post.Caption);
-                    }
+                    userPostsList.Items.Add(post.Message);
                 }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Something went wrong, please contact support");
+                else if (post.Caption != null)
+                {
+                    userPostsList.Items.Add(post.Caption);
+                }
             }
 
             if (LoggedInUser.Posts.Count == 0)
@@ -170,7 +149,7 @@ namespace FacebookApp
                 MessageBox.Show("No Posts to retrieve :(");
             }
 
-            LoadedTabs.Add(Tab.eTab.Posts);
+            LoadedTabs.Add(TabsEnum.eTab.Posts);
         }
     }
 }

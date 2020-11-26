@@ -53,6 +53,7 @@
     <Compile Include="AlbumCreator.cs" />
     <Compile Include="BreaksManager.cs" />
     <Compile Include="Tab.cs" />
+    <Compile Include="TabsEnum.cs" />
     <Compile Include="TabsLoader.cs" />
     <Compile Include="FormMainFacebookApp.cs">
       <SubType>Form</SubType>
@@ -62,6 +63,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeEnum.cs" />
     <EmbeddedResource Include="FormMainFacebookApp.resx">
       <DependentUpon>FormMainFacebookApp.cs</DependentUpon>
     </EmbeddedResource>
