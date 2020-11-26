@@ -14,8 +14,6 @@
             TabType = eTab.None;
         }
 
-
-
         public void ConvertStringToEnum(string i_TabName)
         {
             switch (i_TabName)

@@ -3,7 +3,7 @@ namespace FacebookApp
 {
     public class BreaksManager
     {
-        public eTime m_breakTime { get; private set; }
+        private eTime m_breakTime { get; set; }
         public int m_Stopper { get; set; }
         public int m_Seconds { get; set; }
         public int m_Minutes { get; set; }
@@ -20,8 +20,8 @@ namespace FacebookApp
             m_Seconds = 0;
             m_Minutes = 0;
         }
-        
-        public void ConvertStringToETime(string i_BreakTime)
+
+        private void ConvertStringToETime(string i_BreakTime)
         {
             switch(i_BreakTime)
             {
@@ -46,8 +46,7 @@ namespace FacebookApp
         public int CalculateTime(string i_ChosenButtonName)
         {
             ConvertStringToETime(i_ChosenButtonName);
-            int chosenInterval;
-            chosenInterval = ConvertETimeToInt(m_breakTime);
+            int chosenInterval = this.ConvertETimeToInt(this.m_breakTime);
             return chosenInterval;
         }
 

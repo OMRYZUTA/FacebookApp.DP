@@ -234,23 +234,23 @@ namespace FacebookApp
 
         private void startNewBreakCount()
         {
-            this.m_BreakManager.InitMinutes();
-            this.breakManagerTimer.Start();
+            m_BreakManager.InitMinutes();
+            breakManagerTimer.Start();
         }
 
         private void disableBreaksPrompts()
         {
-            this.breakManagerTimer.Stop();
-            this.m_BreakManager.InitMinutes();
-            this.m_BreakManager.InitSeconds();
-            this.showTimer();
+            breakManagerTimer.Stop();
+            m_BreakManager.InitMinutes();
+            m_BreakManager.InitSeconds();
+            showTimer();
         }
 
         private void setNewBreaksManager(object listObject)
         {
             BreaksManager i_breakManager = new BreaksManager();
             i_breakManager.m_Stopper = i_breakManager.CalculateTime((listObject as RadioButton).Name);
-            this.m_BreakManager = i_breakManager;
+            m_BreakManager = i_breakManager;
         }
 
         private void noBreaksButton_Click(object sender, EventArgs e)
@@ -387,16 +387,16 @@ namespace FacebookApp
 
         private void popUpTakeAbreakMessage()
         {
-            this.breakManagerTimer.Stop();
-            this.m_BreakManager.InitMinutes();
+            breakManagerTimer.Stop();
+            m_BreakManager.InitMinutes();
             MessageBox.Show("Take a break!");
-            this.breakManagerTimer.Start();
+            breakManagerTimer.Start();
         }
 
         private void addMinuteToTimer()
         {
-            this.m_BreakManager.m_Seconds = 0;
-            this.m_BreakManager.m_Minutes += 1;
+            m_BreakManager.m_Seconds = 0;
+            m_BreakManager.m_Minutes += 1;
         }
 
         private void showTimer()

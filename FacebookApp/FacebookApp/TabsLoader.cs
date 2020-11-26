@@ -7,7 +7,7 @@ namespace FacebookApp
 {
     public class TabsLoader
     {
-        public List<eTab> LoadedTabs { get; set; }
+        private List<eTab> LoadedTabs { get; }
         public User LoggedInUser { get; set; }
 
         public TabsLoader()

@@ -10,7 +10,7 @@ namespace FacebookApp
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static public void Main()
+        public static void Main()
         {
             FacebookService.s_UseForamttedToStrings = true;
             Application.EnableVisualStyles();

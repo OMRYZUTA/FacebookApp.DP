@@ -36,7 +36,10 @@ namespace FacebookApp
                         {
                             if (tag.User.Name == i_FriendName)
                             {
-                                photosBox.Items.Add(photo);
+                                if (photosBox != null)
+                                {
+                                    photosBox.Items.Add(photo);
+                                }
                             }
                         }
                     }
@@ -51,10 +54,7 @@ namespace FacebookApp
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    if (photosBox != null)
-                    {
-                        photosBox.Items.Add(LoggedInUser.PhotosTaggedIn[i]);
-                    }
+                    photosBox?.Items.Add(this.LoggedInUser.PhotosTaggedIn[i]);
                 }
             }
         }
