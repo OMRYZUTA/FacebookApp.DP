@@ -2,7 +2,7 @@
 {
     public class Tab
     {
-        public TabsEnum.eTab TabType { get; private set; }
+        public eTab TabType { get; private set; }
         const string k_Posts = "tabUserPosts";
         const string k_AboutUser = "tabAboutUser";
         const string k_FriendsList = "tabFriendsList";
@@ -11,7 +11,7 @@
 
         public Tab()
         {
-            TabType = TabsEnum.eTab.None;
+            TabType = eTab.None;
         }
 
 
@@ -21,19 +21,19 @@
             switch (i_TabName)
             {
                 case k_Posts:
-                    TabType = TabsEnum.eTab.Posts;
+                    TabType = eTab.Posts;
                     break;
                 case k_AboutUser:
-                    TabType = TabsEnum.eTab.AboutUser;
+                    TabType = eTab.AboutUser;
                     break;
                 case k_FriendsList:
-                    TabType = TabsEnum.eTab.FriendsList;
+                    TabType = eTab.FriendsList;
                     break;
                 case k_UserPhotos:
-                    TabType = TabsEnum.eTab.UserPhotos;
+                    TabType = eTab.UserPhotos;
                     break;
                 case k_CreateAlbum:
-                    TabType = TabsEnum.eTab.CreateAlbum;
+                    TabType = eTab.CreateAlbum;
                     break;
             }
         }

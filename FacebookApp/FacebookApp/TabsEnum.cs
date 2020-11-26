@@ -5,8 +5,6 @@ using System.Text;
 
 namespace FacebookApp
 {
-    public class TabsEnum
-    {
         public enum eTab
         {
             Posts,
@@ -16,5 +14,4 @@ namespace FacebookApp
             CreateAlbum,
             None
         }
-    }
 }

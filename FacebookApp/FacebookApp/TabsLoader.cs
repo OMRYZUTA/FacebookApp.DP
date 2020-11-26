@@ -7,12 +7,12 @@ namespace FacebookApp
 {
     public class TabsLoader
     {
-        public List<TabsEnum.eTab> LoadedTabs { get; set; }
+        public List<eTab> LoadedTabs { get; set; }
         public User LoggedInUser { get; set; }
 
         public TabsLoader()
         {
-            LoadedTabs = new List<TabsEnum.eTab>();
+            LoadedTabs = new List<eTab>();
         }
 
         public bool IsTabLoaded(Tab i_Tab)
@@ -25,19 +25,19 @@ namespace FacebookApp
         {
             switch (i_Tab.TabType)
             {
-                case TabsEnum.eTab.Posts:
+                case eTab.Posts:
                     loadPostsTab(i_ObjectToInit);
                     break;
-                case TabsEnum.eTab.AboutUser:
+                case eTab.AboutUser:
                     loadAboutUserTab(i_ObjectToInit);
                     break;
-                case TabsEnum.eTab.FriendsList:
+                case eTab.FriendsList:
                     loadFriendsListTab(i_ObjectToInit);
                     break;
-                case TabsEnum.eTab.UserPhotos:
+                case eTab.UserPhotos:
                     loadUserPhotosTab(i_ObjectToInit);
                     break;
-                case TabsEnum.eTab.CreateAlbum:
+                case eTab.CreateAlbum:
                     loadAlbumCreator(i_ObjectToInit);
                     break;
             }
@@ -47,7 +47,7 @@ namespace FacebookApp
         {
             AlbumCreator albumCreator = i_ObjectToInit as AlbumCreator;
             albumCreator.LoggedInUser = LoggedInUser;
-            LoadedTabs.Add(TabsEnum.eTab.CreateAlbum);
+            LoadedTabs.Add(eTab.CreateAlbum);
         }
 
         private void loadUserPhotosTab(object i_ObjectToInit)
@@ -69,7 +69,7 @@ namespace FacebookApp
                 friendsBox.Items.Add(friend.Name);
             }
 
-            LoadedTabs.Add(TabsEnum.eTab.FriendsList);
+            LoadedTabs.Add(eTab.FriendsList);
         }
 
         private void loadAboutUserTab(object i_ObjectsToInit)
@@ -91,7 +91,7 @@ namespace FacebookApp
             (objectsToInit["numberOfFriendsBox"] as RichTextBox).Text = LoggedInUser.Friends.Count.ToString();
             (objectsToInit["numberOfPostsBox"] as RichTextBox).Text = LoggedInUser.Posts.Count.ToString();
             (objectsToInit["numberOfAlbumsBox"] as RichTextBox).Text = LoggedInUser.Albums.Count.ToString();
-            LoadedTabs.Add(TabsEnum.eTab.AboutUser);
+            LoadedTabs.Add(eTab.AboutUser);
         }
 
         private void initEducationPlaces(ListBox i_ListBox)
@@ -149,7 +149,7 @@ namespace FacebookApp
                 MessageBox.Show("No Posts to retrieve :(");
             }
 
-            LoadedTabs.Add(TabsEnum.eTab.Posts);
+            LoadedTabs.Add(eTab.Posts);
         }
     }
 }

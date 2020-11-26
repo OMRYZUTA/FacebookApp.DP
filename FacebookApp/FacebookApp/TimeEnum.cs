@@ -5,8 +5,6 @@ using System.Text;
 
 namespace FacebookApp
 {
-    public class TimeEnum
-    {
         public enum eTime
         {
             noBreakes,
@@ -15,5 +13,4 @@ namespace FacebookApp
             fifteenMinutes,
             oneHour
         }
-    }
 }
