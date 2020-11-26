@@ -3,7 +3,7 @@ namespace FacebookApp
 {
     public class BreaksManager
     {
-        public TimeEnum.eTime m_breakTime { get; private set; }
+        public eTime m_breakTime { get; private set; }
         public int m_Stopper { get; set; }
         public int m_Seconds { get; set; }
         public int m_Minutes { get; set; }
@@ -15,7 +15,7 @@ namespace FacebookApp
 
         public BreaksManager()
         {
-            m_breakTime = TimeEnum.eTime.fifteenMinutes;
+            m_breakTime = eTime.fifteenMinutes;
             m_Stopper = CalculateTime("fifteenMinutesButton");
             m_Seconds = 0;
             m_Minutes = 0;
@@ -26,19 +26,19 @@ namespace FacebookApp
             switch(i_BreakTime)
             {
                 case k_NoBreaks:
-                    m_breakTime = TimeEnum.eTime.noBreakes;
+                    m_breakTime = eTime.noBreakes;
                     break;
                 case k_FifteenMinutes:
-                    m_breakTime = TimeEnum.eTime.fifteenMinutes;
+                    m_breakTime = eTime.fifteenMinutes;
                     break;
                 case k_FiveMinutes:
-                    m_breakTime = TimeEnum.eTime.fiveMinutes;
+                    m_breakTime = eTime.fiveMinutes;
                     break;
                 case k_OneHour:
-                    m_breakTime = TimeEnum.eTime.oneHour;
+                    m_breakTime = eTime.oneHour;
                     break;
                 case k_TenMinutes:
-                    m_breakTime = TimeEnum.eTime.tenMinutes;
+                    m_breakTime = eTime.tenMinutes;
                     break;
             }
         }
@@ -51,25 +51,25 @@ namespace FacebookApp
             return chosenInterval;
         }
 
-        private int ConvertETimeToInt(TimeEnum.eTime i_TimeToConvert)
+        private int ConvertETimeToInt(eTime i_TimeToConvert)
         {
             int minutes = 15; //Chosen Default
 
             switch (i_TimeToConvert)
             {
-                case TimeEnum.eTime.noBreakes:
+                case eTime.noBreakes:
                     minutes = 0;
                     break;
-                case TimeEnum.eTime.fifteenMinutes:
+                case eTime.fifteenMinutes:
                     minutes = 15;
                     break;
-                case TimeEnum.eTime.fiveMinutes:
+                case eTime.fiveMinutes:
                     minutes = 5;
                     break;
-                case TimeEnum.eTime.oneHour:
+                case eTime.oneHour:
                     minutes = 60;
                     break;
-                case TimeEnum.eTime.tenMinutes:
+                case eTime.tenMinutes:
                     minutes = 10;
                     break;
             }

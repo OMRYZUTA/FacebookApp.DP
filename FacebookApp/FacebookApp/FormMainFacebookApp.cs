@@ -126,19 +126,19 @@ namespace FacebookApp
                 {
                     switch (tab.TabType)
                     {
-                        case TabsEnum.eTab.Posts:
+                        case eTab.Posts:
                             loadPostsTab();
                             break;
-                        case TabsEnum.eTab.AboutUser:
+                        case eTab.AboutUser:
                             loadAboutUserTab();
                             break;
-                        case TabsEnum.eTab.FriendsList:
+                        case eTab.FriendsList:
                             loadFriendsListTab();
                             break;
-                        case TabsEnum.eTab.UserPhotos:
+                        case eTab.UserPhotos:
                             loadUserPhotosTab();
                             break;
-                        case TabsEnum.eTab.CreateAlbum:
+                        case eTab.CreateAlbum:
                             loadCreateAlbumTab();
                             break;
                     }
