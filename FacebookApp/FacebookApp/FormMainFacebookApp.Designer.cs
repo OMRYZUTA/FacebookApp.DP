@@ -1,6 +1,6 @@
 ﻿namespace FacebookApp
 {
-    partial class FormMainFacebookApp
+    public partial class FormMainFacebookApp
     {
         /// <summary>
         /// Required designer variable.
@@ -781,4 +781,3 @@
         private System.Windows.Forms.Label saveSettingsNote;
     }
 }
-

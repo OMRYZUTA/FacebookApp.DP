@@ -1,6 +1,6 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
@@ -26,6 +26,7 @@ namespace FacebookApp
         {
             ListBox photosBox = i_ObjectToInit as ListBox;
 
+            // since it doesn't work we implement it manually
             try
             {
                 foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
@@ -49,7 +50,6 @@ namespace FacebookApp
                     }
                 }
             }
-            // since it doesn't work we implement it manually
             catch (Exception ex)
             {
                 for (int i = 0; i < 10; i++)

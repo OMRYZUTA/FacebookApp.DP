@@ -3,11 +3,12 @@
     public class Tab
     {
         public eTab TabType { get; private set; }
-        const string k_Posts = "tabUserPosts";
-        const string k_AboutUser = "tabAboutUser";
-        const string k_FriendsList = "tabFriendsList";
-        const string k_UserPhotos = "tabUserPhotos";
-        const string k_CreateAlbum = "createAlbumFeature";
+
+        private const string k_Posts = "tabUserPosts";
+        private const string k_AboutUser = "tabAboutUser";
+        private const string k_FriendsList = "tabFriendsList";
+        private const string k_UserPhotos = "tabUserPhotos";
+        private const string k_CreateAlbum = "createAlbumFeature";
 
         public Tab()
         {

@@ -1,13 +1,14 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
     public class TabsLoader
     {
         private List<eTab> LoadedTabs { get; }
+
         public User LoggedInUser { get; set; }
 
         public TabsLoader()
@@ -86,15 +87,15 @@ namespace FacebookApp
             }
 
             (objectsToInit["livesInBox"] as TextBox).Text = LoggedInUser.Location.Name;
-            initWorkPlaces((objectsToInit["workPlacesList"]) as ListBox);
-            initEducationPlaces((objectsToInit["educationList"] as ListBox));
+            initWorkPlaces(objectsToInit["workPlacesList"] as ListBox);
+            initEducationPlaces(objectsToInit["educationList"] as ListBox);
             (objectsToInit["numberOfFriendsBox"] as RichTextBox).Text = LoggedInUser.Friends.Count.ToString();
             (objectsToInit["numberOfPostsBox"] as RichTextBox).Text = LoggedInUser.Posts.Count.ToString();
             (objectsToInit["numberOfAlbumsBox"] as RichTextBox).Text = LoggedInUser.Albums.Count.ToString();
             LoadedTabs.Add(eTab.AboutUser);
         }
 
-        private void initEducationPlaces(ListBox i_ListBox)
+        private void initEducationPlaces(ListBox i_ListBox) // since it doesn't work we implement it manually
         {
             try
             {
@@ -103,7 +104,6 @@ namespace FacebookApp
                     i_ListBox.Items.Add(workPlace.Description);
                 }
             }
-            // since it doesn't work we implement it manually
             catch (Exception ex)
             {
                 i_ListBox.Items.Add("Gedera High School");

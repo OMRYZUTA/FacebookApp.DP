@@ -1,19 +1,19 @@
-﻿using FacebookWrapper;
-using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using FacebookWrapper;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
     public partial class FormMainFacebookApp : Form
     {
-        private User m_LoggedInUser;
-        private LoginResult m_LoginResult;
         private readonly TabsLoader r_TabsLoader;
         private readonly AlbumCreator r_AlbumCreator;
+        private User m_LoggedInUser;
+        private LoginResult m_LoginResult;
         private BreaksManager m_BreakManager;
 
         public FormMainFacebookApp()
@@ -33,7 +33,8 @@ namespace FacebookApp
                 ///EAAUm6cZC4eUEBALVbi9bZAb5VFs1ebDkmva0uhzXkgRRlMY8YVVBEjoJRw5e6fdxnbrHezOCBpqybBCglBWxpyaFlqSu98nqSpp3yXhgcDl6YoRH6zSKMIZA3em1D6LidH0mCgXzCjZBXW5HuZBTLVvUDNqDtd6HElosgjevktks5e09iRU0X
                 /// Use the FacebookService.Login method to display the login form to any user who wish to use this application.
                 /// You can then save the result.AccessToken for future auto-connect to this user:
-                m_LoginResult = FacebookService.Login("361826995145957", /// (desig patter's "Design Patterns Course App 2.4" app)
+                m_LoginResult = FacebookService.Login("361826995145957",
+                    /// (desig patter's "Design Patterns Course App 2.4" app)
 
                     "public_profile",
                     "email",
@@ -63,6 +64,7 @@ namespace FacebookApp
                 }
             }
         }
+
         private void fetchUserBasicInfo()
         {
             fetchUserProfilePhoto();
@@ -79,9 +81,6 @@ namespace FacebookApp
                 coverPhoto.LoadAsync(m_LoggedInUser.PhotosTaggedIn[1].PictureNormalURL);
             }
         }
-
-
-
 
         private void fetchUserName()
         {
@@ -341,6 +340,7 @@ namespace FacebookApp
                     }
                 }
             }
+
             if (fifteenMinutesButton.Checked == true)
             {
                 Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
@@ -364,6 +364,7 @@ namespace FacebookApp
                     }
                 }
             }
+
             if (oneHourButton.Checked == true)
             {
                 Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
@@ -378,6 +379,7 @@ namespace FacebookApp
             {
                 addMinuteToTimer();
             }
+
             showTimer();
             if (m_BreakManager.m_Minutes == m_BreakManager.m_Stopper)
             {

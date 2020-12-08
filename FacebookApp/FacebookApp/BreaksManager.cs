@@ -1,17 +1,20 @@
-﻿
-namespace FacebookApp
+﻿namespace FacebookApp
 {
     public class BreaksManager
     {
         private eTime m_breakTime { get; set; }
+
         public int m_Stopper { get; set; }
+
         public int m_Seconds { get; set; }
-        public int m_Minutes { get; set; }
-        const string k_NoBreaks = "noBreaksButton";
-        const string k_FiveMinutes = "fiveMinutesButton";
-        const string k_TenMinutes = "tenMinutesButton";
-        const string k_FifteenMinutes = "fifteenMinutesButton";
-        const string k_OneHour = "oneHourButton";
+
+        public int m_Minutes { get;  set; }
+
+        private const string k_NoBreaks = "noBreaksButton";
+        private const string k_FiveMinutes = "fiveMinutesButton";
+        private const string k_TenMinutes = "tenMinutesButton";
+        private const string k_FifteenMinutes = "fifteenMinutesButton";
+        private const string k_OneHour = "oneHourButton";
 
         public BreaksManager()
         {
@@ -52,7 +55,7 @@ namespace FacebookApp
 
         private int ConvertETimeToInt(eTime i_TimeToConvert)
         {
-            int minutes = 15; //Chosen Default
+            int minutes = 15; // Chosen Default
 
             switch (i_TimeToConvert)
             {
@@ -75,8 +78,6 @@ namespace FacebookApp
 
             return minutes;
         }
-
-
 
         public void InitMinutes()
         {
