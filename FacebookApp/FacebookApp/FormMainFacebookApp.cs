@@ -170,7 +170,14 @@ namespace FacebookApp
         {
             Tab tab = new Tab();
             tab.ConvertStringToEnum(tabUserPosts.Name);
-            r_TabsLoader.LoadTab(tab, userPostsList);
+            try
+            {
+                r_TabsLoader.LoadTab(tab, userPostsList);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void loadAboutUserTab()
@@ -200,7 +207,14 @@ namespace FacebookApp
 
         private void buttonSelectedFriend_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            r_AlbumCreator.CreateAlbumWith(textBoxSelectedFriend.Text, listBoxAlbumWithFriend);
+            try
+            { 
+                r_AlbumCreator.CreateAlbumWith(textBoxSelectedFriend.Text, listBoxAlbumWithFriend);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void listBoxAlbumWithFriend_SelectedIndexChanged(object sender, EventArgs e)

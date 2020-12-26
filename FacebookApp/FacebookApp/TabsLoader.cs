@@ -146,7 +146,7 @@ namespace FacebookApp
 
             if (LoggedInUser.Posts.Count == 0)
             {
-                MessageBox.Show("No Posts to retrieve :(");
+               throw new Exception("No Posts to retrieve :(");
             }
 
             LoadedTabs.Add(eTab.Posts);
