@@ -70,6 +70,7 @@
             this.listBoxAlbumWithFriend = new System.Windows.Forms.ListBox();
             this.labelSelectedFriend = new System.Windows.Forms.Label();
             this.breakManagerFeature = new System.Windows.Forms.TabPage();
+            this.saveSettingsNote = new System.Windows.Forms.Label();
             this.timerPresentation = new System.Windows.Forms.Label();
             this.saveBreakManagerSettingsButton = new System.Windows.Forms.Button();
             this.tenMinutesButton = new System.Windows.Forms.RadioButton();
@@ -82,7 +83,7 @@
             this.profilePicture = new System.Windows.Forms.PictureBox();
             this.breakManagerTimer = new System.Windows.Forms.Timer(this.components);
             this.userNamePresentation = new System.Windows.Forms.Label();
-            this.saveSettingsNote = new System.Windows.Forms.Label();
+            this.buttonDownload = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.appIcon)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.tabUserPosts.SuspendLayout();
@@ -104,10 +105,10 @@
             // appIcon
             // 
             this.appIcon.Image = ((System.Drawing.Image)(resources.GetObject("appIcon.Image")));
-            this.appIcon.Location = new System.Drawing.Point(8, 8);
-            this.appIcon.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.appIcon.Location = new System.Drawing.Point(11, 10);
+            this.appIcon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.appIcon.Name = "appIcon";
-            this.appIcon.Size = new System.Drawing.Size(81, 35);
+            this.appIcon.Size = new System.Drawing.Size(108, 43);
             this.appIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.appIcon.TabIndex = 2;
             this.appIcon.TabStop = false;
@@ -115,10 +116,10 @@
             // buttonLogin
             // 
             this.buttonLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonLogin.Location = new System.Drawing.Point(8, 48);
-            this.buttonLogin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.buttonLogin.Location = new System.Drawing.Point(11, 59);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(75, 27);
+            this.buttonLogin.Size = new System.Drawing.Size(100, 33);
             this.buttonLogin.TabIndex = 4;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -133,22 +134,22 @@
             this.tabControlMain.Controls.Add(this.tabUserPhotos);
             this.tabControlMain.Controls.Add(this.createAlbumFeature);
             this.tabControlMain.Controls.Add(this.breakManagerFeature);
-            this.tabControlMain.Location = new System.Drawing.Point(98, 207);
-            this.tabControlMain.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tabControlMain.Location = new System.Drawing.Point(131, 255);
+            this.tabControlMain.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(487, 317);
+            this.tabControlMain.Size = new System.Drawing.Size(649, 390);
             this.tabControlMain.TabIndex = 6;
             this.tabControlMain.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControlMain_Selected);
             // 
             // tabUserPosts
             // 
             this.tabUserPosts.Controls.Add(this.userPostsList);
-            this.tabUserPosts.Location = new System.Drawing.Point(4, 22);
-            this.tabUserPosts.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tabUserPosts.Location = new System.Drawing.Point(4, 25);
+            this.tabUserPosts.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabUserPosts.Name = "tabUserPosts";
-            this.tabUserPosts.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tabUserPosts.Size = new System.Drawing.Size(479, 291);
+            this.tabUserPosts.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.tabUserPosts.Size = new System.Drawing.Size(641, 361);
             this.tabUserPosts.TabIndex = 1;
             this.tabUserPosts.Text = "User Posts";
             this.tabUserPosts.UseVisualStyleBackColor = true;
@@ -158,21 +159,21 @@
             this.userPostsList.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.userPostsList.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userPostsList.FormattingEnabled = true;
-            this.userPostsList.ItemHeight = 14;
-            this.userPostsList.Location = new System.Drawing.Point(3, 6);
-            this.userPostsList.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.userPostsList.ItemHeight = 16;
+            this.userPostsList.Location = new System.Drawing.Point(4, 7);
+            this.userPostsList.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.userPostsList.Name = "userPostsList";
-            this.userPostsList.Size = new System.Drawing.Size(480, 270);
+            this.userPostsList.Size = new System.Drawing.Size(639, 324);
             this.userPostsList.TabIndex = 0;
             // 
             // tabAboutUser
             // 
             this.tabAboutUser.Controls.Add(this.tabControl2);
-            this.tabAboutUser.Location = new System.Drawing.Point(4, 22);
-            this.tabAboutUser.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tabAboutUser.Location = new System.Drawing.Point(4, 25);
+            this.tabAboutUser.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabAboutUser.Name = "tabAboutUser";
-            this.tabAboutUser.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tabAboutUser.Size = new System.Drawing.Size(479, 291);
+            this.tabAboutUser.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.tabAboutUser.Size = new System.Drawing.Size(641, 361);
             this.tabAboutUser.TabIndex = 2;
             this.tabAboutUser.Text = "About User";
             this.tabAboutUser.UseVisualStyleBackColor = true;
@@ -182,11 +183,11 @@
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Controls.Add(this.tabPage6);
             this.tabControl2.Controls.Add(this.tabPage7);
-            this.tabControl2.Location = new System.Drawing.Point(4, 4);
-            this.tabControl2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tabControl2.Location = new System.Drawing.Point(5, 5);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(474, 287);
+            this.tabControl2.Size = new System.Drawing.Size(632, 353);
             this.tabControl2.TabIndex = 0;
             // 
             // tabPage5
@@ -197,66 +198,63 @@
             this.tabPage5.Controls.Add(this.livesIn);
             this.tabPage5.Controls.Add(this.gender);
             this.tabPage5.Controls.Add(this.birthDay);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tabPage5.Size = new System.Drawing.Size(466, 261);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.tabPage5.Size = new System.Drawing.Size(624, 324);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "User Overview";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // livesInBox
             // 
-            this.livesInBox.Location = new System.Drawing.Point(94, 79);
-            this.livesInBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.livesInBox.Location = new System.Drawing.Point(125, 97);
+            this.livesInBox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.livesInBox.Name = "livesInBox";
-            this.livesInBox.Size = new System.Drawing.Size(85, 20);
+            this.livesInBox.Size = new System.Drawing.Size(112, 22);
             this.livesInBox.TabIndex = 5;
             // 
             // genderBox
             // 
-            this.genderBox.Location = new System.Drawing.Point(94, 47);
-            this.genderBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.genderBox.Location = new System.Drawing.Point(125, 58);
+            this.genderBox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.genderBox.Name = "genderBox";
-            this.genderBox.Size = new System.Drawing.Size(85, 20);
+            this.genderBox.Size = new System.Drawing.Size(112, 22);
             this.genderBox.TabIndex = 4;
             // 
             // birthDayBox
             // 
-            this.birthDayBox.Location = new System.Drawing.Point(94, 14);
-            this.birthDayBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.birthDayBox.Location = new System.Drawing.Point(125, 17);
+            this.birthDayBox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.birthDayBox.Name = "birthDayBox";
-            this.birthDayBox.Size = new System.Drawing.Size(85, 20);
+            this.birthDayBox.Size = new System.Drawing.Size(112, 22);
             this.birthDayBox.TabIndex = 3;
             // 
             // livesIn
             // 
             this.livesIn.AutoSize = true;
-            this.livesIn.Location = new System.Drawing.Point(17, 79);
-            this.livesIn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.livesIn.Location = new System.Drawing.Point(23, 97);
             this.livesIn.Name = "livesIn";
-            this.livesIn.Size = new System.Drawing.Size(44, 13);
+            this.livesIn.Size = new System.Drawing.Size(56, 17);
             this.livesIn.TabIndex = 2;
             this.livesIn.Text = "Lives In";
             // 
             // gender
             // 
             this.gender.AutoSize = true;
-            this.gender.Location = new System.Drawing.Point(17, 47);
-            this.gender.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.gender.Location = new System.Drawing.Point(23, 58);
             this.gender.Name = "gender";
-            this.gender.Size = new System.Drawing.Size(42, 13);
+            this.gender.Size = new System.Drawing.Size(56, 17);
             this.gender.TabIndex = 1;
             this.gender.Text = "Gender";
             // 
             // birthDay
             // 
             this.birthDay.AutoSize = true;
-            this.birthDay.Location = new System.Drawing.Point(17, 14);
-            this.birthDay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.birthDay.Location = new System.Drawing.Point(23, 17);
             this.birthDay.Name = "birthDay";
-            this.birthDay.Size = new System.Drawing.Size(50, 13);
+            this.birthDay.Size = new System.Drawing.Size(66, 17);
             this.birthDay.TabIndex = 0;
             this.birthDay.Text = "Birth Day";
             // 
@@ -266,11 +264,11 @@
             this.tabPage6.Controls.Add(this.educationList);
             this.tabPage6.Controls.Add(this.workPlacesList);
             this.tabPage6.Controls.Add(this.workPlaces);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tabPage6.Size = new System.Drawing.Size(466, 261);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.tabPage6.Size = new System.Drawing.Size(624, 324);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "User Work And Education";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -278,38 +276,38 @@
             // educationPlaces
             // 
             this.educationPlaces.AutoSize = true;
-            this.educationPlaces.Location = new System.Drawing.Point(302, 16);
-            this.educationPlaces.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.educationPlaces.Location = new System.Drawing.Point(403, 20);
             this.educationPlaces.Name = "educationPlaces";
-            this.educationPlaces.Size = new System.Drawing.Size(90, 13);
+            this.educationPlaces.Size = new System.Drawing.Size(117, 17);
             this.educationPlaces.TabIndex = 3;
             this.educationPlaces.Text = "Education Places";
             // 
             // educationList
             // 
             this.educationList.FormattingEnabled = true;
-            this.educationList.Location = new System.Drawing.Point(243, 44);
-            this.educationList.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.educationList.ItemHeight = 16;
+            this.educationList.Location = new System.Drawing.Point(324, 54);
+            this.educationList.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.educationList.Name = "educationList";
-            this.educationList.Size = new System.Drawing.Size(203, 186);
+            this.educationList.Size = new System.Drawing.Size(269, 228);
             this.educationList.TabIndex = 2;
             // 
             // workPlacesList
             // 
             this.workPlacesList.FormattingEnabled = true;
-            this.workPlacesList.Location = new System.Drawing.Point(19, 44);
-            this.workPlacesList.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.workPlacesList.ItemHeight = 16;
+            this.workPlacesList.Location = new System.Drawing.Point(25, 54);
+            this.workPlacesList.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.workPlacesList.Name = "workPlacesList";
-            this.workPlacesList.Size = new System.Drawing.Size(203, 186);
+            this.workPlacesList.Size = new System.Drawing.Size(269, 228);
             this.workPlacesList.TabIndex = 1;
             // 
             // workPlaces
             // 
             this.workPlaces.AutoSize = true;
-            this.workPlaces.Location = new System.Drawing.Point(86, 16);
-            this.workPlaces.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.workPlaces.Location = new System.Drawing.Point(115, 20);
             this.workPlaces.Name = "workPlaces";
-            this.workPlaces.Size = new System.Drawing.Size(68, 13);
+            this.workPlaces.Size = new System.Drawing.Size(87, 17);
             this.workPlaces.TabIndex = 0;
             this.workPlaces.Text = "Work Places";
             // 
@@ -321,82 +319,79 @@
             this.tabPage7.Controls.Add(this.label1);
             this.tabPage7.Controls.Add(this.numberOfFriendsBox);
             this.tabPage7.Controls.Add(this.numberOfFriends);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tabPage7.Location = new System.Drawing.Point(4, 25);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tabPage7.Size = new System.Drawing.Size(466, 261);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.tabPage7.Size = new System.Drawing.Size(624, 324);
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "User Statistics";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // numberOfAlbumsBox
             // 
-            this.numberOfAlbumsBox.Location = new System.Drawing.Point(115, 83);
-            this.numberOfAlbumsBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.numberOfAlbumsBox.Location = new System.Drawing.Point(153, 102);
+            this.numberOfAlbumsBox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.numberOfAlbumsBox.Name = "numberOfAlbumsBox";
-            this.numberOfAlbumsBox.Size = new System.Drawing.Size(83, 23);
+            this.numberOfAlbumsBox.Size = new System.Drawing.Size(109, 27);
             this.numberOfAlbumsBox.TabIndex = 5;
             this.numberOfAlbumsBox.Text = "";
             // 
             // numberOfAlbums
             // 
             this.numberOfAlbums.AutoSize = true;
-            this.numberOfAlbums.Location = new System.Drawing.Point(8, 83);
-            this.numberOfAlbums.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.numberOfAlbums.Location = new System.Drawing.Point(11, 102);
             this.numberOfAlbums.Name = "numberOfAlbums";
-            this.numberOfAlbums.Size = new System.Drawing.Size(95, 13);
+            this.numberOfAlbums.Size = new System.Drawing.Size(127, 17);
             this.numberOfAlbums.TabIndex = 4;
             this.numberOfAlbums.Text = "Number Of Albums";
             this.numberOfAlbums.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // numberOfPostsBox
             // 
-            this.numberOfPostsBox.Location = new System.Drawing.Point(115, 45);
-            this.numberOfPostsBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.numberOfPostsBox.Location = new System.Drawing.Point(153, 55);
+            this.numberOfPostsBox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.numberOfPostsBox.Name = "numberOfPostsBox";
-            this.numberOfPostsBox.Size = new System.Drawing.Size(83, 23);
+            this.numberOfPostsBox.Size = new System.Drawing.Size(109, 27);
             this.numberOfPostsBox.TabIndex = 3;
             this.numberOfPostsBox.Text = "";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 45);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(11, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.Size = new System.Drawing.Size(116, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Number Of Posts";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // numberOfFriendsBox
             // 
-            this.numberOfFriendsBox.Location = new System.Drawing.Point(114, 8);
-            this.numberOfFriendsBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.numberOfFriendsBox.Location = new System.Drawing.Point(152, 10);
+            this.numberOfFriendsBox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.numberOfFriendsBox.Name = "numberOfFriendsBox";
-            this.numberOfFriendsBox.Size = new System.Drawing.Size(83, 23);
+            this.numberOfFriendsBox.Size = new System.Drawing.Size(109, 27);
             this.numberOfFriendsBox.TabIndex = 1;
             this.numberOfFriendsBox.Text = "";
             // 
             // numberOfFriends
             // 
             this.numberOfFriends.AutoSize = true;
-            this.numberOfFriends.Location = new System.Drawing.Point(8, 8);
-            this.numberOfFriends.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.numberOfFriends.Location = new System.Drawing.Point(11, 10);
             this.numberOfFriends.Name = "numberOfFriends";
-            this.numberOfFriends.Size = new System.Drawing.Size(95, 13);
+            this.numberOfFriends.Size = new System.Drawing.Size(128, 17);
             this.numberOfFriends.TabIndex = 0;
             this.numberOfFriends.Text = "Number Of Friends";
             // 
             // tabFriendsList
             // 
             this.tabFriendsList.Controls.Add(this.friendsListBox);
-            this.tabFriendsList.Location = new System.Drawing.Point(4, 22);
-            this.tabFriendsList.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tabFriendsList.Location = new System.Drawing.Point(4, 25);
+            this.tabFriendsList.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabFriendsList.Name = "tabFriendsList";
-            this.tabFriendsList.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tabFriendsList.Size = new System.Drawing.Size(479, 291);
+            this.tabFriendsList.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.tabFriendsList.Size = new System.Drawing.Size(641, 361);
             this.tabFriendsList.TabIndex = 3;
             this.tabFriendsList.Text = "Friends List";
             this.tabFriendsList.UseVisualStyleBackColor = true;
@@ -404,31 +399,32 @@
             // friendsListBox
             // 
             this.friendsListBox.FormattingEnabled = true;
-            this.friendsListBox.Location = new System.Drawing.Point(-3, 0);
-            this.friendsListBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.friendsListBox.ItemHeight = 16;
+            this.friendsListBox.Location = new System.Drawing.Point(-4, 0);
+            this.friendsListBox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.friendsListBox.Name = "friendsListBox";
-            this.friendsListBox.Size = new System.Drawing.Size(486, 303);
+            this.friendsListBox.Size = new System.Drawing.Size(647, 372);
             this.friendsListBox.TabIndex = 0;
             // 
             // tabUserPhotos
             // 
             this.tabUserPhotos.Controls.Add(this.pictureBoxSelected);
             this.tabUserPhotos.Controls.Add(this.photosListBox);
-            this.tabUserPhotos.Location = new System.Drawing.Point(4, 22);
-            this.tabUserPhotos.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tabUserPhotos.Location = new System.Drawing.Point(4, 25);
+            this.tabUserPhotos.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabUserPhotos.Name = "tabUserPhotos";
-            this.tabUserPhotos.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tabUserPhotos.Size = new System.Drawing.Size(479, 291);
+            this.tabUserPhotos.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.tabUserPhotos.Size = new System.Drawing.Size(641, 361);
             this.tabUserPhotos.TabIndex = 0;
             this.tabUserPhotos.Text = "User Photos";
             this.tabUserPhotos.UseVisualStyleBackColor = true;
             // 
             // pictureBoxSelected
             // 
-            this.pictureBoxSelected.Location = new System.Drawing.Point(345, 178);
-            this.pictureBoxSelected.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.pictureBoxSelected.Location = new System.Drawing.Point(460, 219);
+            this.pictureBoxSelected.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pictureBoxSelected.Name = "pictureBoxSelected";
-            this.pictureBoxSelected.Size = new System.Drawing.Size(132, 116);
+            this.pictureBoxSelected.Size = new System.Drawing.Size(176, 143);
             this.pictureBoxSelected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxSelected.TabIndex = 1;
             this.pictureBoxSelected.TabStop = false;
@@ -436,36 +432,38 @@
             // photosListBox
             // 
             this.photosListBox.FormattingEnabled = true;
+            this.photosListBox.ItemHeight = 16;
             this.photosListBox.Location = new System.Drawing.Point(0, 0);
-            this.photosListBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.photosListBox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.photosListBox.Name = "photosListBox";
-            this.photosListBox.Size = new System.Drawing.Size(479, 290);
+            this.photosListBox.Size = new System.Drawing.Size(637, 356);
             this.photosListBox.TabIndex = 0;
             this.photosListBox.SelectedIndexChanged += new System.EventHandler(this.photosListBox_SelectedIndexChanged);
             // 
             // createAlbumFeature
             // 
+            this.createAlbumFeature.Controls.Add(this.buttonDownload);
             this.createAlbumFeature.Controls.Add(this.pictureBoxFriend);
             this.createAlbumFeature.Controls.Add(this.labelCreateAlbumHeader);
             this.createAlbumFeature.Controls.Add(this.buttonSelectedFriend);
             this.createAlbumFeature.Controls.Add(this.textBoxSelectedFriend);
             this.createAlbumFeature.Controls.Add(this.listBoxAlbumWithFriend);
             this.createAlbumFeature.Controls.Add(this.labelSelectedFriend);
-            this.createAlbumFeature.Location = new System.Drawing.Point(4, 22);
-            this.createAlbumFeature.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.createAlbumFeature.Location = new System.Drawing.Point(4, 25);
+            this.createAlbumFeature.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.createAlbumFeature.Name = "createAlbumFeature";
-            this.createAlbumFeature.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.createAlbumFeature.Size = new System.Drawing.Size(479, 291);
+            this.createAlbumFeature.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.createAlbumFeature.Size = new System.Drawing.Size(641, 361);
             this.createAlbumFeature.TabIndex = 4;
             this.createAlbumFeature.Text = "Create Album";
             this.createAlbumFeature.UseVisualStyleBackColor = true;
             // 
             // pictureBoxFriend
             // 
-            this.pictureBoxFriend.Location = new System.Drawing.Point(360, 177);
-            this.pictureBoxFriend.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBoxFriend.Location = new System.Drawing.Point(480, 218);
+            this.pictureBoxFriend.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxFriend.Name = "pictureBoxFriend";
-            this.pictureBoxFriend.Size = new System.Drawing.Size(117, 112);
+            this.pictureBoxFriend.Size = new System.Drawing.Size(156, 138);
             this.pictureBoxFriend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxFriend.TabIndex = 5;
             this.pictureBoxFriend.TabStop = false;
@@ -473,19 +471,18 @@
             // labelCreateAlbumHeader
             // 
             this.labelCreateAlbumHeader.AutoSize = true;
-            this.labelCreateAlbumHeader.Location = new System.Drawing.Point(134, 14);
-            this.labelCreateAlbumHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCreateAlbumHeader.Location = new System.Drawing.Point(179, 17);
             this.labelCreateAlbumHeader.Name = "labelCreateAlbumHeader";
-            this.labelCreateAlbumHeader.Size = new System.Drawing.Size(147, 13);
+            this.labelCreateAlbumHeader.Size = new System.Drawing.Size(195, 17);
             this.labelCreateAlbumHeader.TabIndex = 4;
             this.labelCreateAlbumHeader.Text = "Create an album with a friend!";
             // 
             // buttonSelectedFriend
             // 
-            this.buttonSelectedFriend.Location = new System.Drawing.Point(227, 48);
-            this.buttonSelectedFriend.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.buttonSelectedFriend.Location = new System.Drawing.Point(303, 59);
+            this.buttonSelectedFriend.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonSelectedFriend.Name = "buttonSelectedFriend";
-            this.buttonSelectedFriend.Size = new System.Drawing.Size(56, 19);
+            this.buttonSelectedFriend.Size = new System.Drawing.Size(75, 23);
             this.buttonSelectedFriend.TabIndex = 3;
             this.buttonSelectedFriend.Text = "Select";
             this.buttonSelectedFriend.UseVisualStyleBackColor = true;
@@ -493,29 +490,29 @@
             // 
             // textBoxSelectedFriend
             // 
-            this.textBoxSelectedFriend.Location = new System.Drawing.Point(134, 49);
-            this.textBoxSelectedFriend.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.textBoxSelectedFriend.Location = new System.Drawing.Point(179, 60);
+            this.textBoxSelectedFriend.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxSelectedFriend.Name = "textBoxSelectedFriend";
-            this.textBoxSelectedFriend.Size = new System.Drawing.Size(76, 20);
+            this.textBoxSelectedFriend.Size = new System.Drawing.Size(100, 22);
             this.textBoxSelectedFriend.TabIndex = 2;
             // 
             // listBoxAlbumWithFriend
             // 
             this.listBoxAlbumWithFriend.FormattingEnabled = true;
-            this.listBoxAlbumWithFriend.Location = new System.Drawing.Point(5, 94);
-            this.listBoxAlbumWithFriend.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.listBoxAlbumWithFriend.ItemHeight = 16;
+            this.listBoxAlbumWithFriend.Location = new System.Drawing.Point(7, 116);
+            this.listBoxAlbumWithFriend.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBoxAlbumWithFriend.Name = "listBoxAlbumWithFriend";
-            this.listBoxAlbumWithFriend.Size = new System.Drawing.Size(463, 199);
+            this.listBoxAlbumWithFriend.Size = new System.Drawing.Size(616, 244);
             this.listBoxAlbumWithFriend.TabIndex = 1;
             this.listBoxAlbumWithFriend.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbumWithFriend_SelectedIndexChanged);
             // 
             // labelSelectedFriend
             // 
             this.labelSelectedFriend.AutoSize = true;
-            this.labelSelectedFriend.Location = new System.Drawing.Point(48, 53);
-            this.labelSelectedFriend.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSelectedFriend.Location = new System.Drawing.Point(64, 65);
             this.labelSelectedFriend.Name = "labelSelectedFriend";
-            this.labelSelectedFriend.Size = new System.Drawing.Size(82, 13);
+            this.labelSelectedFriend.Size = new System.Drawing.Size(109, 17);
             this.labelSelectedFriend.TabIndex = 0;
             this.labelSelectedFriend.Text = "selected Friend:";
             // 
@@ -530,32 +527,42 @@
             this.breakManagerFeature.Controls.Add(this.fiveMinutesButton);
             this.breakManagerFeature.Controls.Add(this.noBreaksButton);
             this.breakManagerFeature.Controls.Add(this.breakManagerLable);
-            this.breakManagerFeature.Location = new System.Drawing.Point(4, 22);
-            this.breakManagerFeature.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.breakManagerFeature.Location = new System.Drawing.Point(4, 25);
+            this.breakManagerFeature.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.breakManagerFeature.Name = "breakManagerFeature";
-            this.breakManagerFeature.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.breakManagerFeature.Size = new System.Drawing.Size(479, 291);
+            this.breakManagerFeature.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.breakManagerFeature.Size = new System.Drawing.Size(641, 361);
             this.breakManagerFeature.TabIndex = 5;
             this.breakManagerFeature.Text = "Break Manager";
             this.breakManagerFeature.UseVisualStyleBackColor = true;
+            // 
+            // saveSettingsNote
+            // 
+            this.saveSettingsNote.AutoSize = true;
+            this.saveSettingsNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.saveSettingsNote.Location = new System.Drawing.Point(29, 330);
+            this.saveSettingsNote.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.saveSettingsNote.Name = "saveSettingsNote";
+            this.saveSettingsNote.Size = new System.Drawing.Size(384, 18);
+            this.saveSettingsNote.TabIndex = 8;
+            this.saveSettingsNote.Text = "To change the settings and restart the timer, press \"Save\"";
             // 
             // timerPresentation
             // 
             this.timerPresentation.AutoSize = true;
             this.timerPresentation.Font = new System.Drawing.Font("Gisha", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timerPresentation.Location = new System.Drawing.Point(298, 64);
-            this.timerPresentation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.timerPresentation.Location = new System.Drawing.Point(397, 79);
             this.timerPresentation.Name = "timerPresentation";
-            this.timerPresentation.Size = new System.Drawing.Size(70, 25);
+            this.timerPresentation.Size = new System.Drawing.Size(86, 32);
             this.timerPresentation.TabIndex = 7;
             this.timerPresentation.Text = "00:00";
             // 
             // saveBreakManagerSettingsButton
             // 
-            this.saveBreakManagerSettingsButton.Location = new System.Drawing.Point(411, 268);
-            this.saveBreakManagerSettingsButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.saveBreakManagerSettingsButton.Location = new System.Drawing.Point(548, 330);
+            this.saveBreakManagerSettingsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saveBreakManagerSettingsButton.Name = "saveBreakManagerSettingsButton";
-            this.saveBreakManagerSettingsButton.Size = new System.Drawing.Size(63, 20);
+            this.saveBreakManagerSettingsButton.Size = new System.Drawing.Size(84, 25);
             this.saveBreakManagerSettingsButton.TabIndex = 6;
             this.saveBreakManagerSettingsButton.Text = "Save";
             this.saveBreakManagerSettingsButton.UseVisualStyleBackColor = true;
@@ -564,10 +571,10 @@
             // tenMinutesButton
             // 
             this.tenMinutesButton.AutoSize = true;
-            this.tenMinutesButton.Location = new System.Drawing.Point(25, 123);
-            this.tenMinutesButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tenMinutesButton.Location = new System.Drawing.Point(33, 151);
+            this.tenMinutesButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tenMinutesButton.Name = "tenMinutesButton";
-            this.tenMinutesButton.Size = new System.Drawing.Size(106, 17);
+            this.tenMinutesButton.Size = new System.Drawing.Size(138, 21);
             this.tenMinutesButton.TabIndex = 5;
             this.tenMinutesButton.Text = "Every 10 minutes";
             this.tenMinutesButton.UseVisualStyleBackColor = true;
@@ -578,10 +585,10 @@
             this.fifteenMinutesButton.AutoSize = true;
             this.fifteenMinutesButton.Checked = true;
             this.fifteenMinutesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fifteenMinutesButton.Location = new System.Drawing.Point(25, 156);
-            this.fifteenMinutesButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fifteenMinutesButton.Location = new System.Drawing.Point(33, 192);
+            this.fifteenMinutesButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fifteenMinutesButton.Name = "fifteenMinutesButton";
-            this.fifteenMinutesButton.Size = new System.Drawing.Size(217, 17);
+            this.fifteenMinutesButton.Size = new System.Drawing.Size(277, 21);
             this.fifteenMinutesButton.TabIndex = 4;
             this.fifteenMinutesButton.TabStop = true;
             this.fifteenMinutesButton.Text = "Every 15 minutes (Recommended)";
@@ -591,10 +598,10 @@
             // oneHourButton
             // 
             this.oneHourButton.AutoSize = true;
-            this.oneHourButton.Location = new System.Drawing.Point(25, 188);
-            this.oneHourButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.oneHourButton.Location = new System.Drawing.Point(33, 231);
+            this.oneHourButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.oneHourButton.Name = "oneHourButton";
-            this.oneHourButton.Size = new System.Drawing.Size(76, 17);
+            this.oneHourButton.Size = new System.Drawing.Size(98, 21);
             this.oneHourButton.TabIndex = 3;
             this.oneHourButton.Text = "Every hour";
             this.oneHourButton.UseVisualStyleBackColor = true;
@@ -603,10 +610,10 @@
             // fiveMinutesButton
             // 
             this.fiveMinutesButton.AutoSize = true;
-            this.fiveMinutesButton.Location = new System.Drawing.Point(25, 91);
-            this.fiveMinutesButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fiveMinutesButton.Location = new System.Drawing.Point(33, 112);
+            this.fiveMinutesButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fiveMinutesButton.Name = "fiveMinutesButton";
-            this.fiveMinutesButton.Size = new System.Drawing.Size(100, 17);
+            this.fiveMinutesButton.Size = new System.Drawing.Size(130, 21);
             this.fiveMinutesButton.TabIndex = 2;
             this.fiveMinutesButton.Text = "Every 5 minutes";
             this.fiveMinutesButton.UseVisualStyleBackColor = true;
@@ -615,10 +622,10 @@
             // noBreaksButton
             // 
             this.noBreaksButton.AutoSize = true;
-            this.noBreaksButton.Location = new System.Drawing.Point(25, 58);
-            this.noBreaksButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.noBreaksButton.Location = new System.Drawing.Point(33, 71);
+            this.noBreaksButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.noBreaksButton.Name = "noBreaksButton";
-            this.noBreaksButton.Size = new System.Drawing.Size(74, 17);
+            this.noBreaksButton.Size = new System.Drawing.Size(94, 21);
             this.noBreaksButton.TabIndex = 1;
             this.noBreaksButton.Text = "No breaks";
             this.noBreaksButton.UseVisualStyleBackColor = true;
@@ -628,20 +635,19 @@
             // 
             this.breakManagerLable.AutoSize = true;
             this.breakManagerLable.Font = new System.Drawing.Font("MV Boli", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.breakManagerLable.Location = new System.Drawing.Point(18, 13);
-            this.breakManagerLable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.breakManagerLable.Location = new System.Drawing.Point(24, 16);
             this.breakManagerLable.Name = "breakManagerLable";
-            this.breakManagerLable.Size = new System.Drawing.Size(441, 25);
+            this.breakManagerLable.Size = new System.Drawing.Size(557, 31);
             this.breakManagerLable.TabIndex = 0;
             this.breakManagerLable.Text = "How often would you like to take a break?";
             // 
             // coverPhoto
             // 
             this.coverPhoto.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.coverPhoto.Location = new System.Drawing.Point(98, 8);
-            this.coverPhoto.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.coverPhoto.Location = new System.Drawing.Point(131, 10);
+            this.coverPhoto.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.coverPhoto.Name = "coverPhoto";
-            this.coverPhoto.Size = new System.Drawing.Size(494, 149);
+            this.coverPhoto.Size = new System.Drawing.Size(659, 183);
             this.coverPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.coverPhoto.TabIndex = 1;
             this.coverPhoto.TabStop = false;
@@ -650,8 +656,8 @@
             // 
             this.profilePicture.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.profilePicture.InitialImage = ((System.Drawing.Image)(resources.GetObject("profilePicture.InitialImage")));
-            this.profilePicture.Location = new System.Drawing.Point(283, 59);
-            this.profilePicture.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.profilePicture.Location = new System.Drawing.Point(377, 73);
+            this.profilePicture.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.profilePicture.Name = "profilePicture";
             this.profilePicture.Size = new System.Drawing.Size(178, 119);
             this.profilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -668,27 +674,26 @@
             // 
             this.userNamePresentation.AutoSize = true;
             this.userNamePresentation.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNamePresentation.Location = new System.Drawing.Point(267, 172);
-            this.userNamePresentation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.userNamePresentation.Location = new System.Drawing.Point(356, 212);
             this.userNamePresentation.Name = "userNamePresentation";
-            this.userNamePresentation.Size = new System.Drawing.Size(0, 26);
+            this.userNamePresentation.Size = new System.Drawing.Size(0, 31);
             this.userNamePresentation.TabIndex = 8;
             // 
-            // saveSettingsNote
+            // buttonDownload
             // 
-            this.saveSettingsNote.AutoSize = true;
-            this.saveSettingsNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.saveSettingsNote.Location = new System.Drawing.Point(22, 268);
-            this.saveSettingsNote.Name = "saveSettingsNote";
-            this.saveSettingsNote.Size = new System.Drawing.Size(316, 15);
-            this.saveSettingsNote.TabIndex = 8;
-            this.saveSettingsNote.Text = "To change the settings and restart the timer, press \"Save\"";
+            this.buttonDownload.Location = new System.Drawing.Point(425, 60);
+            this.buttonDownload.Name = "buttonDownload";
+            this.buttonDownload.Size = new System.Drawing.Size(87, 23);
+            this.buttonDownload.TabIndex = 6;
+            this.buttonDownload.Text = "Download";
+            this.buttonDownload.UseVisualStyleBackColor = true;
+            this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
             // 
             // FormMainFacebookApp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(612, 565);
+            this.ClientSize = new System.Drawing.Size(816, 695);
             this.Controls.Add(this.userNamePresentation);
             this.Controls.Add(this.profilePicture);
             this.Controls.Add(this.tabControlMain);
@@ -696,7 +701,7 @@
             this.Controls.Add(this.appIcon);
             this.Controls.Add(this.coverPhoto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "FormMainFacebookApp";
             this.Text = "Facebook";
@@ -779,5 +784,6 @@
         private System.Windows.Forms.Label timerPresentation;
         private System.Windows.Forms.Label userNamePresentation;
         private System.Windows.Forms.Label saveSettingsNote;
+        private System.Windows.Forms.Button buttonDownload;
     }
 }

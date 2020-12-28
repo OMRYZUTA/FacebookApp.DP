@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 
@@ -6,6 +7,9 @@ namespace FacebookApp
 {
     public class AlbumCreator
     {
+        private const string FileName = "Photo.jpg";
+        
+
         public User LoggedInUser { get; set; }
 
         public void CreateAlbumWith(string i_FriendName, object i_ObjectToInit)
@@ -18,7 +22,7 @@ namespace FacebookApp
             }
             else
             {
-               throw new Exception("Friend doesn't exist. please type correctly the friend name");
+                throw new Exception("Friend doesn't exist. please type correctly the friend name");
             }
         }
 
@@ -73,6 +77,19 @@ namespace FacebookApp
             }
 
             return result;
+        }
+
+        public void DownloadPhotos(ListBox i_PhotosList)
+        {
+            using (WebClient client = new WebClient())
+            {
+                foreach (object item in i_PhotosList.Items)
+                {
+                    Photo photo = (item as Photo);
+                    string imageURL = photo.PictureNormalURL;
+                    client.DownloadFile(imageURL, DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss") +FileName);
+                }
+            }
         }
     }
 }
