@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 
@@ -8,7 +9,7 @@ namespace FacebookApp
     public class AlbumCreator
     {
         private const string FileName = "Photo.jpg";
-        
+
 
         public User LoggedInUser { get; set; }
 
@@ -83,11 +84,18 @@ namespace FacebookApp
         {
             using (WebClient client = new WebClient())
             {
+                int i = 1;
+                StringBuilder sb_fileName = new StringBuilder();
+
                 foreach (object item in i_PhotosList.Items)
                 {
                     Photo photo = (item as Photo);
                     string imageURL = photo.PictureNormalURL;
-                    client.DownloadFile(imageURL, DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss") +FileName);
+                    sb_fileName.Append(DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss"));
+                    sb_fileName.Append(i.ToString());
+                    sb_fileName.Append(FileName);
+                    client.DownloadFile(imageURL, sb_fileName.ToString());
+                    sb_fileName.Clear();
                 }
             }
         }
