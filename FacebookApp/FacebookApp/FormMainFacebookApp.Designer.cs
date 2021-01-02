@@ -63,12 +63,6 @@
             this.pictureBoxSelected = new System.Windows.Forms.PictureBox();
             this.photosListBox = new System.Windows.Forms.ListBox();
             this.createAlbumFeature = new System.Windows.Forms.TabPage();
-            this.pictureBoxFriend = new System.Windows.Forms.PictureBox();
-            this.labelCreateAlbumHeader = new System.Windows.Forms.Label();
-            this.buttonSelectedFriend = new System.Windows.Forms.Button();
-            this.textBoxSelectedFriend = new System.Windows.Forms.TextBox();
-            this.listBoxAlbumWithFriend = new System.Windows.Forms.ListBox();
-            this.labelSelectedFriend = new System.Windows.Forms.Label();
             this.breakManagerFeature = new System.Windows.Forms.TabPage();
             this.saveSettingsNote = new System.Windows.Forms.Label();
             this.timerPresentation = new System.Windows.Forms.Label();
@@ -83,7 +77,7 @@
             this.profilePicture = new System.Windows.Forms.PictureBox();
             this.breakManagerTimer = new System.Windows.Forms.Timer(this.components);
             this.userNamePresentation = new System.Windows.Forms.Label();
-            this.buttonDownload = new System.Windows.Forms.Button();
+            this.fileSystem1 = new FacebookApp.FileSystem();
             ((System.ComponentModel.ISupportInitialize)(this.appIcon)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.tabUserPosts.SuspendLayout();
@@ -96,7 +90,6 @@
             this.tabUserPhotos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).BeginInit();
             this.createAlbumFeature.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriend)).BeginInit();
             this.breakManagerFeature.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
@@ -138,7 +131,7 @@
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(649, 390);
+            this.tabControlMain.Size = new System.Drawing.Size(649, 415);
             this.tabControlMain.TabIndex = 6;
             this.tabControlMain.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControlMain_Selected);
             // 
@@ -149,7 +142,7 @@
             this.tabUserPosts.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabUserPosts.Name = "tabUserPosts";
             this.tabUserPosts.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.tabUserPosts.Size = new System.Drawing.Size(641, 361);
+            this.tabUserPosts.Size = new System.Drawing.Size(641, 386);
             this.tabUserPosts.TabIndex = 1;
             this.tabUserPosts.Text = "User Posts";
             this.tabUserPosts.UseVisualStyleBackColor = true;
@@ -173,7 +166,7 @@
             this.tabAboutUser.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabAboutUser.Name = "tabAboutUser";
             this.tabAboutUser.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.tabAboutUser.Size = new System.Drawing.Size(641, 361);
+            this.tabAboutUser.Size = new System.Drawing.Size(641, 386);
             this.tabAboutUser.TabIndex = 2;
             this.tabAboutUser.Text = "About User";
             this.tabAboutUser.UseVisualStyleBackColor = true;
@@ -391,7 +384,7 @@
             this.tabFriendsList.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabFriendsList.Name = "tabFriendsList";
             this.tabFriendsList.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.tabFriendsList.Size = new System.Drawing.Size(641, 361);
+            this.tabFriendsList.Size = new System.Drawing.Size(641, 386);
             this.tabFriendsList.TabIndex = 3;
             this.tabFriendsList.Text = "Friends List";
             this.tabFriendsList.UseVisualStyleBackColor = true;
@@ -414,7 +407,7 @@
             this.tabUserPhotos.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabUserPhotos.Name = "tabUserPhotos";
             this.tabUserPhotos.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.tabUserPhotos.Size = new System.Drawing.Size(641, 361);
+            this.tabUserPhotos.Size = new System.Drawing.Size(641, 386);
             this.tabUserPhotos.TabIndex = 0;
             this.tabUserPhotos.Text = "User Photos";
             this.tabUserPhotos.UseVisualStyleBackColor = true;
@@ -442,79 +435,16 @@
             // 
             // createAlbumFeature
             // 
-            this.createAlbumFeature.Controls.Add(this.buttonDownload);
-            this.createAlbumFeature.Controls.Add(this.pictureBoxFriend);
-            this.createAlbumFeature.Controls.Add(this.labelCreateAlbumHeader);
-            this.createAlbumFeature.Controls.Add(this.buttonSelectedFriend);
-            this.createAlbumFeature.Controls.Add(this.textBoxSelectedFriend);
-            this.createAlbumFeature.Controls.Add(this.listBoxAlbumWithFriend);
-            this.createAlbumFeature.Controls.Add(this.labelSelectedFriend);
+            this.createAlbumFeature.Controls.Add(this.fileSystem1);
             this.createAlbumFeature.Location = new System.Drawing.Point(4, 25);
             this.createAlbumFeature.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.createAlbumFeature.Name = "createAlbumFeature";
             this.createAlbumFeature.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.createAlbumFeature.Size = new System.Drawing.Size(641, 361);
+            this.createAlbumFeature.Size = new System.Drawing.Size(641, 386);
             this.createAlbumFeature.TabIndex = 4;
             this.createAlbumFeature.Text = "Create Album";
             this.createAlbumFeature.UseVisualStyleBackColor = true;
-            // 
-            // pictureBoxFriend
-            // 
-            this.pictureBoxFriend.Location = new System.Drawing.Point(480, 218);
-            this.pictureBoxFriend.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBoxFriend.Name = "pictureBoxFriend";
-            this.pictureBoxFriend.Size = new System.Drawing.Size(156, 138);
-            this.pictureBoxFriend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxFriend.TabIndex = 5;
-            this.pictureBoxFriend.TabStop = false;
-            // 
-            // labelCreateAlbumHeader
-            // 
-            this.labelCreateAlbumHeader.AutoSize = true;
-            this.labelCreateAlbumHeader.Location = new System.Drawing.Point(179, 17);
-            this.labelCreateAlbumHeader.Name = "labelCreateAlbumHeader";
-            this.labelCreateAlbumHeader.Size = new System.Drawing.Size(195, 17);
-            this.labelCreateAlbumHeader.TabIndex = 4;
-            this.labelCreateAlbumHeader.Text = "Create an album with a friend!";
-            // 
-            // buttonSelectedFriend
-            // 
-            this.buttonSelectedFriend.Location = new System.Drawing.Point(303, 59);
-            this.buttonSelectedFriend.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonSelectedFriend.Name = "buttonSelectedFriend";
-            this.buttonSelectedFriend.Size = new System.Drawing.Size(75, 23);
-            this.buttonSelectedFriend.TabIndex = 3;
-            this.buttonSelectedFriend.Text = "Select";
-            this.buttonSelectedFriend.UseVisualStyleBackColor = true;
-            this.buttonSelectedFriend.Click += new System.EventHandler(this.buttonSelectedFriend_Click);
-            // 
-            // textBoxSelectedFriend
-            // 
-            this.textBoxSelectedFriend.Location = new System.Drawing.Point(179, 60);
-            this.textBoxSelectedFriend.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxSelectedFriend.Name = "textBoxSelectedFriend";
-            this.textBoxSelectedFriend.Size = new System.Drawing.Size(100, 22);
-            this.textBoxSelectedFriend.TabIndex = 2;
-            // 
-            // listBoxAlbumWithFriend
-            // 
-            this.listBoxAlbumWithFriend.FormattingEnabled = true;
-            this.listBoxAlbumWithFriend.ItemHeight = 16;
-            this.listBoxAlbumWithFriend.Location = new System.Drawing.Point(7, 116);
-            this.listBoxAlbumWithFriend.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listBoxAlbumWithFriend.Name = "listBoxAlbumWithFriend";
-            this.listBoxAlbumWithFriend.Size = new System.Drawing.Size(616, 244);
-            this.listBoxAlbumWithFriend.TabIndex = 1;
-            this.listBoxAlbumWithFriend.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbumWithFriend_SelectedIndexChanged);
-            // 
-            // labelSelectedFriend
-            // 
-            this.labelSelectedFriend.AutoSize = true;
-            this.labelSelectedFriend.Location = new System.Drawing.Point(64, 65);
-            this.labelSelectedFriend.Name = "labelSelectedFriend";
-            this.labelSelectedFriend.Size = new System.Drawing.Size(109, 17);
-            this.labelSelectedFriend.TabIndex = 0;
-            this.labelSelectedFriend.Text = "selected Friend:";
+            this.createAlbumFeature.Click += new System.EventHandler(this.createAlbumFeature_Click);
             // 
             // breakManagerFeature
             // 
@@ -531,7 +461,7 @@
             this.breakManagerFeature.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.breakManagerFeature.Name = "breakManagerFeature";
             this.breakManagerFeature.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.breakManagerFeature.Size = new System.Drawing.Size(641, 361);
+            this.breakManagerFeature.Size = new System.Drawing.Size(641, 386);
             this.breakManagerFeature.TabIndex = 5;
             this.breakManagerFeature.Text = "Break Manager";
             this.breakManagerFeature.UseVisualStyleBackColor = true;
@@ -679,15 +609,12 @@
             this.userNamePresentation.Size = new System.Drawing.Size(0, 31);
             this.userNamePresentation.TabIndex = 8;
             // 
-            // buttonDownload
+            // fileSystem1
             // 
-            this.buttonDownload.Location = new System.Drawing.Point(425, 60);
-            this.buttonDownload.Name = "buttonDownload";
-            this.buttonDownload.Size = new System.Drawing.Size(87, 23);
-            this.buttonDownload.TabIndex = 6;
-            this.buttonDownload.Text = "Download";
-            this.buttonDownload.UseVisualStyleBackColor = true;
-            this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
+            this.fileSystem1.Location = new System.Drawing.Point(-19, 3);
+            this.fileSystem1.Name = "fileSystem1";
+            this.fileSystem1.Size = new System.Drawing.Size(732, 410);
+            this.fileSystem1.TabIndex = 0;
             // 
             // FormMainFacebookApp
             // 
@@ -720,8 +647,6 @@
             this.tabUserPhotos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).EndInit();
             this.createAlbumFeature.ResumeLayout(false);
-            this.createAlbumFeature.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriend)).EndInit();
             this.breakManagerFeature.ResumeLayout(false);
             this.breakManagerFeature.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).EndInit();
@@ -767,12 +692,6 @@
         private System.Windows.Forms.PictureBox pictureBoxSelected;
         private System.Windows.Forms.TabPage createAlbumFeature;
         private System.Windows.Forms.TabPage breakManagerFeature;
-        private System.Windows.Forms.PictureBox pictureBoxFriend;
-        private System.Windows.Forms.Label labelCreateAlbumHeader;
-        private System.Windows.Forms.Button buttonSelectedFriend;
-        private System.Windows.Forms.TextBox textBoxSelectedFriend;
-        private System.Windows.Forms.ListBox listBoxAlbumWithFriend;
-        private System.Windows.Forms.Label labelSelectedFriend;
         private System.Windows.Forms.Button saveBreakManagerSettingsButton;
         private System.Windows.Forms.RadioButton tenMinutesButton;
         private System.Windows.Forms.RadioButton fifteenMinutesButton;
@@ -784,6 +703,6 @@
         private System.Windows.Forms.Label timerPresentation;
         private System.Windows.Forms.Label userNamePresentation;
         private System.Windows.Forms.Label saveSettingsNote;
-        private System.Windows.Forms.Button buttonDownload;
+        private FileSystem fileSystem1;
     }
 }

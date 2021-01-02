@@ -52,6 +52,15 @@
   <ItemGroup>
     <Compile Include="AlbumCreator.cs" />
     <Compile Include="BreaksManager.cs" />
+    <Compile Include="FileSystem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FileSystem.Designer.cs">
+      <DependentUpon>FileSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Folder.cs" />
+    <Compile Include="IFile.cs" />
+    <Compile Include="PhotoProxy.cs" />
     <Compile Include="Tab.cs" />
     <Compile Include="eTab.cs" />
     <Compile Include="TabsLoader.cs" />
@@ -64,6 +73,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="eTime.cs" />
+    <EmbeddedResource Include="FileSystem.resx">
+      <DependentUpon>FileSystem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMainFacebookApp.resx">
       <DependentUpon>FormMainFacebookApp.cs</DependentUpon>
     </EmbeddedResource>
@@ -76,6 +88,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\IFile.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -86,5 +99,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

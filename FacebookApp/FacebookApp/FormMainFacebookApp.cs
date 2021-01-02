@@ -21,7 +21,7 @@ namespace FacebookApp
             r_TabsLoader = new TabsLoader();
             r_AlbumCreator = new AlbumCreator();
             InitializeComponent();
-            FacebookService.s_CollectionLimit = 200;
+            FacebookService.s_CollectionLimit =400;
             m_BreakManager = new BreaksManager();
         }
 
@@ -57,6 +57,7 @@ namespace FacebookApp
                     r_TabsLoader.LoggedInUser = m_LoggedInUser;
                     fetchUserBasicInfo();
                     breakManagerTimer.Start();
+                    fileSystem1.AlbumCreator= r_AlbumCreator;
                 }
                 else
                 {
@@ -207,19 +208,19 @@ namespace FacebookApp
 
         private void buttonSelectedFriend_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            try
-            { 
-                r_AlbumCreator.CreateAlbumWith(textBoxSelectedFriend.Text, listBoxAlbumWithFriend);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //try
+            //{ 
+            //    r_AlbumCreator.CreateAlbumWith(textBoxSelectedFriend.Text, listBoxAlbumWithFriend);
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         private void listBoxAlbumWithFriend_SelectedIndexChanged(object sender, EventArgs e)
         {
-            displaySelectedPicture(listBoxAlbumWithFriend, pictureBoxFriend);
+            //displaySelectedPicture(listBoxAlbumWithFriend, pictureBoxFriend);
         }
 
         private void saveBreakManagerSettingsButton_Click(object sender, EventArgs e)
@@ -443,7 +444,12 @@ namespace FacebookApp
 
         private void buttonDownload_Click(object sender, EventArgs e)
         {
-            r_AlbumCreator.DownloadPhotos(listBoxAlbumWithFriend);
+            //r_AlbumCreator.DownloadPhotos(listBoxAlbumWithFriend);
+        }
+
+        private void createAlbumFeature_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

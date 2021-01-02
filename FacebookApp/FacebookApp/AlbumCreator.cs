@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
@@ -9,27 +10,41 @@ namespace FacebookApp
     public class AlbumCreator
     {
         private const string FileName = "Photo.jpg";
-
-
+        private List<User> m_FriendsWithAlbums;
+        private Folder m_MainFolder = new Folder();
         public User LoggedInUser { get; set; }
 
-        public void CreateAlbumWith(string i_FriendName, object i_ObjectToInit)
+        public AlbumCreator()
         {
-            bool isFriendInList = isFriendInLoggedInUserList(i_FriendName);
+            m_MainFolder = new Folder();
+            m_FriendsWithAlbums = new List<User>();
+        }
 
-            if (isFriendInList)
+
+        public Folder GetAlbumWith(string i_FriendName)
+        {
+            Folder newAlbum = new Folder();
+            if (isFriendInCollection(i_FriendName, LoggedInUser.Friends))
             {
-                generateNewAlbum(i_FriendName, i_ObjectToInit);
+                if (isFriendInCollection(i_FriendName, m_FriendsWithAlbums))
+                {
+                    throw new Exception("Friend's Album is already exists. please try another friend name");
+                }
+                else
+                {
+                    newAlbum =generateNewAlbum(i_FriendName);
+                }
             }
             else
             {
                 throw new Exception("Friend doesn't exist. please type correctly the friend name");
             }
+            return newAlbum;
         }
 
-        private void generateNewAlbum(string i_FriendName, object i_ObjectToInit)
+        private Folder generateNewAlbum(string i_FriendName)
         {
-            ListBox photosBox = i_ObjectToInit as ListBox;
+            Folder newAlbum = new Folder();
 
             // since it doesn't work we implement it manually
             try
@@ -38,14 +53,13 @@ namespace FacebookApp
                 {
                     if (photo.Tags != null)
                     {
+                        newAlbum = new Folder();
+                        newAlbum.Name = string.Format("{0}'s Album", i_FriendName);
                         foreach (PhotoTag tag in photo.Tags)
                         {
                             if (tag.User.Name == i_FriendName)
                             {
-                                if (photosBox != null)
-                                {
-                                    photosBox.Items.Add(photo);
-                                }
+                                newAlbum.AddChild(new PhotoProxy(photo));
                             }
                         }
                     }
@@ -57,18 +71,21 @@ namespace FacebookApp
             }
             catch (Exception ex)
             {
+                newAlbum = new Folder();
+                newAlbum.Name = string.Format("{0}'s Album", i_FriendName);
                 for (int i = 0; i < 10; i++)
                 {
-                    photosBox?.Items.Add(this.LoggedInUser.PhotosTaggedIn[i]);
+                    newAlbum.AddChild(new PhotoProxy(LoggedInUser.PhotosTaggedIn[i]));
                 }
             }
+            return newAlbum;
         }
 
-        private bool isFriendInLoggedInUserList(string i_FriendName)
+        private bool isFriendInCollection(string i_FriendName, IEnumerable<User> i_Collection)
         {
             bool result = false;
 
-            foreach (User friend in LoggedInUser.Friends)
+            foreach (User friend in i_Collection)
             {
                 if (friend.Name == i_FriendName)
                 {
@@ -79,6 +96,7 @@ namespace FacebookApp
 
             return result;
         }
+
 
         public void DownloadPhotos(ListBox i_PhotosList)
         {
