@@ -9,7 +9,7 @@ namespace FacebookApp
     public interface IFile
     {
         bool Selected { get; set; }
-        void DownloadMe();
-        string Name { get; set; }
+        void DownloadMe(string i_Path);
+
     }
 }

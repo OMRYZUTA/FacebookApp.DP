@@ -590,7 +590,7 @@
             this.profilePicture.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.profilePicture.Name = "profilePicture";
             this.profilePicture.Size = new System.Drawing.Size(178, 119);
-            this.profilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.profilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profilePicture.TabIndex = 7;
             this.profilePicture.TabStop = false;
             // 
@@ -611,6 +611,7 @@
             // 
             // fileSystem1
             // 
+            this.fileSystem1.AlbumCreator = null;
             this.fileSystem1.Location = new System.Drawing.Point(-19, 3);
             this.fileSystem1.Name = "fileSystem1";
             this.fileSystem1.Size = new System.Drawing.Size(732, 410);

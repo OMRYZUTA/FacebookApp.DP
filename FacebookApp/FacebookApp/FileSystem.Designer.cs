@@ -32,20 +32,18 @@
             System.Windows.Forms.Label createdTimeLabel;
             this.panel1 = new System.Windows.Forms.Panel();
             this.treeViewFiles = new System.Windows.Forms.TreeView();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCreateAlbum = new System.Windows.Forms.PictureBox();
             this.createdTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.buttonDownload = new System.Windows.Forms.Button();
             this.labelCreateAlbumHeader = new System.Windows.Forms.Label();
             this.buttonCreateAlbum = new System.Windows.Forms.Button();
             this.textBoxSelectedFriend = new System.Windows.Forms.TextBox();
             this.labelSelectedFriend = new System.Windows.Forms.Label();
-            this.buttonBack = new System.Windows.Forms.Button();
             this.folderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             createdTimeLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCreateAlbum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.folderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -62,37 +60,33 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.treeViewFiles);
-            this.panel1.Controls.Add(this.vScrollBar1);
             this.panel1.Location = new System.Drawing.Point(21, 129);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(248, 263);
+            this.panel1.Size = new System.Drawing.Size(290, 263);
             this.panel1.TabIndex = 1;
             // 
             // treeViewFiles
             // 
+            this.treeViewFiles.CheckBoxes = true;
             this.treeViewFiles.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.folderBindingSource, "Name", true));
             this.treeViewFiles.DataBindings.Add(new System.Windows.Forms.Binding("CheckBoxes", this.folderBindingSource, "Selected", true));
             this.treeViewFiles.Location = new System.Drawing.Point(3, 3);
             this.treeViewFiles.Name = "treeViewFiles";
-            this.treeViewFiles.Size = new System.Drawing.Size(221, 260);
+            this.treeViewFiles.Size = new System.Drawing.Size(284, 260);
             this.treeViewFiles.TabIndex = 3;
+            this.treeViewFiles.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeViewFiles_AfterCheck);
+            this.treeViewFiles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewFiles_AfterSelect);
             // 
-            // vScrollBar1
+            // pictureBoxCreateAlbum
             // 
-            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.vScrollBar1.Location = new System.Drawing.Point(227, 0);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(21, 263);
-            this.vScrollBar1.TabIndex = 2;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.pictureBox1.Location = new System.Drawing.Point(348, 120);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(130, 123);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxCreateAlbum.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBoxCreateAlbum.Image = global::FacebookApp.Properties.Resources.folderIcon;
+            this.pictureBoxCreateAlbum.Location = new System.Drawing.Point(348, 120);
+            this.pictureBoxCreateAlbum.Name = "pictureBoxCreateAlbum";
+            this.pictureBoxCreateAlbum.Size = new System.Drawing.Size(246, 168);
+            this.pictureBoxCreateAlbum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCreateAlbum.TabIndex = 3;
+            this.pictureBoxCreateAlbum.TabStop = false;
             // 
             // createdTimeDateTimePicker
             // 
@@ -107,8 +101,9 @@
             this.buttonDownload.Name = "buttonDownload";
             this.buttonDownload.Size = new System.Drawing.Size(164, 23);
             this.buttonDownload.TabIndex = 11;
-            this.buttonDownload.Text = "Download";
+            this.buttonDownload.Text = "Download Selected";
             this.buttonDownload.UseVisualStyleBackColor = true;
+            this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
             // 
             // labelCreateAlbumHeader
             // 
@@ -147,15 +142,6 @@
             this.labelSelectedFriend.TabIndex = 7;
             this.labelSelectedFriend.Text = "selected Friend:";
             // 
-            // buttonBack
-            // 
-            this.buttonBack.Location = new System.Drawing.Point(24, 101);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(103, 23);
-            this.buttonBack.TabIndex = 12;
-            this.buttonBack.Text = "Back";
-            this.buttonBack.UseVisualStyleBackColor = true;
-            // 
             // folderBindingSource
             // 
             this.folderBindingSource.DataSource = typeof(FacebookApp.Folder);
@@ -168,7 +154,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonDownload);
             this.Controls.Add(this.labelCreateAlbumHeader);
             this.Controls.Add(this.buttonCreateAlbum);
@@ -176,12 +161,12 @@
             this.Controls.Add(this.labelSelectedFriend);
             this.Controls.Add(createdTimeLabel);
             this.Controls.Add(this.createdTimeDateTimePicker);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxCreateAlbum);
             this.Controls.Add(this.panel1);
             this.Name = "FileSystem";
             this.Size = new System.Drawing.Size(706, 408);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCreateAlbum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.folderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -191,8 +176,7 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxCreateAlbum;
         private System.Windows.Forms.DateTimePicker createdTimeDateTimePicker;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.BindingSource folderBindingSource;
@@ -201,7 +185,6 @@
         private System.Windows.Forms.Button buttonCreateAlbum;
         private System.Windows.Forms.TextBox textBoxSelectedFriend;
         private System.Windows.Forms.Label labelSelectedFriend;
-        private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.TreeView treeViewFiles;
     }
 }
