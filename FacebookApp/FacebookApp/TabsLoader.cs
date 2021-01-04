@@ -136,7 +136,7 @@ namespace FacebookApp
             {
                 if (post.Message != null)
                 {
-                    userPostsList.Items.Add(post.Message);
+                     userPostsList.Items.Add(post.Message);
                 }
                 else if (post.Caption != null)
                 {

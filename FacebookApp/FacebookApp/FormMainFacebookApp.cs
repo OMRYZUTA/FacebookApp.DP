@@ -5,9 +5,11 @@ using System.Windows.Forms;
 using System.Drawing;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using System.Threading;
 
 namespace FacebookApp
 {
+
     public partial class FormMainFacebookApp : Form
     {
         private readonly TabsLoader r_TabsLoader;
@@ -21,49 +23,52 @@ namespace FacebookApp
             r_TabsLoader = new TabsLoader();
             r_AlbumCreator = new AlbumCreator();
             InitializeComponent();
-            FacebookService.s_CollectionLimit =400;
+            FacebookService.s_CollectionLimit = 400;
             m_BreakManager = new BreaksManager();
         }
 
         private void loginAndInit()
         {
-            if (m_LoginResult == null)
-            {
-                /// Owner: design.patterns
-                ///EAAUm6cZC4eUEBALVbi9bZAb5VFs1ebDkmva0uhzXkgRRlMY8YVVBEjoJRw5e6fdxnbrHezOCBpqybBCglBWxpyaFlqSu98nqSpp3yXhgcDl6YoRH6zSKMIZA3em1D6LidH0mCgXzCjZBXW5HuZBTLVvUDNqDtd6HElosgjevktks5e09iRU0X
-                /// Use the FacebookService.Login method to display the login form to any user who wish to use this application.
-                /// You can then save the result.AccessToken for future auto-connect to this user:
-                m_LoginResult = FacebookService.Login("361826995145957",
-                    /// (desig patter's "Design Patterns Course App 2.4" app)
+           
+                
+                if (m_LoginResult == null)
+                {
+                    /// Owner: design.patterns
+                    ///EAAUm6cZC4eUEBALVbi9bZAb5VFs1ebDkmva0uhzXkgRRlMY8YVVBEjoJRw5e6fdxnbrHezOCBpqybBCglBWxpyaFlqSu98nqSpp3yXhgcDl6YoRH6zSKMIZA3em1D6LidH0mCgXzCjZBXW5HuZBTLVvUDNqDtd6HElosgjevktks5e09iRU0X
+                    /// Use the FacebookService.Login method to display the login form to any user who wish to use this application.
+                    /// You can then save the result.AccessToken for future auto-connect to this user:
+                    m_LoginResult = FacebookService.Login("361826995145957",
+                        /// (desig patter's "Design Patterns Course App 2.4" app)
 
-                    "public_profile",
-                    "email",
-                    "user_birthday",
-                    "user_age_range",
-                    "user_gender",
-                    "user_link",
-                    "user_tagged_places",
-                    "user_videos",
-                    "user_friends",
-                    "user_events",
-                    "user_likes",
-                    "user_location",
-                    "user_photos",
-                    "user_posts",
-                    "user_hometown");
-                if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
-                {
-                    m_LoggedInUser = m_LoginResult.LoggedInUser;
-                    r_TabsLoader.LoggedInUser = m_LoggedInUser;
-                    fetchUserBasicInfo();
-                    breakManagerTimer.Start();
-                    fileSystem1.AlbumCreator= r_AlbumCreator;
+                        "public_profile",
+                        "email",
+                        "user_birthday",
+                        "user_age_range",
+                        "user_gender",
+                        "user_link",
+                        "user_tagged_places",
+                        "user_videos",
+                        "user_friends",
+                        "user_events",
+                        "user_likes",
+                        "user_location",
+                        "user_photos",
+                        "user_posts",
+                        "user_hometown");
+                    if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
+                    {
+                        m_LoggedInUser = m_LoginResult.LoggedInUser;
+                        r_TabsLoader.LoggedInUser = m_LoggedInUser;
+                        fetchUserBasicInfo();
+                        breakManagerTimer.Start();
+                        fileSystem1.AlbumCreator = r_AlbumCreator;
+                    }
+                    else
+                    {
+                        MessageBox.Show(m_LoginResult.ErrorMessage);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show(m_LoginResult.ErrorMessage);
-                }
-            }
+            
         }
 
         private void fetchUserBasicInfo()
@@ -71,7 +76,7 @@ namespace FacebookApp
             fetchUserProfilePhoto();
             fetchUserCoverPhoto();
             fetchUserName();
-            loadPostsTab();
+            new Thread (loadPostsTab).Start();
         }
 
         // since Cover property is broken we are using PhotosTaggedIn
@@ -89,13 +94,14 @@ namespace FacebookApp
             userName.Append(m_LoggedInUser.FirstName);
             userName.Append(" ");
             userName.Append(m_LoggedInUser.LastName);
-            userNamePresentation.Text = userName.ToString();
+            userNamePresentation.Invoke(new Action(()=> userNamePresentation.Text = userName.ToString()));
         }
 
         private void fetchUserProfilePhoto()
         {
-            profilePicture.LoadAsync(m_LoggedInUser.PictureNormalURL);
+          profilePicture.LoadAsync(m_LoggedInUser.PictureNormalURL);
         }
+
 
         private void buttonLogin_Click(object i_Sender, EventArgs i_EventArgs)
         {
@@ -206,23 +212,6 @@ namespace FacebookApp
             }
         }
 
-        private void buttonSelectedFriend_Click(object i_Sender, EventArgs i_EventArgs)
-        {
-            //try
-            //{ 
-            //    r_AlbumCreator.CreateAlbumWith(textBoxSelectedFriend.Text, listBoxAlbumWithFriend);
-            //}
-            //catch(Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-        }
-
-        private void listBoxAlbumWithFriend_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //displaySelectedPicture(listBoxAlbumWithFriend, pictureBoxFriend);
-        }
-
         private void saveBreakManagerSettingsButton_Click(object sender, EventArgs e)
         {
             foreach (object listObject in breakManagerFeature.Controls)
@@ -236,7 +225,7 @@ namespace FacebookApp
                 }
             }
 
-            if(noBreaksButton.Checked == true)
+            if (noBreaksButton.Checked == true)
             {
                 disableBreaksPrompts();
             }

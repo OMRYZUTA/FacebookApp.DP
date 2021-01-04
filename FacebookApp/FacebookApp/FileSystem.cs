@@ -83,6 +83,7 @@ namespace FacebookApp
                 string selectedPath = fbd.SelectedPath;
                 m_HomeFolder.DownloadMe(selectedPath);
             }
+            MessageBox.Show("Download completed");
         }
 
         private void treeViewFiles_AfterSelect(object sender, TreeViewEventArgs e)
