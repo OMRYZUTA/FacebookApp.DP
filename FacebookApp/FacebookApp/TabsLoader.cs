@@ -10,6 +10,7 @@ namespace FacebookApp
         private List<eTab> LoadedTabs { get; }
 
         public User LoggedInUser { get; set; }
+        private const int k_MaxNumberOfPosts = 50;
 
         public TabsLoader()
         {
@@ -131,22 +132,27 @@ namespace FacebookApp
         private void loadPostsTab(object i_UserPostsList)
         {
             ListBox userPostsList = i_UserPostsList as ListBox;
-
+            int counter = 0;
             foreach (Post post in LoggedInUser.Posts)
             {
                 if (post.Message != null)
                 {
-                     userPostsList.Items.Add(post.Message);
+                    userPostsList.Items.Add(post.Message);
                 }
                 else if (post.Caption != null)
                 {
                     userPostsList.Items.Add(post.Caption);
                 }
+                counter++;
+                if (counter >= k_MaxNumberOfPosts)
+                {
+                    break;
+                }
             }
 
             if (LoggedInUser.Posts.Count == 0)
             {
-               throw new Exception("No Posts to retrieve :(");
+                throw new Exception("No Posts to retrieve :(");
             }
 
             LoadedTabs.Add(eTab.Posts);

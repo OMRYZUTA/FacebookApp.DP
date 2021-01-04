@@ -50,7 +50,8 @@ namespace FacebookApp
             }
             foreach (TreeNode file in Nodes)
             {
-                if (file.Checked)
+                
+                if (file.Checked || file is Folder)
                 {
                     (file as IFile).DownloadMe(path);
                 }

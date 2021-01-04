@@ -59,10 +59,10 @@ namespace FacebookApp
                     {
                         m_LoggedInUser = m_LoginResult.LoggedInUser;
                         r_TabsLoader.LoggedInUser = m_LoggedInUser;
-                        fetchUserBasicInfo();
                         breakManagerTimer.Start();
                         fileSystem1.AlbumCreator = r_AlbumCreator;
-                    }
+                        fetchUserBasicInfo();
+                }
                     else
                     {
                         MessageBox.Show(m_LoginResult.ErrorMessage);
@@ -73,10 +73,9 @@ namespace FacebookApp
 
         private void fetchUserBasicInfo()
         {
-            fetchUserProfilePhoto();
-            fetchUserCoverPhoto();
-            fetchUserName();
-            new Thread (loadPostsTab).Start();
+            new Thread (fetchUserProfilePhoto).Start();
+            new Thread (fetchUserCoverPhoto).Start();
+            new Thread (fetchUserName).Start();
         }
 
         // since Cover property is broken we are using PhotosTaggedIn
@@ -84,7 +83,7 @@ namespace FacebookApp
         {
             if (m_LoggedInUser.PhotosTaggedIn?[1] != null)
             {
-                coverPhoto.LoadAsync(m_LoggedInUser.PhotosTaggedIn[1].PictureNormalURL);
+                coverPhoto.Invoke(new Action(()=>coverPhoto.LoadAsync(m_LoggedInUser.PhotosTaggedIn[1].PictureNormalURL)));
             }
         }
 
@@ -99,13 +98,15 @@ namespace FacebookApp
 
         private void fetchUserProfilePhoto()
         {
-          profilePicture.LoadAsync(m_LoggedInUser.PictureNormalURL);
+          profilePicture.Invoke(new Action(()=>profilePicture.LoadAsync(m_LoggedInUser.PictureNormalURL)));
         }
 
 
         private void buttonLogin_Click(object i_Sender, EventArgs i_EventArgs)
         {
-            loginAndInit();
+            Thread t = new Thread(loginAndInit);
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
         }
 
         private Dictionary<string, object> buildDictionaryForAboutTab()
