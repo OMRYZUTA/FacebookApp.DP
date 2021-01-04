@@ -30,6 +30,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label createdTimeLabel;
+            System.Windows.Forms.Label nameLabel2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainFacebookApp));
             this.appIcon = new System.Windows.Forms.PictureBox();
             this.buttonLogin = new System.Windows.Forms.Button();
@@ -60,9 +62,13 @@
             this.tabFriendsList = new System.Windows.Forms.TabPage();
             this.friendsListBox = new System.Windows.Forms.ListBox();
             this.tabUserPhotos = new System.Windows.Forms.TabPage();
-            this.pictureBoxSelected = new System.Windows.Forms.PictureBox();
+            this.imageNormalPictureBox = new System.Windows.Forms.PictureBox();
+            this.photoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.createdTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.photosListBox = new System.Windows.Forms.ListBox();
             this.createAlbumFeature = new System.Windows.Forms.TabPage();
+            this.fileSystem1 = new FacebookApp.FileSystem();
             this.breakManagerFeature = new System.Windows.Forms.TabPage();
             this.saveSettingsNote = new System.Windows.Forms.Label();
             this.timerPresentation = new System.Windows.Forms.Label();
@@ -77,7 +83,8 @@
             this.profilePicture = new System.Windows.Forms.PictureBox();
             this.breakManagerTimer = new System.Windows.Forms.Timer(this.components);
             this.userNamePresentation = new System.Windows.Forms.Label();
-            this.fileSystem1 = new FacebookApp.FileSystem();
+            createdTimeLabel = new System.Windows.Forms.Label();
+            nameLabel2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.appIcon)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.tabUserPosts.SuspendLayout();
@@ -88,12 +95,31 @@
             this.tabPage7.SuspendLayout();
             this.tabFriendsList.SuspendLayout();
             this.tabUserPhotos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.photoBindingSource)).BeginInit();
             this.createAlbumFeature.SuspendLayout();
             this.breakManagerFeature.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
             this.SuspendLayout();
+            // 
+            // createdTimeLabel
+            // 
+            createdTimeLabel.AutoSize = true;
+            createdTimeLabel.Location = new System.Drawing.Point(102, 336);
+            createdTimeLabel.Name = "createdTimeLabel";
+            createdTimeLabel.Size = new System.Drawing.Size(97, 17);
+            createdTimeLabel.TabIndex = 1;
+            createdTimeLabel.Text = "Created Time:";
+            // 
+            // nameLabel2
+            // 
+            nameLabel2.AutoSize = true;
+            nameLabel2.Location = new System.Drawing.Point(463, 76);
+            nameLabel2.Name = "nameLabel2";
+            nameLabel2.Size = new System.Drawing.Size(81, 17);
+            nameLabel2.TabIndex = 7;
+            nameLabel2.Text = "Created by:";
             // 
             // appIcon
             // 
@@ -137,6 +163,7 @@
             // 
             // tabUserPosts
             // 
+            this.tabUserPosts.AutoScroll = true;
             this.tabUserPosts.Controls.Add(this.userPostsList);
             this.tabUserPosts.Location = new System.Drawing.Point(4, 25);
             this.tabUserPosts.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
@@ -153,10 +180,10 @@
             this.userPostsList.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userPostsList.FormattingEnabled = true;
             this.userPostsList.ItemHeight = 16;
-            this.userPostsList.Location = new System.Drawing.Point(4, 7);
+            this.userPostsList.Location = new System.Drawing.Point(-66, 7);
             this.userPostsList.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.userPostsList.Name = "userPostsList";
-            this.userPostsList.Size = new System.Drawing.Size(639, 324);
+            this.userPostsList.Size = new System.Drawing.Size(634, 388);
             this.userPostsList.TabIndex = 0;
             // 
             // tabAboutUser
@@ -401,7 +428,12 @@
             // 
             // tabUserPhotos
             // 
-            this.tabUserPhotos.Controls.Add(this.pictureBoxSelected);
+            this.tabUserPhotos.AutoScroll = true;
+            this.tabUserPhotos.Controls.Add(this.imageNormalPictureBox);
+            this.tabUserPhotos.Controls.Add(nameLabel2);
+            this.tabUserPhotos.Controls.Add(this.nameTextBox);
+            this.tabUserPhotos.Controls.Add(createdTimeLabel);
+            this.tabUserPhotos.Controls.Add(this.createdTimeDateTimePicker);
             this.tabUserPhotos.Controls.Add(this.photosListBox);
             this.tabUserPhotos.Location = new System.Drawing.Point(4, 25);
             this.tabUserPhotos.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
@@ -412,26 +444,47 @@
             this.tabUserPhotos.Text = "User Photos";
             this.tabUserPhotos.UseVisualStyleBackColor = true;
             // 
-            // pictureBoxSelected
+            // imageNormalPictureBox
             // 
-            this.pictureBoxSelected.Location = new System.Drawing.Point(460, 219);
-            this.pictureBoxSelected.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.pictureBoxSelected.Name = "pictureBoxSelected";
-            this.pictureBoxSelected.Size = new System.Drawing.Size(176, 143);
-            this.pictureBoxSelected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxSelected.TabIndex = 1;
-            this.pictureBoxSelected.TabStop = false;
+            this.imageNormalPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.photoBindingSource, "ImageNormal", true));
+            this.imageNormalPictureBox.Location = new System.Drawing.Point(466, 172);
+            this.imageNormalPictureBox.Name = "imageNormalPictureBox";
+            this.imageNormalPictureBox.Size = new System.Drawing.Size(142, 129);
+            this.imageNormalPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageNormalPictureBox.TabIndex = 9;
+            this.imageNormalPictureBox.TabStop = false;
+            // 
+            // photoBindingSource
+            // 
+            this.photoBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Photo);
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.photoBindingSource, "From.Name", true));
+            this.nameTextBox.Location = new System.Drawing.Point(466, 96);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(131, 22);
+            this.nameTextBox.TabIndex = 8;
+            // 
+            // createdTimeDateTimePicker
+            // 
+            this.createdTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.photoBindingSource, "CreatedTime", true));
+            this.createdTimeDateTimePicker.Location = new System.Drawing.Point(220, 336);
+            this.createdTimeDateTimePicker.Name = "createdTimeDateTimePicker";
+            this.createdTimeDateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.createdTimeDateTimePicker.TabIndex = 2;
             // 
             // photosListBox
             // 
+            this.photosListBox.DataSource = this.photoBindingSource;
+            this.photosListBox.DisplayMember = "Name";
             this.photosListBox.FormattingEnabled = true;
             this.photosListBox.ItemHeight = 16;
             this.photosListBox.Location = new System.Drawing.Point(0, 0);
             this.photosListBox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.photosListBox.Name = "photosListBox";
-            this.photosListBox.Size = new System.Drawing.Size(637, 356);
+            this.photosListBox.Size = new System.Drawing.Size(454, 324);
             this.photosListBox.TabIndex = 0;
-            this.photosListBox.SelectedIndexChanged += new System.EventHandler(this.photosListBox_SelectedIndexChanged);
             // 
             // createAlbumFeature
             // 
@@ -445,6 +498,14 @@
             this.createAlbumFeature.Text = "Create Album";
             this.createAlbumFeature.UseVisualStyleBackColor = true;
             this.createAlbumFeature.Click += new System.EventHandler(this.createAlbumFeature_Click);
+            // 
+            // fileSystem1
+            // 
+            this.fileSystem1.AlbumCreator = null;
+            this.fileSystem1.Location = new System.Drawing.Point(-19, 3);
+            this.fileSystem1.Name = "fileSystem1";
+            this.fileSystem1.Size = new System.Drawing.Size(732, 410);
+            this.fileSystem1.TabIndex = 0;
             // 
             // breakManagerFeature
             // 
@@ -609,14 +670,6 @@
             this.userNamePresentation.Size = new System.Drawing.Size(0, 31);
             this.userNamePresentation.TabIndex = 8;
             // 
-            // fileSystem1
-            // 
-            this.fileSystem1.AlbumCreator = null;
-            this.fileSystem1.Location = new System.Drawing.Point(-19, 3);
-            this.fileSystem1.Name = "fileSystem1";
-            this.fileSystem1.Size = new System.Drawing.Size(732, 410);
-            this.fileSystem1.TabIndex = 0;
-            // 
             // FormMainFacebookApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -646,7 +699,9 @@
             this.tabPage7.PerformLayout();
             this.tabFriendsList.ResumeLayout(false);
             this.tabUserPhotos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSelected)).EndInit();
+            this.tabUserPhotos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.photoBindingSource)).EndInit();
             this.createAlbumFeature.ResumeLayout(false);
             this.breakManagerFeature.ResumeLayout(false);
             this.breakManagerFeature.PerformLayout();
@@ -690,7 +745,6 @@
         private System.Windows.Forms.Label workPlaces;
         private System.Windows.Forms.ListBox friendsListBox;
         private System.Windows.Forms.ListBox photosListBox;
-        private System.Windows.Forms.PictureBox pictureBoxSelected;
         private System.Windows.Forms.TabPage createAlbumFeature;
         private System.Windows.Forms.TabPage breakManagerFeature;
         private System.Windows.Forms.Button saveBreakManagerSettingsButton;
@@ -705,5 +759,9 @@
         private System.Windows.Forms.Label userNamePresentation;
         private System.Windows.Forms.Label saveSettingsNote;
         private FileSystem fileSystem1;
+        private System.Windows.Forms.BindingSource photoBindingSource;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.DateTimePicker createdTimeDateTimePicker;
+        private System.Windows.Forms.PictureBox imageNormalPictureBox;
     }
 }

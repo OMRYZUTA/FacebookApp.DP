@@ -56,10 +56,7 @@ namespace FacebookApp
         {
             ListBox photosBox = i_ObjectToInit as ListBox;
 
-            foreach (Photo photo in LoggedInUser.PhotosTaggedIn)
-            {
-                photosBox.Items.Add(photo);
-            }
+            
         }
 
         private void loadFriendsListTab(object i_ObjectToInit)
