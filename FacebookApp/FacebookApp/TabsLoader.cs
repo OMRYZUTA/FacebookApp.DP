@@ -36,9 +36,6 @@ namespace FacebookApp
                 case eTab.FriendsList:
                     loadFriendsListTab(i_ObjectToInit);
                     break;
-                case eTab.UserPhotos:
-                    loadUserPhotosTab(i_ObjectToInit);
-                    break;
                 case eTab.CreateAlbum:
                     loadAlbumCreator(i_ObjectToInit);
                     break;
@@ -50,13 +47,6 @@ namespace FacebookApp
             AlbumCreator albumCreator = i_ObjectToInit as AlbumCreator;
             albumCreator.LoggedInUser = LoggedInUser;
             LoadedTabs.Add(eTab.CreateAlbum);
-        }
-
-        private void loadUserPhotosTab(object i_ObjectToInit)
-        {
-            ListBox photosBox = i_ObjectToInit as ListBox;
-
-            
         }
 
         private void loadFriendsListTab(object i_ObjectToInit)

@@ -163,7 +163,6 @@ namespace FacebookApp
         private void loadUserPhotosTab()
         {
             photoBindingSource.DataSource = m_LoggedInUser.PhotosTaggedIn;
-
         }
 
         private void loadFriendsListTab()
