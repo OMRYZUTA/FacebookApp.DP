@@ -157,7 +157,7 @@
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(649, 415);
+            this.tabControlMain.Size = new System.Drawing.Size(650, 430);
             this.tabControlMain.TabIndex = 6;
             this.tabControlMain.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControlMain_Selected);
             // 
@@ -169,7 +169,7 @@
             this.tabUserPosts.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabUserPosts.Name = "tabUserPosts";
             this.tabUserPosts.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.tabUserPosts.Size = new System.Drawing.Size(641, 386);
+            this.tabUserPosts.Size = new System.Drawing.Size(642, 401);
             this.tabUserPosts.TabIndex = 1;
             this.tabUserPosts.Text = "User Posts";
             this.tabUserPosts.UseVisualStyleBackColor = true;
@@ -180,10 +180,10 @@
             this.userPostsList.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userPostsList.FormattingEnabled = true;
             this.userPostsList.ItemHeight = 16;
-            this.userPostsList.Location = new System.Drawing.Point(-76, 7);
+            this.userPostsList.Location = new System.Drawing.Point(3, 7);
             this.userPostsList.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.userPostsList.Name = "userPostsList";
-            this.userPostsList.Size = new System.Drawing.Size(634, 388);
+            this.userPostsList.Size = new System.Drawing.Size(639, 388);
             this.userPostsList.TabIndex = 0;
             // 
             // tabAboutUser
@@ -193,7 +193,7 @@
             this.tabAboutUser.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabAboutUser.Name = "tabAboutUser";
             this.tabAboutUser.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.tabAboutUser.Size = new System.Drawing.Size(641, 386);
+            this.tabAboutUser.Size = new System.Drawing.Size(642, 401);
             this.tabAboutUser.TabIndex = 2;
             this.tabAboutUser.Text = "About User";
             this.tabAboutUser.UseVisualStyleBackColor = true;
@@ -411,7 +411,7 @@
             this.tabFriendsList.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabFriendsList.Name = "tabFriendsList";
             this.tabFriendsList.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.tabFriendsList.Size = new System.Drawing.Size(641, 386);
+            this.tabFriendsList.Size = new System.Drawing.Size(642, 401);
             this.tabFriendsList.TabIndex = 3;
             this.tabFriendsList.Text = "Friends List";
             this.tabFriendsList.UseVisualStyleBackColor = true;
@@ -439,7 +439,7 @@
             this.tabUserPhotos.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tabUserPhotos.Name = "tabUserPhotos";
             this.tabUserPhotos.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.tabUserPhotos.Size = new System.Drawing.Size(641, 386);
+            this.tabUserPhotos.Size = new System.Drawing.Size(642, 401);
             this.tabUserPhotos.TabIndex = 0;
             this.tabUserPhotos.Text = "User Photos";
             this.tabUserPhotos.UseVisualStyleBackColor = true;
@@ -476,6 +476,7 @@
             // 
             // photosListBox
             // 
+            this.photosListBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.photoBindingSource, "Name", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "A photo without a name"));
             this.photosListBox.DataSource = this.photoBindingSource;
             this.photosListBox.DisplayMember = "Name";
             this.photosListBox.FormattingEnabled = true;
@@ -493,7 +494,7 @@
             this.createAlbumFeature.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.createAlbumFeature.Name = "createAlbumFeature";
             this.createAlbumFeature.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.createAlbumFeature.Size = new System.Drawing.Size(641, 386);
+            this.createAlbumFeature.Size = new System.Drawing.Size(642, 401);
             this.createAlbumFeature.TabIndex = 4;
             this.createAlbumFeature.Text = "Create Album";
             this.createAlbumFeature.UseVisualStyleBackColor = true;
@@ -522,7 +523,7 @@
             this.breakManagerFeature.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.breakManagerFeature.Name = "breakManagerFeature";
             this.breakManagerFeature.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.breakManagerFeature.Size = new System.Drawing.Size(641, 386);
+            this.breakManagerFeature.Size = new System.Drawing.Size(642, 401);
             this.breakManagerFeature.TabIndex = 5;
             this.breakManagerFeature.Text = "Break Manager";
             this.breakManagerFeature.UseVisualStyleBackColor = true;
