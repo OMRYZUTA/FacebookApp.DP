@@ -180,7 +180,7 @@
             this.userPostsList.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userPostsList.FormattingEnabled = true;
             this.userPostsList.ItemHeight = 16;
-            this.userPostsList.Location = new System.Drawing.Point(-66, 7);
+            this.userPostsList.Location = new System.Drawing.Point(-76, 7);
             this.userPostsList.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.userPostsList.Name = "userPostsList";
             this.userPostsList.Size = new System.Drawing.Size(634, 388);
@@ -471,7 +471,7 @@
             this.createdTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.photoBindingSource, "CreatedTime", true));
             this.createdTimeDateTimePicker.Location = new System.Drawing.Point(220, 336);
             this.createdTimeDateTimePicker.Name = "createdTimeDateTimePicker";
-            this.createdTimeDateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.createdTimeDateTimePicker.Size = new System.Drawing.Size(276, 22);
             this.createdTimeDateTimePicker.TabIndex = 2;
             // 
             // photosListBox
