@@ -29,53 +29,53 @@ namespace FacebookApp
 
         private void loginAndInit()
         {
-           
-                
-                if (m_LoginResult == null)
-                {
-                    /// Owner: design.patterns
-                    ///EAAUm6cZC4eUEBALVbi9bZAb5VFs1ebDkmva0uhzXkgRRlMY8YVVBEjoJRw5e6fdxnbrHezOCBpqybBCglBWxpyaFlqSu98nqSpp3yXhgcDl6YoRH6zSKMIZA3em1D6LidH0mCgXzCjZBXW5HuZBTLVvUDNqDtd6HElosgjevktks5e09iRU0X
-                    /// Use the FacebookService.Login method to display the login form to any user who wish to use this application.
-                    /// You can then save the result.AccessToken for future auto-connect to this user:
-                    m_LoginResult = FacebookService.Login("361826995145957",
-                        /// (desig patter's "Design Patterns Course App 2.4" app)
 
-                        "public_profile",
-                        "email",
-                        "user_birthday",
-                        "user_age_range",
-                        "user_gender",
-                        "user_link",
-                        "user_tagged_places",
-                        "user_videos",
-                        "user_friends",
-                        "user_events",
-                        "user_likes",
-                        "user_location",
-                        "user_photos",
-                        "user_posts",
-                        "user_hometown");
-                    if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
-                    {
-                        m_LoggedInUser = m_LoginResult.LoggedInUser;
-                        r_TabsLoader.LoggedInUser = m_LoggedInUser;
-                        breakManagerTimer.Start();
-                        fileSystem1.AlbumCreator = r_AlbumCreator;
-                        fetchUserBasicInfo();
+
+            if (m_LoginResult == null)
+            {
+                /// Owner: design.patterns
+                ///EAAUm6cZC4eUEBALVbi9bZAb5VFs1ebDkmva0uhzXkgRRlMY8YVVBEjoJRw5e6fdxnbrHezOCBpqybBCglBWxpyaFlqSu98nqSpp3yXhgcDl6YoRH6zSKMIZA3em1D6LidH0mCgXzCjZBXW5HuZBTLVvUDNqDtd6HElosgjevktks5e09iRU0X
+                /// Use the FacebookService.Login method to display the login form to any user who wish to use this application.
+                /// You can then save the result.AccessToken for future auto-connect to this user:
+                m_LoginResult = FacebookService.Login("361826995145957",
+                    /// (desig patter's "Design Patterns Course App 2.4" app)
+
+                    "public_profile",
+                    "email",
+                    "user_birthday",
+                    "user_age_range",
+                    "user_gender",
+                    "user_link",
+                    "user_tagged_places",
+                    "user_videos",
+                    "user_friends",
+                    "user_events",
+                    "user_likes",
+                    "user_location",
+                    "user_photos",
+                    "user_posts",
+                    "user_hometown");
+                if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
+                {
+                    m_LoggedInUser = m_LoginResult.LoggedInUser;
+                    r_TabsLoader.LoggedInUser = m_LoggedInUser;
+                    breakManagerTimer.Start();
+                    fileSystem1.AlbumCreator = r_AlbumCreator;
+                    fetchUserBasicInfo();
                 }
-                    else
-                    {
-                        MessageBox.Show(m_LoginResult.ErrorMessage);
-                    }
+                else
+                {
+                    MessageBox.Show(m_LoginResult.ErrorMessage);
                 }
-            
+            }
+
         }
 
         private void fetchUserBasicInfo()
         {
-            new Thread (fetchUserProfilePhoto).Start();
-            new Thread (fetchUserCoverPhoto).Start();
-            new Thread (fetchUserName).Start();
+            new Thread(fetchUserProfilePhoto).Start();
+            new Thread(fetchUserCoverPhoto).Start();
+            new Thread(fetchUserName).Start();
         }
 
         // since Cover property is broken we are using PhotosTaggedIn
@@ -83,7 +83,7 @@ namespace FacebookApp
         {
             if (m_LoggedInUser.PhotosTaggedIn?[1] != null)
             {
-                coverPhoto.Invoke(new Action(()=>coverPhoto.LoadAsync(m_LoggedInUser.PhotosTaggedIn[1].PictureNormalURL)));
+                coverPhoto.Invoke(new Action(() => coverPhoto.LoadAsync(m_LoggedInUser.PhotosTaggedIn[1].PictureNormalURL)));
             }
         }
 
@@ -93,12 +93,12 @@ namespace FacebookApp
             userName.Append(m_LoggedInUser.FirstName);
             userName.Append(" ");
             userName.Append(m_LoggedInUser.LastName);
-            userNamePresentation.Invoke(new Action(()=> userNamePresentation.Text = userName.ToString()));
+            userNamePresentation.Invoke(new Action(() => userNamePresentation.Text = userName.ToString()));
         }
 
         private void fetchUserProfilePhoto()
         {
-          profilePicture.Invoke(new Action(()=>profilePicture.LoadAsync(m_LoggedInUser.PictureNormalURL)));
+            profilePicture.Invoke(new Action(() => profilePicture.LoadAsync(m_LoggedInUser.PictureNormalURL)));
         }
 
 
@@ -162,9 +162,8 @@ namespace FacebookApp
 
         private void loadUserPhotosTab()
         {
-            Tab tab = new Tab();
-            tab.ConvertStringToEnum(tabUserPhotos.Name);
-            r_TabsLoader.LoadTab(tab, photosListBox);
+            photoBindingSource.DataSource = m_LoggedInUser.PhotosTaggedIn;
+
         }
 
         private void loadFriendsListTab()
@@ -196,22 +195,7 @@ namespace FacebookApp
             r_TabsLoader.LoadTab(tab, objectsToInit);
         }
 
-        private void photosListBox_SelectedIndexChanged(object i_Sender, EventArgs i_EventArgs)
-        {
-            displaySelectedPicture(photosListBox, pictureBoxSelected);
-        }
-
-        private void displaySelectedPicture(ListBox i_PhotosList, PictureBox i_PictureBoxSelected)
-        {
-            if (i_PhotosList.SelectedItems.Count == 1)
-            {
-                Photo selectedPhoto = i_PhotosList.SelectedItem as Photo;
-                if (selectedPhoto != null && selectedPhoto.PictureAlbumURL != null)
-                {
-                    i_PictureBoxSelected.LoadAsync(selectedPhoto.PictureNormalURL);
-                }
-            }
-        }
+  
 
         private void saveBreakManagerSettingsButton_Click(object sender, EventArgs e)
         {
