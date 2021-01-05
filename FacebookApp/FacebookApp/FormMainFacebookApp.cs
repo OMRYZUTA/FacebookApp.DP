@@ -202,27 +202,8 @@ namespace FacebookApp
                 int inputNumberFromUser = (int)this.inputNumberFromUser.Value;
                 string selectedTimeUnit = minutesOrHours.SelectedItem.ToString();
 
-                IBreakManagerBuilder builder;
-                if (selectedTimeUnit == "Hours")
-                {
-                    builder = new BreakManagerBuilderByHours();
-                }
-                else
-                {
-                    builder = new BreakManagerBuilderByMinutes();
-                }
-
-                BreakManagerComposer composer = new BreakManagerComposer(builder);
-                try
-                {
-                    composer.Construct(selectedTimeUnit, inputNumberFromUser);
-                    m_BreakManager = builder.GetResults();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
+                BreakManagerComposer composer = new BreakManagerComposer();
+                m_BreakManager = composer.Construct(selectedTimeUnit, inputNumberFromUser);
                 startNewBreakCount();
             }
         }
@@ -308,7 +289,5 @@ namespace FacebookApp
                 inputNumberFromUser.Maximum = 150;
             }
         }
-
-
     }
 }

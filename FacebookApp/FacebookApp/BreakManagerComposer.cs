@@ -4,32 +4,23 @@ namespace FacebookApp
 {
     public class BreakManagerComposer
     {
-        private readonly IBreakManagerBuilder r_Builder;
-
-        public BreakManagerComposer(IBreakManagerBuilder i_Builder)
+        private IBreakManagerBuilder m_Builder;
+        
+        public BreaksManager Construct(string i_TimeUnitSelection, int i_UnitNumber)
         {
-            r_Builder = i_Builder;
-        }
+            if(i_TimeUnitSelection == "Hours")
+            {
+                m_Builder = new BreakManagerBuilderByHours();
+            }
+            else
+            {
+                m_Builder = new BreakManagerBuilderByMinutes();
+            }
 
-        public void Construct(string i_TimeUnitSelection, int i_UnitNumber)
-        {
-            if(i_TimeUnitSelection == "Hours" && i_UnitNumber > 72)
-            {
-                Exception tooMuchMinutes = 
-                    new Exception("Can't selcet more than 3 days, please select less hours");
-                throw tooMuchMinutes;
-            }
-            else 
-            {
-                if (i_TimeUnitSelection == "Hours")
-                {
-                    r_Builder.m_breakTime = i_UnitNumber * 60;
-                }
-                else
-                {
-                    r_Builder.m_breakTime = i_UnitNumber;
-                }
-            }
+            m_Builder.m_breakTime = i_UnitNumber;
+            BreaksManager o_NewBreaksManager = m_Builder.GetResults();
+
+            return o_NewBreaksManager;
         }
     }
 }
