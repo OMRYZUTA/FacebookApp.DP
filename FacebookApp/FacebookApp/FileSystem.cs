@@ -1,26 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using FacebookWrapper.ObjectModel;
-using System.Net;
 
 namespace FacebookApp
 {
     public partial class FileSystem : UserControl
     {
         public AlbumCreator AlbumCreator { get; set; }
-        private Folder m_HomeFolder;
+
+        private readonly Folder r_HomeFolder;
+
         public FileSystem()
         {
             InitializeComponent();
-            m_HomeFolder = new Folder();
-            m_HomeFolder.Text = "Albums Home";
-            treeViewFiles.Nodes.Add(m_HomeFolder);
+            r_HomeFolder = new Folder { Text = "Albums Home" };
+            treeViewFiles.Nodes.Add(r_HomeFolder);
         }
 
         private void buttonCreateAlbum_Click(object sender, EventArgs e)
@@ -28,8 +21,8 @@ namespace FacebookApp
             try
             {
                 Folder newAlbum = AlbumCreator.GetAlbumWith(textBoxSelectedFriend.Text);
-                m_HomeFolder.Nodes.Add(newAlbum);
-                treeViewFiles.SelectedNode = m_HomeFolder;
+                r_HomeFolder.Nodes.Add(newAlbum);
+                treeViewFiles.SelectedNode = r_HomeFolder;
             }
             catch (Exception ex)
             {
@@ -41,19 +34,20 @@ namespace FacebookApp
         {
             if (e.Action != TreeViewAction.Unknown)
             {
-                (e.Node as IFile).Selected = e.Node.Checked;
+                ((IFile)e.Node).Selected = e.Node.Checked;
                 if (e.Node.Nodes.Count > 0)
                 {
                     CheckAllChildNodes(e.Node, e.Node.Checked);
                 }
             }
         }
+
         private void CheckAllChildNodes(TreeNode treeNode, bool nodeChecked)
         {
             foreach (TreeNode node in treeNode.Nodes)
             {
                 node.Checked = nodeChecked;
-                (node as IFile).Selected = nodeChecked;
+                ((IFile)node).Selected = nodeChecked;
                 if (node.Nodes.Count > 0)
                 {
                     CheckAllChildNodes(node, nodeChecked);
@@ -61,37 +55,29 @@ namespace FacebookApp
             }
         }
 
-        private void selectAllChildren(string i_FileName, bool i_NodeChecked)
-        {
-            foreach (TreeNode node in m_HomeFolder.Files)
-            {
-                if (node.Text == i_FileName)
-                {
-                    node.Checked = i_NodeChecked;
-                }
-            }
-        }
-
         private void buttonDownload_Click(object sender, EventArgs e)
         {
-
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.Description = "Custom Description";
+            FolderBrowserDialog fbd = new FolderBrowserDialog { Description = "Custom Description" };
 
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 string selectedPath = fbd.SelectedPath;
-                m_HomeFolder.DownloadMe(selectedPath);
+                r_HomeFolder.DownloadMe(selectedPath);
             }
+
             MessageBox.Show("Download completed");
         }
 
         private void treeViewFiles_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (e.Node is PhotoAdapter)
+            PhotoAdapter adapter = e.Node as PhotoAdapter;
+            if (adapter != null)
             {
-                pictureBoxCreateAlbum.LoadAsync((e.Node as PhotoAdapter).Photo.PictureNormalURL);
-                createdTimeDateTimePicker.Value = (System.DateTime)(e.Node as PhotoAdapter).Photo.CreatedTime;
+                pictureBoxCreateAlbum.LoadAsync(adapter.Photo.PictureNormalURL);
+                if(adapter.Photo.CreatedTime != null)
+                {
+                    createdTimeDateTimePicker.Value = (DateTime)adapter.Photo.CreatedTime;
+                }
             }
             else
             {

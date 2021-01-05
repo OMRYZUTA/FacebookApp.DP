@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-
-namespace FacebookApp
+﻿namespace FacebookApp
 {
     public interface IFile
     {
-        bool Selected { get; set; }
-        void DownloadMe(string i_Path);
+        bool Selected { set; }
 
+        void DownloadMe(string i_Path);
     }
 }

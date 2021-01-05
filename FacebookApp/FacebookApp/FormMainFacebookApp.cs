@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
-using System.Drawing;
+using System.Threading;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
-using System.Threading;
 
 namespace FacebookApp
 {
-
     public partial class FormMainFacebookApp : Form
     {
         private readonly TabsLoader r_TabsLoader;
@@ -24,20 +22,19 @@ namespace FacebookApp
             r_AlbumCreator = new AlbumCreator();
             InitializeComponent();
             FacebookService.s_CollectionLimit = 400;
-            m_BreakManager = new BreaksManager(15); //15 default
+            m_BreakManager = new BreaksManager(15); // 15 default
         }
 
         private void loginAndInit()
         {
-
-
             if (m_LoginResult == null)
             {
                 /// Owner: design.patterns
                 ///EAAUm6cZC4eUEBALVbi9bZAb5VFs1ebDkmva0uhzXkgRRlMY8YVVBEjoJRw5e6fdxnbrHezOCBpqybBCglBWxpyaFlqSu98nqSpp3yXhgcDl6YoRH6zSKMIZA3em1D6LidH0mCgXzCjZBXW5HuZBTLVvUDNqDtd6HElosgjevktks5e09iRU0X
                 /// Use the FacebookService.Login method to display the login form to any user who wish to use this application.
                 /// You can then save the result.AccessToken for future auto-connect to this user:
-                m_LoginResult = FacebookService.Login("361826995145957",
+                m_LoginResult = FacebookService.Login(
+                    "361826995145957",
                     /// (desig patter's "Design Patterns Course App 2.4" app)
 
                     "public_profile",
@@ -68,7 +65,6 @@ namespace FacebookApp
                     MessageBox.Show(m_LoginResult.ErrorMessage);
                 }
             }
-
         }
 
         private void fetchUserBasicInfo()
@@ -101,7 +97,6 @@ namespace FacebookApp
             profilePicture.Invoke(new Action(() => profilePicture.LoadAsync(m_LoggedInUser.PictureNormalURL)));
         }
 
-
         private void buttonLogin_Click(object i_Sender, EventArgs i_EventArgs)
         {
             Thread t = new Thread(loginAndInit);
@@ -111,15 +106,17 @@ namespace FacebookApp
 
         private Dictionary<string, object> buildDictionaryForAboutTab()
         {
-            Dictionary<string, object> objectsToInit = new Dictionary<string, object>();
-            objectsToInit.Add(birthDayBox.Name, birthDayBox);
-            objectsToInit.Add(genderBox.Name, genderBox);
-            objectsToInit.Add(livesInBox.Name, livesInBox);
-            objectsToInit.Add(workPlacesList.Name, workPlacesList);
-            objectsToInit.Add(educationList.Name, educationList);
-            objectsToInit.Add(numberOfFriendsBox.Name, numberOfFriendsBox);
-            objectsToInit.Add(numberOfPostsBox.Name, numberOfPostsBox);
-            objectsToInit.Add(numberOfAlbumsBox.Name, numberOfAlbumsBox);
+            Dictionary<string, object> objectsToInit = new Dictionary<string, object>
+                                                       {
+                                                           { birthDayBox.Name, birthDayBox },
+                                                           { genderBox.Name, genderBox },
+                                                           { livesInBox.Name, livesInBox },
+                                                           { workPlacesList.Name, workPlacesList },
+                                                           { educationList.Name, educationList },
+                                                           { numberOfFriendsBox.Name, numberOfFriendsBox },
+                                                           { numberOfPostsBox.Name, numberOfPostsBox },
+                                                           { numberOfAlbumsBox.Name, numberOfAlbumsBox }
+                                                       };
             return objectsToInit;
         }
 
@@ -194,11 +191,9 @@ namespace FacebookApp
             r_TabsLoader.LoadTab(tab, objectsToInit);
         }
 
-  
-
         private void saveBreakManagerSettingsButton_Click(object sender, EventArgs e)
         {
-            if (noBreaksCheckBox.Checked == true)
+            if (noBreaksCheckBox.Checked)
             {
                 disableBreaksPrompts();
             }
@@ -208,14 +203,15 @@ namespace FacebookApp
                 string selectedTimeUnit = minutesOrHours.SelectedItem.ToString();
 
                 IBreakManagerBuilder builder;
-                if(selectedTimeUnit == "Hours")
+                if (selectedTimeUnit == "Hours")
                 {
-                     builder = new BreakManagerBuilderByHours();
+                    builder = new BreakManagerBuilderByHours();
                 }
                 else
                 {
-                     builder = new BreakManagerBuilderByMinutes();
+                    builder = new BreakManagerBuilderByMinutes();
                 }
+
                 BreakManagerComposer composer = new BreakManagerComposer(builder);
                 try
                 {
@@ -224,9 +220,9 @@ namespace FacebookApp
                 }
                 catch (Exception ex)
                 {
-
                     MessageBox.Show(ex.Message);
                 }
+
                 startNewBreakCount();
             }
         }
@@ -254,13 +250,13 @@ namespace FacebookApp
             }
 
             showTimer();
-            if (m_BreakManager.m_Minutes == m_BreakManager.m_breakTime)
+            if (m_BreakManager.m_Minutes == m_BreakManager.m_BreakTime)
             {
-                popUpTakeAbreakMessage();
+                popUpTakeABreakMessage();
             }
         }
 
-        private void popUpTakeAbreakMessage()
+        private void popUpTakeABreakMessage()
         {
             breakManagerTimer.Stop();
             m_BreakManager.InitMinutes();

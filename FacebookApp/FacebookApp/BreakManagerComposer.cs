@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace FacebookApp
 {
     public class BreakManagerComposer
     {
-        public IBreakManagerBuilder m_Builder;
+        private readonly IBreakManagerBuilder r_Builder;
 
         public BreakManagerComposer(IBreakManagerBuilder i_Builder)
         {
-            m_Builder = i_Builder;
+            r_Builder = i_Builder;
         }
 
-        public void Construct(string i_timeUnitSelection, int i_UnitNumber)
+        public void Construct(string i_TimeUnitSelection, int i_UnitNumber)
         {
-            if(i_timeUnitSelection == "Hours" && i_UnitNumber > 72)
+            if(i_TimeUnitSelection == "Hours" && i_UnitNumber > 72)
             {
                 Exception tooMuchMinutes = 
                     new Exception("Can't selcet more than 3 days, please select less hours");
@@ -24,13 +21,13 @@ namespace FacebookApp
             }
             else 
             {
-                if (i_timeUnitSelection == "Hours")
+                if (i_TimeUnitSelection == "Hours")
                 {
-                    m_Builder.m_breakTime = i_UnitNumber * 60;
+                    r_Builder.m_breakTime = i_UnitNumber * 60;
                 }
                 else
                 {
-                    m_Builder.m_breakTime = i_UnitNumber;
+                    r_Builder.m_breakTime = i_UnitNumber;
                 }
             }
         }

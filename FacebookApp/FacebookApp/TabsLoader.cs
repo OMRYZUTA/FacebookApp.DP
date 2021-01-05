@@ -10,6 +10,7 @@ namespace FacebookApp
         private List<eTab> LoadedTabs { get; }
 
         public User LoggedInUser { get; set; }
+
         private const int k_MaxNumberOfPosts = 50;
 
         public TabsLoader()
@@ -45,7 +46,11 @@ namespace FacebookApp
         private void loadAlbumCreator(object i_ObjectToInit)
         {
             AlbumCreator albumCreator = i_ObjectToInit as AlbumCreator;
-            albumCreator.LoggedInUser = LoggedInUser;
+            if(albumCreator != null)
+            {
+                albumCreator.LoggedInUser = LoggedInUser;
+            }
+
             LoadedTabs.Add(eTab.CreateAlbum);
         }
 
@@ -55,7 +60,10 @@ namespace FacebookApp
 
             foreach (User friend in LoggedInUser.Friends)
             {
-                friendsBox.Items.Add(friend.Name);
+                if(friendsBox != null)
+                {
+                    friendsBox.Items.Add(friend.Name);
+                }
             }
 
             LoadedTabs.Add(eTab.FriendsList);
@@ -65,21 +73,25 @@ namespace FacebookApp
         {
             Dictionary<string, object> objectsToInit = i_ObjectsToInit as Dictionary<string, object>;
 
-            (objectsToInit["birthDayBox"] as TextBox).Text = LoggedInUser.Birthday;
-            try
+            if(objectsToInit != null)
             {
-                (objectsToInit["genderBox"] as TextBox).Text = LoggedInUser.Gender.ToString();
-            }
-            catch (Exception ex)
-            {
+                (objectsToInit["birthDayBox"] as TextBox).Text = LoggedInUser.Birthday;
+                try
+                {
+                    (objectsToInit["genderBox"] as TextBox).Text = LoggedInUser.Gender.ToString();
+                }
+                catch(Exception ex)
+                {
+                }
+
+                (objectsToInit["livesInBox"] as TextBox).Text = LoggedInUser.Location.Name;
+                initWorkPlaces(objectsToInit["workPlacesList"] as ListBox);
+                initEducationPlaces(objectsToInit["educationList"] as ListBox);
+                (objectsToInit["numberOfFriendsBox"] as RichTextBox).Text = LoggedInUser.Friends.Count.ToString();
+                (objectsToInit["numberOfPostsBox"] as RichTextBox).Text = LoggedInUser.Posts.Count.ToString();
+                (objectsToInit["numberOfAlbumsBox"] as RichTextBox).Text = LoggedInUser.Albums.Count.ToString();
             }
 
-            (objectsToInit["livesInBox"] as TextBox).Text = LoggedInUser.Location.Name;
-            initWorkPlaces(objectsToInit["workPlacesList"] as ListBox);
-            initEducationPlaces(objectsToInit["educationList"] as ListBox);
-            (objectsToInit["numberOfFriendsBox"] as RichTextBox).Text = LoggedInUser.Friends.Count.ToString();
-            (objectsToInit["numberOfPostsBox"] as RichTextBox).Text = LoggedInUser.Posts.Count.ToString();
-            (objectsToInit["numberOfAlbumsBox"] as RichTextBox).Text = LoggedInUser.Albums.Count.ToString();
             LoadedTabs.Add(eTab.AboutUser);
         }
 
@@ -124,12 +136,19 @@ namespace FacebookApp
             {
                 if (post.Message != null)
                 {
-                    userPostsList.Items.Add(post.Message);
+                    if(userPostsList != null)
+                    {
+                        userPostsList.Items.Add(post.Message);
+                    }
                 }
                 else if (post.Caption != null)
                 {
-                    userPostsList.Items.Add(post.Caption);
+                    if(userPostsList != null)
+                    {
+                        userPostsList.Items.Add(post.Caption);
+                    }
                 }
+
                 counter++;
                 if (counter >= k_MaxNumberOfPosts)
                 {

@@ -1,16 +1,14 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FacebookApp
 {
     public class Folder : TreeNode, IFile, IEnumerable<IFile>
     {
-        public List<IFile> Files { get; set; }
+        public List<IFile> Files { get; }
+
         private bool m_IsSelected;
 
         public Folder()
@@ -18,12 +16,14 @@ namespace FacebookApp
             Files = new List<IFile>();
             m_IsSelected = false;
         }
+
         public bool Selected
         {
             get
             {
                 return m_IsSelected;
             }
+
             set
             {
                 m_IsSelected = true;
@@ -39,27 +39,30 @@ namespace FacebookApp
                 }
             }
         }
+
         public void DownloadMe(string i_Path)
         {
             string path = i_Path;
+
             // need to create here new folder
             if (Checked)
             {
-                path = i_Path +string.Format("\\{0}",Text);
+                path = i_Path + string.Format("\\{0}", Text);
                 Directory.CreateDirectory(path);
             }
+
             foreach (TreeNode file in Nodes)
             {
-                
                 if (file.Checked || file is Folder)
                 {
-                    (file as IFile).DownloadMe(path);
+                    (file as IFile)?.DownloadMe(path);
                 }
             }
         }
-        public void AddChild(IFile i_file)
+
+        public void AddChild(IFile i_File)
         {
-            Files.Add(i_file);
+            Files.Add(i_File);
         }
 
         public IEnumerator<IFile> GetEnumerator()

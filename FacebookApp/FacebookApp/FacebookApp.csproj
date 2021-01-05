@@ -51,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlbumCreator.cs" />
-    <Compile Include="BreakManagerBuilder.cs" />
     <Compile Include="BreakManagerBuilderByHours.cs" />
     <Compile Include="BreakManagerBuilderByMinutes.cs" />
     <Compile Include="IBreakManagerBuilder.cs" />

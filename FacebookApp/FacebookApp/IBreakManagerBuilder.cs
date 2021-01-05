@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace FacebookApp
+﻿namespace FacebookApp
 {
     public interface IBreakManagerBuilder
     {
-        int m_breakTime { get; set; }
+        int m_breakTime { set; }
+
         BreaksManager GetResults();
     }
 }
