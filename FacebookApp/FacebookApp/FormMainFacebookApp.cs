@@ -295,5 +295,20 @@ namespace FacebookApp
 
             timerPresentation.Text = minutes + ":" + seconds;
         }
+
+        private void minutesOrHours_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string selectedItem = minutesOrHours.SelectedItem.ToString();
+            if (selectedItem == "Hours")
+            {
+                inputNumberFromUser.Maximum = 72;
+            }
+            else
+            {
+                inputNumberFromUser.Maximum = 150;
+            }
+        }
+
+
     }
 }
