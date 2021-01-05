@@ -560,13 +560,14 @@
             this.minutesOrHours.Size = new System.Drawing.Size(106, 21);
             this.minutesOrHours.TabIndex = 12;
             this.minutesOrHours.Text = "Minutes";
+            this.minutesOrHours.SelectedIndex = 0;
             this.minutesOrHours.SelectionChangeCommitted += new System.EventHandler(this.minutesOrHours_SelectionChangeCommitted);
             // 
             // inputNumberFromUser
             // 
             this.inputNumberFromUser.Location = new System.Drawing.Point(59, 61);
             this.inputNumberFromUser.Maximum = new decimal(new int[] {
-            720,
+            150,
             0,
             0,
             0});
