@@ -2,11 +2,11 @@
 {
     public class BreakManagerBuilderByHours : IBreakManagerBuilder
     {
-        public int m_breakTime { get; set; }
+        public int m_BreakTime { get; set; }
 
         public BreaksManager GetResults()
         {
-            return new BreaksManager(m_breakTime * 60);
+            return new BreaksManager(m_BreakTime * 60);
         }
     }
 }

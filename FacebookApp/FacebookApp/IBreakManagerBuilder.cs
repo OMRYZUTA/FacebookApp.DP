@@ -2,7 +2,7 @@
 {
     public interface IBreakManagerBuilder
     {
-        int m_breakTime { set; }
+        int m_BreakTime { set; }
 
         BreaksManager GetResults();
     }
