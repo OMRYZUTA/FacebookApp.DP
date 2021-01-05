@@ -561,6 +561,7 @@
             this.minutesOrHours.TabIndex = 12;
             this.minutesOrHours.Text = "Minutes";
             this.minutesOrHours.SelectedIndex = 0;
+            this.minutesOrHours.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.minutesOrHours.SelectionChangeCommitted += new System.EventHandler(this.minutesOrHours_SelectionChangeCommitted);
             // 
             // inputNumberFromUser
