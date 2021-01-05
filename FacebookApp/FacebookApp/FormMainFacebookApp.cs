@@ -224,14 +224,14 @@ namespace FacebookApp
 
         private void breakManagerTimer_Tick(object sender, EventArgs e)
         {
-            m_BreakManager.m_Seconds += 1;
-            if (m_BreakManager.m_Seconds % 60 == 0)
+            m_BreakManager.Seconds += 1;
+            if (m_BreakManager.Seconds % 60 == 0)
             {
                 addMinuteToTimer();
             }
 
             showTimer();
-            if (m_BreakManager.m_Minutes == m_BreakManager.m_BreakTime)
+            if (m_BreakManager.Minutes == m_BreakManager.BreakTime)
             {
                 popUpTakeABreakMessage();
             }
@@ -247,8 +247,8 @@ namespace FacebookApp
 
         private void addMinuteToTimer()
         {
-            m_BreakManager.m_Seconds = 0;
-            m_BreakManager.m_Minutes += 1;
+            m_BreakManager.Seconds = 0;
+            m_BreakManager.Minutes += 1;
         }
 
         private void showTimer()
@@ -256,22 +256,22 @@ namespace FacebookApp
             string minutes;
             string seconds;
 
-            if (m_BreakManager.m_Minutes < 10)
+            if (m_BreakManager.Minutes < 10)
             {
-                minutes = 0 + m_BreakManager.m_Minutes.ToString();
+                minutes = 0 + m_BreakManager.Minutes.ToString();
             }
             else
             {
-                minutes = m_BreakManager.m_Minutes.ToString();
+                minutes = m_BreakManager.Minutes.ToString();
             }
 
-            if (m_BreakManager.m_Seconds < 10)
+            if (m_BreakManager.Seconds < 10)
             {
-                seconds = 0 + m_BreakManager.m_Seconds.ToString();
+                seconds = 0 + m_BreakManager.Seconds.ToString();
             }
             else
             {
-                seconds = m_BreakManager.m_Seconds.ToString();
+                seconds = m_BreakManager.Seconds.ToString();
             }
 
             timerPresentation.Text = minutes + ":" + seconds;

@@ -17,7 +17,7 @@ namespace FacebookApp
                 m_Builder = new BreakManagerBuilderByMinutes();
             }
 
-            m_Builder.m_BreakTime = i_UnitNumber;
+            m_Builder.BreakTime = i_UnitNumber;
             BreaksManager o_NewBreaksManager = m_Builder.GetResults();
 
             return o_NewBreaksManager;
