@@ -24,7 +24,7 @@ namespace FacebookApp
             r_AlbumCreator = new AlbumCreator();
             InitializeComponent();
             FacebookService.s_CollectionLimit = 400;
-            m_BreakManager = new BreaksManager();
+            m_BreakManager = new BreaksManager(15); //15 default
         }
 
         private void loginAndInit()
@@ -198,23 +198,35 @@ namespace FacebookApp
 
         private void saveBreakManagerSettingsButton_Click(object sender, EventArgs e)
         {
-            foreach (object listObject in breakManagerFeature.Controls)
-            {
-                if (listObject is RadioButton)
-                {
-                    if ((listObject as RadioButton).Checked == true)
-                    {
-                        setNewBreaksManager(listObject);
-                    }
-                }
-            }
-
-            if (noBreaksButton.Checked == true)
+            if (noBreaksCheckBox.Checked == true)
             {
                 disableBreaksPrompts();
             }
             else
             {
+                int inputNumberFromUser = (int)this.inputNumberFromUser.Value;
+                string selectedTimeUnit = minutesOrHours.SelectedItem.ToString();
+
+                IBreakManagerBuilder builder;
+                if(selectedTimeUnit == "Hours")
+                {
+                     builder = new BreakManagerBuilderByHours();
+                }
+                else
+                {
+                     builder = new BreakManagerBuilderByMinutes();
+                }
+                BreakManagerComposer composer = new BreakManagerComposer(builder);
+                try
+                {
+                    composer.Construct(selectedTimeUnit, inputNumberFromUser);
+                    m_BreakManager = builder.GetResults();
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
                 startNewBreakCount();
             }
         }
@@ -233,133 +245,6 @@ namespace FacebookApp
             showTimer();
         }
 
-        private void setNewBreaksManager(object listObject)
-        {
-            BreaksManager i_breakManager = new BreaksManager();
-            i_breakManager.m_Stopper = i_breakManager.CalculateTime((listObject as RadioButton).Name);
-            m_BreakManager = i_breakManager;
-        }
-
-        private void noBreaksButton_Click(object sender, EventArgs e)
-        {
-            foreach (object listObject in breakManagerFeature.Controls)
-            {
-                if (listObject is RadioButton)
-                {
-                    if ((listObject as RadioButton).Font.Bold)
-                    {
-                        if (listObject != noBreaksButton)
-                        {
-                            (listObject as RadioButton).Font =
-                                new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Regular);
-                        }
-                    }
-                }
-            }
-
-            if (noBreaksButton.Checked)
-            {
-                Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
-                noBreaksButton.Font = newBoldFont;
-            }
-        }
-
-        private void fiveMinutesButton_Click(object sender, EventArgs e)
-        {
-            foreach (object listObject in breakManagerFeature.Controls)
-            {
-                if (listObject is RadioButton)
-                {
-                    if ((listObject as RadioButton).Font.Bold == true)
-                    {
-                        if (listObject != fiveMinutesButton)
-                        {
-                            (listObject as RadioButton).Font =
-                                new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Regular);
-                        }
-                    }
-                }
-            }
-
-            if (fiveMinutesButton.Checked)
-            {
-                Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
-                fiveMinutesButton.Font = newBoldFont;
-            }
-        }
-
-        private void tenMinutesButton_Click(object sender, EventArgs e)
-        {
-            foreach (object listObject in breakManagerFeature.Controls)
-            {
-                if (listObject is RadioButton)
-                {
-                    if ((listObject as RadioButton).Font.Bold == true)
-                    {
-                        if (listObject != tenMinutesButton)
-                        {
-                            (listObject as RadioButton).Font =
-                                new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Regular);
-                        }
-                    }
-                }
-            }
-
-            if (tenMinutesButton.Checked == true)
-            {
-                Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
-                tenMinutesButton.Font = newBoldFont;
-            }
-        }
-
-        private void fifteenMinutesButton_Click(object sender, EventArgs e)
-        {
-            foreach (object listObject in breakManagerFeature.Controls)
-            {
-                if (listObject is RadioButton)
-                {
-                    if ((listObject as RadioButton).Font.Bold == true)
-                    {
-                        if (listObject != fifteenMinutesButton)
-                        {
-                            (listObject as RadioButton).Font =
-                                new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Regular);
-                        }
-                    }
-                }
-            }
-
-            if (fifteenMinutesButton.Checked == true)
-            {
-                Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
-                fifteenMinutesButton.Font = newBoldFont;
-            }
-        }
-
-        private void oneHourButton_Click(object sender, EventArgs e)
-        {
-            foreach (object listObject in breakManagerFeature.Controls)
-            {
-                if (listObject is RadioButton)
-                {
-                    if ((listObject as RadioButton).Font.Bold == true)
-                    {
-                        if (listObject != oneHourButton)
-                        {
-                            (listObject as RadioButton).Font =
-                                new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Regular);
-                        }
-                    }
-                }
-            }
-
-            if (oneHourButton.Checked == true)
-            {
-                Font newBoldFont = new Font(FontFamily.GenericSansSerif, 8.0F, FontStyle.Bold);
-                oneHourButton.Font = newBoldFont;
-            }
-        }
-
         private void breakManagerTimer_Tick(object sender, EventArgs e)
         {
             m_BreakManager.m_Seconds += 1;
@@ -369,7 +254,7 @@ namespace FacebookApp
             }
 
             showTimer();
-            if (m_BreakManager.m_Minutes == m_BreakManager.m_Stopper)
+            if (m_BreakManager.m_Minutes == m_BreakManager.m_breakTime)
             {
                 popUpTakeAbreakMessage();
             }
@@ -424,5 +309,6 @@ namespace FacebookApp
         {
 
         }
+
     }
 }
