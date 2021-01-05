@@ -88,10 +88,10 @@ namespace FacebookApp
 
         private void treeViewFiles_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (e.Node is PhotoProxy)
+            if (e.Node is PhotoAdapter)
             {
-                pictureBoxCreateAlbum.LoadAsync((e.Node as PhotoProxy).Photo.PictureNormalURL);
-                createdTimeDateTimePicker.Value = (System.DateTime)(e.Node as PhotoProxy).Photo.CreatedTime;
+                pictureBoxCreateAlbum.LoadAsync((e.Node as PhotoAdapter).Photo.PictureNormalURL);
+                createdTimeDateTimePicker.Value = (System.DateTime)(e.Node as PhotoAdapter).Photo.CreatedTime;
             }
             else
             {

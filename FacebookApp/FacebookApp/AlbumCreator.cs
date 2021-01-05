@@ -74,7 +74,7 @@ namespace FacebookApp
                         {
                             if (tag.User.Name == Friend.Name)
                             {
-                                newAlbum.AddChild(new PhotoProxy(photo));
+                                newAlbum.AddChild(new PhotoAdapter(photo));
                             }
                         }
                     }
@@ -90,7 +90,7 @@ namespace FacebookApp
                 newAlbum.Text = string.Format("{0}'s Album", Friend.Name);
                 for (int i = 0; i < 10; i++)
                 {
-                    PhotoProxy photo = new PhotoProxy(LoggedInUser.PhotosTaggedIn[i]);
+                    PhotoAdapter photo = new PhotoAdapter(LoggedInUser.PhotosTaggedIn[i]);
                     if (string.IsNullOrEmpty(photo.Name))
                     {
                         photo.Text=photo.Photo.From.Name;

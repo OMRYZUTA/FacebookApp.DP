@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace FacebookApp
 {
-    public class PhotoProxy :  TreeNode, IFile
+    public class PhotoAdapter :  TreeNode, IFile
     {
-        public PhotoProxy(Photo i_photo)
+        public PhotoAdapter(Photo i_photo)
         {
             Photo = i_photo;
             Name = i_photo.Name;

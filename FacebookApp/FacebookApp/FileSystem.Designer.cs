@@ -148,7 +148,7 @@
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataSource = typeof(FacebookApp.PhotoProxy);
+            this.bindingSource1.DataSource = typeof(FacebookApp.PhotoAdapter);
             // 
             // FileSystem
             // 

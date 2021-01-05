@@ -60,7 +60,7 @@
     </Compile>
     <Compile Include="Folder.cs" />
     <Compile Include="IFile.cs" />
-    <Compile Include="PhotoProxy.cs" />
+    <Compile Include="PhotoAdapter.cs" />
     <Compile Include="Tab.cs" />
     <Compile Include="eTab.cs" />
     <Compile Include="TabsLoader.cs" />
