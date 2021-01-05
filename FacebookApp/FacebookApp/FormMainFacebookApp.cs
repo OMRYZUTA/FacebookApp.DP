@@ -299,16 +299,5 @@ namespace FacebookApp
 
             timerPresentation.Text = minutes + ":" + seconds;
         }
-
-        private void buttonDownload_Click(object sender, EventArgs e)
-        {
-            //r_AlbumCreator.DownloadPhotos(listBoxAlbumWithFriend);
-        }
-
-        private void createAlbumFeature_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
