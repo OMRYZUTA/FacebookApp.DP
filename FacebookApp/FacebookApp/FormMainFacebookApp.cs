@@ -289,14 +289,5 @@ namespace FacebookApp
                 inputNumberFromUser.Maximum = 150;
             }
         }
-
-        private void inputNumberFromUser_ValueChanged(object sender, EventArgs e)
-        {
-            if(inputNumberFromUser.Value > 150 && minutesOrHours.SelectedItem.ToString() == "Minutes")
-            {
-                minutesOrHours.SelectionChangeCommitted += new System.EventHandler(this.minutesOrHours_SelectionChangeCommitted);
-            }
-        }
-
     }
 }
