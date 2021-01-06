@@ -51,11 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlbumCreator.cs" />
-    <Compile Include="BreakManagerBuilderByHours.cs" />
-    <Compile Include="BreakManagerBuilderByMinutes.cs" />
-    <Compile Include="IBreakManagerBuilder.cs" />
-    <Compile Include="BreakManagerComposer.cs" />
-    <Compile Include="BreaksManager.cs" />
+    <Compile Include="BreaksManagerByHours.cs" />
+    <Compile Include="BreaksManagerByMinutes.cs" />
+    <Compile Include="BreaksManagerByDays.cs" />
+    <Compile Include="BreaksManagerFactory.cs" />
+    <Compile Include="IBreaksManager.cs" />
     <Compile Include="FileSystem.cs">
       <SubType>UserControl</SubType>
     </Compile>
