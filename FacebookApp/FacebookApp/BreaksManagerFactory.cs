@@ -1,30 +1,27 @@
-﻿using System;
-
-namespace FacebookApp
+﻿namespace FacebookApp
 {
-    static class BreaksManagerFactory
+    public static class BreaksManagerFactory
     {
-        static public IBreaksManager CreateBreaksManager(string i_TimeUnitSelection, int i_UnitNumber)
+        public static IBreaksManager CreateBreaksManager(string i_TimeUnitSelection, int i_UnitNumber)
         {
-
-            IBreaksManager o_NewBreaksManager;
+            IBreaksManager m_NewBreaksManager;
 
             if(i_TimeUnitSelection == "Hours")
             {
-                o_NewBreaksManager = new BreaksManagerByHours();
+                m_NewBreaksManager = new BreaksManagerByHours();
             }
             else if(i_TimeUnitSelection == "Days")
             {
-                o_NewBreaksManager = new BreaksManagerByDays();
+                m_NewBreaksManager = new BreaksManagerByDays();
             }
             else
             {
-                o_NewBreaksManager = new BreaksManagerByMinutes();
+                m_NewBreaksManager = new BreaksManagerByMinutes();
             }
 
-            o_NewBreaksManager.CreateBreaksManager(i_UnitNumber);
+            m_NewBreaksManager.CreateBreaksManager(i_UnitNumber);
 
-            return o_NewBreaksManager;
+            return m_NewBreaksManager;
         }
     }
 }

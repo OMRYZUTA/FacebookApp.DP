@@ -3,7 +3,9 @@
     public class BreaksManagerByHours : IBreaksManager
     {
         public int m_BreakTime { get; set; }
+
         public int m_Seconds { get; set; }
+
         public int m_Minutes { get; set; }
 
         public void CreateBreaksManager(int i_BreakTimeInMinutes)
