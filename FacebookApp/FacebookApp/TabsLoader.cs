@@ -60,10 +60,7 @@ namespace FacebookApp
 
             foreach (User friend in LoggedInUser.Friends)
             {
-                if(friendsBox != null)
-                {
-                    friendsBox.Items.Add(friend.Name);
-                }
+                friendsBox?.Items.Add(friend.Name);
             }
 
             LoadedTabs.Add(eTab.FriendsList);
@@ -136,17 +133,11 @@ namespace FacebookApp
             {
                 if (post.Message != null)
                 {
-                    if(userPostsList != null)
-                    {
-                        userPostsList.Items.Add(post.Message);
-                    }
+                    userPostsList?.Items.Add(post.Message);
                 }
                 else if (post.Caption != null)
                 {
-                    if(userPostsList != null)
-                    {
-                        userPostsList.Items.Add(post.Caption);
-                    }
+                    userPostsList?.Items.Add(post.Caption);
                 }
 
                 counter++;

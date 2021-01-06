@@ -7,7 +7,7 @@ namespace FacebookApp
 {
     public class Folder : TreeNode, IFile, IEnumerable<IFile>
     {
-        public List<IFile> Files { get; }
+        private List<IFile> Files { get; }
 
         private bool m_IsSelected;
 
